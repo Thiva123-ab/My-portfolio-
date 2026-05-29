@@ -1,60 +1,96 @@
-# Thiva — Portfolio
+# Thiva — Portfolio (React + Vite)
 
-A fast, fully static, dark-themed personal portfolio with creative motion design.
-No frameworks, no build step — just clean HTML, CSS, and vanilla JavaScript.
+A fast, dark-themed personal portfolio with creative motion design, built with
+**React 18** and **Vite**. Component-based, no UI framework — just React,
+vanilla CSS, and a sprinkle of canvas magic.
 
-![status](https://img.shields.io/badge/status-live-7c5cff) ![type](https://img.shields.io/badge/static-no--build-18e0c8)
+![status](https://img.shields.io/badge/status-live-7c5cff) ![react](https://img.shields.io/badge/React-18-18e0c8) ![vite](https://img.shields.io/badge/Vite-5-ff5d8f)
 
 ## Features
 
 - **Dark aesthetic** with animated gradient glows and a subtle film grain.
 - **Interactive constellation background** drawn on `<canvas>` that reacts to the cursor.
 - **Custom cursor** with a smooth trailing ring and hover states.
-- **Scroll-reveal** animations, animated stat counters, and a scroll progress bar.
-- **Magnetic buttons** and a **3D tilt** profile card.
+- **Scroll-reveal** animations (via a reusable `<Reveal>` component + IntersectionObserver).
+- **Animated stat counters** and a scroll progress bar.
+- **Magnetic buttons** (`useMagnetic` hook) and a **3D tilt** profile card.
 - **Spotlight skill cards** that follow the pointer.
 - Animated **loader**, **marquee**, and gradient text effects.
 - Fully **responsive** with a mobile slide-in menu.
 - Respects `prefers-reduced-motion` for accessibility.
 
+## Tech stack
+
+- React 18
+- Vite 5
+- Plain CSS (custom properties, no preprocessor)
+
 ## Project structure
 
 ```
 .
-├── index.html      # Markup & content
-├── css/
-│   └── style.css   # Theme, layout, animations
-├── js/
-│   └── main.js     # Cursor, particles, reveal, counters, tilt
-└── README.md
+├── index.html              # Vite entry
+├── vite.config.js
+├── package.json
+└── src/
+    ├── main.jsx            # React root
+    ├── App.jsx             # Composes all sections
+    ├── index.css           # Theme, layout, animations
+    ├── hooks/
+    │   ├── useMagnetic.js
+    │   └── useReducedMotion.js
+    └── components/
+        ├── Background.jsx   # Canvas particles + glows + grain
+        ├── Cursor.jsx
+        ├── ScrollProgress.jsx
+        ├── Loader.jsx
+        ├── Nav.jsx
+        ├── Hero.jsx
+        ├── Marquee.jsx
+        ├── About.jsx        # Tilt card + animated counters
+        ├── Skills.jsx       # Spotlight cards
+        ├── Work.jsx
+        ├── Contact.jsx
+        └── Footer.jsx
 ```
 
-## Run locally
-
-It's static — just open `index.html` in a browser, or serve it:
+## Getting started
 
 ```bash
-# Python
-python -m http.server 8000
+# install dependencies
+npm install
 
-# Node
-npx serve .
+# start the dev server
+npm run dev
+
+# build for production
+npm run build
+
+# preview the production build
+npm run preview
 ```
 
-Then visit `http://localhost:8000`.
+The dev server runs at `http://localhost:5173`.
 
 ## Customize
 
-- **Text & sections:** edit `index.html`.
-- **Colors:** tweak the CSS variables at the top of `css/style.css` (`--accent`, `--grad`, etc.).
-- **Content:** update the work items, skills, stats, email, and social links.
+- **Content:** edit the data arrays in `src/components/*.jsx` (skills, projects, socials).
+- **Colors:** tweak the CSS variables at the top of `src/index.css` (`--accent`, `--grad`, etc.).
+- **Copy/text:** update `Hero.jsx`, `About.jsx`, and `Contact.jsx`.
 
 ## Deploy (GitHub Pages)
 
-1. Push to GitHub.
-2. Repo → **Settings → Pages**.
-3. Source: **Deploy from a branch** → `main` → `/root` → **Save**.
-4. Your site goes live at `https://<username>.github.io/<repo>/`.
+This project builds to a static `dist/` folder, so it works on any static host.
+
+For **GitHub Pages** project sites, set the base path in `vite.config.js`:
+
+```js
+export default defineConfig({ plugins: [react()], base: "/My-portfolio-/" });
+```
+
+Then build and publish `dist/` (e.g. with the `gh-pages` package or a GitHub Action).
+For Netlify/Vercel, just point them at this repo — build command `npm run build`,
+output directory `dist`.
 
 ---
 
