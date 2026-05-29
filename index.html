@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Thiva — Creative Developer Portfolio. Building beautiful, performant web experiences." />
+  <meta name="theme-color" content="#0a0a0f" />
+  <title>Thiva — Creative Developer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@300;400;600;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Animated background canvas -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="glow glow-1" aria-hidden="true"></div>
+  <div class="glow glow-2" aria-hidden="true"></div>
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Scroll progress -->
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Loader -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-text">
+      <span>T</span><span>H</span><span>I</span><span>V</span><span>A</span>
+    </div>
+    <div class="loader-bar"><span id="loader-bar-fill"></span></div>
+  </div>
+
+  <!-- Navigation -->
+  <header class="nav" id="nav">
+    <a href="#hero" class="nav-logo" data-cursor="hover">
+      <span class="logo-mark">◆</span> Thiva<span class="dot">.</span>
+    </a>
+    <nav class="nav-links" id="nav-links">
+      <a href="#about" data-cursor="hover">About</a>
+      <a href="#skills" data-cursor="hover">Skills</a>
+      <a href="#work" data-cursor="hover">Work</a>
+      <a href="#contact" data-cursor="hover">Contact</a>
+    </nav>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-inner">
+        <p class="hero-eyebrow reveal" data-delay="0">
+          <span class="ping"></span> Available for new projects
+        </p>
+        <h1 class="hero-title">
+          <span class="line"><span class="word">Creative</span></span>
+          <span class="line"><span class="word gradient-text">Developer</span></span>
+          <span class="line"><span class="word">&amp; Designer</span></span>
+        </h1>
+        <p class="hero-sub reveal" data-delay="0.2">
+          I’m <strong>Thiva</strong> — I craft immersive, high-performance web
+          experiences where bold design meets clean, scalable code.
+        </p>
+        <div class="hero-cta reveal" data-delay="0.35">
+          <a href="#work" class="btn btn-primary magnetic" data-cursor="hover">
+            <span>View my work</span>
+            <svg viewBox="0 0 24 24" width="18" height="18"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#contact" class="btn btn-ghost magnetic" data-cursor="hover">Get in touch</a>
+        </div>
+      </div>
+      <div class="hero-scroll reveal" data-delay="0.5">
+        <span>Scroll</span>
+        <span class="hero-scroll-line"></span>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Web Design</span><span>◆</span><span>Frontend</span><span>◆</span>
+        <span>Animation</span><span>◆</span><span>UI / UX</span><span>◆</span>
+        <span>Creative Code</span><span>◆</span>
+        <span>Web Design</span><span>◆</span><span>Frontend</span><span>◆</span>
+        <span>Animation</span><span>◆</span><span>UI / UX</span><span>◆</span>
+        <span>Creative Code</span><span>◆</span>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="section about" id="about">
+      <div class="section-head">
+        <span class="section-index">01</span>
+        <h2 class="section-title reveal">About</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal" data-delay="0.1">
+          <p class="lead">
+            I’m a developer who lives at the intersection of engineering and art.
+            For me, a great interface should feel alive — responsive, intentional,
+            and a little bit magical.
+          </p>
+          <p>
+            Over the years I’ve shipped products for startups and brands, turning
+            complex ideas into interfaces people love to use. I care deeply about
+            performance, accessibility, and the tiny details that make experiences
+            memorable.
+          </p>
+          <div class="about-stats">
+            <div class="stat"><span class="num" data-count="5">0</span><small>Years coding</small></div>
+            <div class="stat"><span class="num" data-count="40">0</span><small>Projects shipped</small></div>
+            <div class="stat"><span class="num" data-count="20">0</span><small>Happy clients</small></div>
+          </div>
+        </div>
+        <div class="about-card reveal" data-delay="0.25">
+          <div class="tilt" data-tilt>
+            <div class="tilt-inner">
+              <span class="tilt-emoji">👨‍💻</span>
+              <h3>Thiva</h3>
+              <p>Creative Developer</p>
+              <ul class="tilt-list">
+                <li>Based remotely · Worldwide</li>
+                <li>Frontend &amp; creative engineering</li>
+                <li>Open to freelance &amp; full-time</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section skills" id="skills">
+      <div class="section-head">
+        <span class="section-index">02</span>
+        <h2 class="section-title reveal">Skills &amp; Tools</h2>
+      </div>
+      <div class="skills-grid">
+        <article class="skill-card reveal" data-delay="0">
+          <span class="skill-icon">⚡</span>
+          <h3>Frontend</h3>
+          <p>HTML, CSS, JavaScript, TypeScript, React, Next.js — pixel-perfect and accessible.</p>
+        </article>
+        <article class="skill-card reveal" data-delay="0.08">
+          <span class="skill-icon">🎨</span>
+          <h3>Design &amp; Motion</h3>
+          <p>UI/UX, design systems, Figma, micro-interactions, GSAP-style animation.</p>
+        </article>
+        <article class="skill-card reveal" data-delay="0.16">
+          <span class="skill-icon">🧩</span>
+          <h3>Backend</h3>
+          <p>Node.js, REST &amp; GraphQL APIs, databases, and clean architecture.</p>
+        </article>
+        <article class="skill-card reveal" data-delay="0.24">
+          <span class="skill-icon">🚀</span>
+          <h3>Tooling</h3>
+          <p>Git, CI/CD, Vite, performance budgets, and shipping fast with confidence.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section class="section work" id="work">
+      <div class="section-head">
+        <span class="section-index">03</span>
+        <h2 class="section-title reveal">Selected Work</h2>
+      </div>
+      <div class="work-list">
+        <a class="work-item reveal" href="#" data-cursor="hover" data-delay="0">
+          <div class="work-meta">
+            <span class="work-num">01</span>
+            <h3>Nebula Dashboard</h3>
+            <p>A realtime analytics dashboard with fluid data viz and dark UI.</p>
+            <div class="work-tags"><span>React</span><span>D3</span><span>Design System</span></div>
+          </div>
+          <span class="work-arrow">↗</span>
+        </a>
+        <a class="work-item reveal" href="#" data-cursor="hover" data-delay="0.05">
+          <div class="work-meta">
+            <span class="work-num">02</span>
+            <h3>Aurora Commerce</h3>
+            <p>Headless storefront with buttery transitions and instant checkout.</p>
+            <div class="work-tags"><span>Next.js</span><span>Stripe</span><span>Motion</span></div>
+          </div>
+          <span class="work-arrow">↗</span>
+        </a>
+        <a class="work-item reveal" href="#" data-cursor="hover" data-delay="0.1">
+          <div class="work-meta">
+            <span class="work-num">03</span>
+            <h3>Pulse Music</h3>
+            <p>An interactive audio-reactive landing page with WebGL visuals.</p>
+            <div class="work-tags"><span>WebGL</span><span>Canvas</span><span>Audio API</span></div>
+          </div>
+          <span class="work-arrow">↗</span>
+        </a>
+        <a class="work-item reveal" href="#" data-cursor="hover" data-delay="0.15">
+          <div class="work-meta">
+            <span class="work-num">04</span>
+            <h3>Orbit Portfolio</h3>
+            <p>This very site — a study in dark aesthetics and motion design.</p>
+            <div class="work-tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+          </div>
+          <span class="work-arrow">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="section-head">
+        <span class="section-index">04</span>
+        <h2 class="section-title reveal">Let’s build something</h2>
+      </div>
+      <div class="contact-inner reveal" data-delay="0.1">
+        <p class="contact-lead">
+          Have a project in mind or just want to say hi? My inbox is always open.
+        </p>
+        <a href="mailto:hello@thiva.dev" class="contact-email magnetic" data-cursor="hover">
+          hello@thiva.dev
+        </a>
+        <div class="contact-socials">
+          <a href="https://github.com/Thiva123-ab" target="_blank" rel="noopener" data-cursor="hover">GitHub</a>
+          <a href="#" data-cursor="hover">LinkedIn</a>
+          <a href="#" data-cursor="hover">Twitter / X</a>
+          <a href="#" data-cursor="hover">Dribbble</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> Thiva. Designed &amp; built with care.</p>
+    <a href="#hero" class="footer-top" data-cursor="hover">Back to top ↑</a>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
