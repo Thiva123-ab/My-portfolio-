@@ -29,20 +29,6 @@ const PROJECTS = [
     tags: ["PHP", "MySQL", "Dashboard"],
     href: "https://github.com/Thiva123-ab/gym",
   },
-  {
-    num: "05",
-    title: "HyperionDev Login",
-    desc: "A clean, responsive login experience for an educational web platform.",
-    tags: ["HTML", "CSS", "UI"],
-    href: "https://github.com/Thiva123-ab/HyperionDev-login",
-  },
-  {
-    num: "06",
-    title: "Hyperion Registration",
-    desc: "A registration and sign-in flow built for an educational website.",
-    tags: ["HTML", "CSS", "JavaScript"],
-    href: "https://github.com/Thiva123-ab/hyperion-registation",
-  },
 ];
 
 export default function Work() {
