@@ -21,7 +21,7 @@ export default function Nav() {
   return (
     <header className={`nav ${scrolled ? "scrolled" : ""}`}>
       <a href="#hero" className="nav-logo" data-cursor="hover">
-        <span className="logo-mark">◆</span> Thiva<span className="dot">.</span>
+        <span className="logo-mark">◆</span> Thivanka<span className="dot">.</span>
       </a>
       <nav className={`nav-links ${open ? "open" : ""}`}>
         {LINKS.map((l) => (

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Reveal from "./Reveal.jsx";
+import profile from "../assets/profile.png";
 
 function Counter({ target }) {
   const ref = useRef(null);
@@ -68,8 +69,10 @@ function TiltCard() {
     <div className="about-card" ref={wrapRef}>
       <div className="tilt" ref={tiltRef}>
         <div className="tilt-inner">
-          <span className="tilt-emoji">👨‍💻</span>
-          <h3>Thiva</h3>
+          <div className="tilt-photo">
+            <img src={profile} alt="Portrait of Thivanka Tharuka" loading="lazy" />
+          </div>
+          <h3>Thivanka Tharuka</h3>
           <p>Creative Developer</p>
           <ul className="tilt-list">
             <li>Based remotely · Worldwide</li>

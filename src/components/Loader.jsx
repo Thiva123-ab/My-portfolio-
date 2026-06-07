@@ -32,8 +32,16 @@ export default function Loader() {
   return (
     <div className={`loader ${done ? "done" : ""}`} aria-hidden="true">
       <div className="loader-text">
-        {"THIVA".split("").map((c, i) => (
-          <span key={i}>{c}</span>
+        {"THIVANKA".split("").map((c, i, arr) => (
+          <span
+            key={i}
+            style={{
+              animationDelay: `${0.05 + i * 0.07}s`,
+              color: i === arr.length - 1 ? "var(--accent)" : undefined,
+            }}
+          >
+            {c}
+          </span>
         ))}
       </div>
       <div className="loader-bar">

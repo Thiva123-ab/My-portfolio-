@@ -3,9 +3,7 @@ import useMagnetic from "../hooks/useMagnetic.js";
 
 const SOCIALS = [
   { label: "GitHub", href: "https://github.com/Thiva123-ab" },
-  { label: "LinkedIn", href: "#" },
-  { label: "Twitter / X", href: "#" },
-  { label: "Dribbble", href: "#" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/thivanka-tharuka" },
 ];
 
 export default function Contact() {
@@ -21,8 +19,8 @@ export default function Contact() {
         <p className="contact-lead">
           Have a project in mind or just want to say hi? My inbox is always open.
         </p>
-        <a ref={emailRef} href="mailto:hello@thiva.dev" className="contact-email" data-cursor="hover">
-          hello@thiva.dev
+        <a ref={emailRef} href="mailto:thivankatharuka36@gmail.com" className="contact-email" data-cursor="hover">
+          thivankatharuka36@gmail.com
         </a>
         <div className="contact-socials">
           {SOCIALS.map((s) => (
