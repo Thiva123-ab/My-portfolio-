@@ -3,27 +3,45 @@ import Reveal from "./Reveal.jsx";
 const PROJECTS = [
   {
     num: "01",
-    title: "Nebula Dashboard",
-    desc: "A realtime analytics dashboard with fluid data viz and dark UI.",
-    tags: ["React", "D3", "Design System"],
+    title: "Sri Lanka Flood Relief Live Map",
+    desc: "An interactive live map that coordinates flood-relief efforts across Sri Lanka, connecting people in need with nearby resources and volunteers.",
+    tags: ["JavaScript", "Maps API", "Realtime"],
+    href: "https://github.com/Thiva123-ab/Sri-Lanka-Flood-Relief-Coordinator-Live-Map",
   },
   {
     num: "02",
-    title: "Aurora Commerce",
-    desc: "Headless storefront with buttery transitions and instant checkout.",
-    tags: ["Next.js", "Stripe", "Motion"],
+    title: "Pharmacy Stock System",
+    desc: "A web app to manage pharmacy inventory — tracking stock levels, expiry, and sales in one clean dashboard.",
+    tags: ["JavaScript", "Node.js", "Inventory"],
+    href: "https://github.com/Thiva123-ab/Pharmacy-stock-system",
   },
   {
     num: "03",
-    title: "Pulse Music",
-    desc: "An interactive audio-reactive landing page with WebGL visuals.",
-    tags: ["WebGL", "Canvas", "Audio API"],
+    title: "DEA Spring Boot Project",
+    desc: "A robust backend application built with Java and Spring Boot, following clean, layered architecture.",
+    tags: ["Java", "Spring Boot", "REST API"],
+    href: "https://github.com/Thiva123-ab/DEA-Spring-Boot-Project",
   },
   {
     num: "04",
-    title: "Orbit Portfolio",
-    desc: "This very site — a study in dark aesthetics and motion design.",
-    tags: ["React", "Vite", "CSS"],
+    title: "Gym Management System",
+    desc: "A management system for a gym — handling memberships, plans, and member records.",
+    tags: ["PHP", "MySQL", "Dashboard"],
+    href: "https://github.com/Thiva123-ab/gym",
+  },
+  {
+    num: "05",
+    title: "HyperionDev Login",
+    desc: "A clean, responsive login experience for an educational web platform.",
+    tags: ["HTML", "CSS", "UI"],
+    href: "https://github.com/Thiva123-ab/HyperionDev-login",
+  },
+  {
+    num: "06",
+    title: "Hyperion Registration",
+    desc: "A registration and sign-in flow built for an educational website.",
+    tags: ["HTML", "CSS", "JavaScript"],
+    href: "https://github.com/Thiva123-ab/hyperion-registation",
   },
 ];
 
@@ -39,7 +57,9 @@ export default function Work() {
           <Reveal
             as="a"
             key={p.num}
-            href="#"
+            href={p.href}
+            target="_blank"
+            rel="noopener noreferrer"
             className="work-item"
             data-cursor="hover"
             delay={i * 0.05}
