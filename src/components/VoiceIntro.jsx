@@ -16,17 +16,31 @@ export default function VoiceIntro() {
     const en = voices.filter((v) => v.lang.toLowerCase().startsWith("en"));
     const pool = en.length ? en : voices;
 
-    // Rank by how natural/clear the voice tends to be.
+    // Known male voice names across Google / Microsoft / Apple.
+    const MALE = /\b(ravi|prabhat|rishi|hemant|guy|davis|tony|jason|mark|brandon|christopher|eric|roger|steffan|daniel|alex|fred|aaron|arthur|male)\b/;
+    const FEMALE = /\b(heera|neerja|swara|kavya|aria|jenny|ava|emma|libby|sonia|michelle|samantha|karen|moira|tessa|victoria|female|woman|zira|susan|catherine)\b/;
+
+    // We want a clear, natural, MALE, Indian-English (closest to Sri Lankan) voice.
     const score = (v) => {
       const n = `${v.name} ${v.voiceURI}`.toLowerCase();
+      const lang = v.lang.toLowerCase();
       let s = 0;
-      if (/natural|neural|premium|enhanced|online/.test(n)) s += 60;
-      if (/google/.test(n)) s += 40;
-      if (/microsoft|aria|jenny|guy|ava|emma|libby|sonia/.test(n)) s += 35;
-      if (/\b(samantha|daniel|karen|moira|tessa)\b/.test(n)) s += 25; // Apple voices
-      if (/en[-_]us/i.test(v.lang)) s += 10;
-      if (/en[-_]gb/i.test(v.lang)) s += 6;
-      if (!v.localService) s += 8; // cloud voices are usually higher quality
+
+      // Accent: Indian English is the closest available to a Sri Lankan accent.
+      if (lang === "en-in" || lang === "en_in") s += 70;
+      else if (lang.startsWith("en-gb")) s += 20;
+      else if (lang.startsWith("en-us")) s += 12;
+
+      // Prefer a male voice strongly.
+      if (MALE.test(n)) s += 60;
+      if (FEMALE.test(n)) s -= 80;
+
+      // Prefer natural / cloud voices for clarity.
+      if (/natural|neural|premium|enhanced|online/.test(n)) s += 45;
+      if (/google/.test(n)) s += 18;
+      if (/microsoft/.test(n)) s += 16;
+      if (!v.localService) s += 8;
+
       return s;
     };
 
@@ -39,7 +53,7 @@ export default function VoiceIntro() {
     synth.cancel();
     const u = new SpeechSynthesisUtterance(INTRO_TEXT);
     u.rate = 0.92;
-    u.pitch = 1.05;
+    u.pitch = 0.9;
     u.volume = 1;
     const voice = pickVoice();
     if (voice) {
