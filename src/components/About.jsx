@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Reveal from "./Reveal.jsx";
 import profile from "../assets/profile.png";
 
-function Counter({ target }) {
+function Counter({ target, suffix = "" }) {
   const ref = useRef(null);
   const [val, setVal] = useState(0);
 
@@ -32,7 +32,7 @@ function Counter({ target }) {
   return (
     <span className="num" ref={ref}>
       {val}
-      {target >= 40 ? "+" : ""}
+      {suffix}
     </span>
   );
 }
@@ -73,11 +73,11 @@ function TiltCard() {
             <img src={profile} alt="Portrait of Thivanka Tharuka" loading="lazy" />
           </div>
           <h3>Thivanka Tharuka</h3>
-          <p>Creative Developer</p>
+          <p>Full-Stack Developer</p>
           <ul className="tilt-list">
-            <li>Based remotely · Worldwide</li>
-            <li>Frontend &amp; creative engineering</li>
-            <li>Open to freelance &amp; full-time</li>
+            <li>Based in Sri Lanka</li>
+            <li>CS Student · NSBM Green University</li>
+            <li>Open to internships &amp; freelance</li>
           </ul>
         </div>
       </div>
@@ -95,20 +95,28 @@ export default function About() {
       <div className="about-grid">
         <Reveal className="about-text" delay={0.1}>
           <p className="lead">
-            I’m a developer who lives at the intersection of engineering and art.
-            For me, a great interface should feel alive — responsive, intentional,
-            and a little bit magical.
+            I’m a full-stack software developer and Computer Science student at
+            NSBM Green University, Sri Lanka — focused on backend architecture and
+            scalable, cloud-ready applications.
           </p>
           <p>
-            Over the years I’ve shipped products for startups and brands, turning
-            complex ideas into interfaces people love to use. I care deeply about
-            performance, accessibility, and the tiny details that make experiences
-            memorable.
+            My core expertise is in backend development with <strong>Java</strong>,
+            <strong> Spring Boot</strong>, and <strong>MySQL</strong>, paired with
+            deploying scalable, containerized applications across cloud platforms
+            like AWS, GCP, and Azure.
+          </p>
+          <p>
+            Beyond the code, I’m deeply interested in Human-Computer Interaction
+            (HCI) and UI/UX design. I use tools like Figma to make sure my
+            applications aren’t just functionally sound, but genuinely intuitive —
+            whether I’m mapping geospatial data for disaster management or building
+            streamlined campus utility platforms, I’m passionate about engineering
+            solutions that make a real-world impact.
           </p>
           <div className="about-stats">
-            <div className="stat"><Counter target={5} /><small>Years coding</small></div>
-            <div className="stat"><Counter target={40} /><small>Projects shipped</small></div>
-            <div className="stat"><Counter target={20} /><small>Happy clients</small></div>
+            <div className="stat"><Counter target={3} /><small>Cloud platforms</small></div>
+            <div className="stat"><Counter target={4} /><small>Featured projects</small></div>
+            <div className="stat"><Counter target={100} suffix="%" /><small>Dedication</small></div>
           </div>
         </Reveal>
         <Reveal delay={0.25}>

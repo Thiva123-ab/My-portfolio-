@@ -11,17 +11,18 @@ export default function Hero() {
       <div className="hero-layout">
         <div className="hero-inner">
           <Reveal as="p" className="hero-eyebrow" delay={0}>
-            <span className="ping" /> Available for new projects
+            <span className="ping" /> Available for new opportunities
           </Reveal>
           <h1 className="hero-title">
-            <span className="line"><span className="word">Creative</span></span>
+            <span className="line"><span className="word">Full-Stack</span></span>
             <span className="line"><span className="word gradient-text">Developer</span></span>
             <span className="line"><span className="word">&amp; Designer</span></span>
           </h1>
           <Reveal as="p" className="hero-sub" delay={0.2}>
-            I’m <strong>Thivanka Tharuka</strong> — I craft immersive,
-            high-performance web experiences where bold design meets clean,
-            scalable code.
+            I’m <strong>Thivanka Tharuka</strong> — a full-stack software developer
+            and Computer Science student at NSBM Green University, Sri Lanka. I build
+            scalable, cloud-ready applications with a strong focus on clean
+            architecture and intuitive design.
           </Reveal>
           <Reveal className="hero-cta" delay={0.35}>
             <a ref={primaryRef} href="#work" className="btn btn-primary" data-cursor="hover">

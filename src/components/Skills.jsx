@@ -1,10 +1,10 @@
 import Reveal from "./Reveal.jsx";
 
 const SKILLS = [
-  { icon: "⚡", title: "Frontend", desc: "HTML, CSS, JavaScript, TypeScript, React, Next.js — pixel-perfect and accessible." },
-  { icon: "🎨", title: "Design & Motion", desc: "UI/UX, design systems, Figma, micro-interactions, GSAP-style animation." },
-  { icon: "🧩", title: "Backend", desc: "Node.js, REST & GraphQL APIs, databases, and clean architecture." },
-  { icon: "🚀", title: "Tooling", desc: "Git, CI/CD, Vite, performance budgets, and shipping fast with confidence." },
+  { icon: "⚙️", title: "Backend", desc: "Java, Spring Boot, and MySQL — robust REST APIs and clean, layered architecture." },
+  { icon: "☁️", title: "Cloud & DevOps", desc: "Containerized apps deployed across AWS, GCP, and Azure with Docker." },
+  { icon: "💻", title: "Frontend", desc: "HTML, CSS, JavaScript and modern, responsive, accessible user interfaces." },
+  { icon: "🎨", title: "Design & HCI", desc: "UI/UX design, Human-Computer Interaction, and prototyping with Figma." },
 ];
 
 function SkillCard({ skill, delay }) {
