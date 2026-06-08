@@ -12,28 +12,64 @@ export default function VoiceIntro() {
     const synth = window.speechSynthesis;
     const voices = synth.getVoices();
     if (!voices.length) return null;
-    return (
-      voices.find((v) => /^en[-_](US|GB|IN|AU)/i.test(v.lang) && /google|natural|premium/i.test(v.name)) ||
-      voices.find((v) => v.lang.toLowerCase().startsWith("en")) ||
-      voices[0]
-    );
+
+    const en = voices.filter((v) => v.lang.toLowerCase().startsWith("en"));
+    const pool = en.length ? en : voices;
+
+    // Rank by how natural/clear the voice tends to be.
+    const score = (v) => {
+      const n = `${v.name} ${v.voiceURI}`.toLowerCase();
+      let s = 0;
+      if (/natural|neural|premium|enhanced|online/.test(n)) s += 60;
+      if (/google/.test(n)) s += 40;
+      if (/microsoft|aria|jenny|guy|ava|emma|libby|sonia/.test(n)) s += 35;
+      if (/\b(samantha|daniel|karen|moira|tessa)\b/.test(n)) s += 25; // Apple voices
+      if (/en[-_]us/i.test(v.lang)) s += 10;
+      if (/en[-_]gb/i.test(v.lang)) s += 6;
+      if (!v.localService) s += 8; // cloud voices are usually higher quality
+      return s;
+    };
+
+    return [...pool].sort((a, b) => score(b) - score(a))[0] || voices[0];
   }, []);
 
-  const speak = useCallback(() => {
+  const speakNow = useCallback(() => {
     const synth = window.speechSynthesis;
     if (!synth) return;
     synth.cancel();
     const u = new SpeechSynthesisUtterance(INTRO_TEXT);
-    u.rate = 0.98;
-    u.pitch = 1;
+    u.rate = 0.92;
+    u.pitch = 1.05;
     u.volume = 1;
     const voice = pickVoice();
-    if (voice) u.voice = voice;
+    if (voice) {
+      u.voice = voice;
+      u.lang = voice.lang;
+    }
     u.onstart = () => setSpeaking(true);
     u.onend = () => setSpeaking(false);
     u.onerror = () => setSpeaking(false);
     synth.speak(u);
   }, [pickVoice]);
+
+  // Make sure the (async) voice list is ready before speaking, so we get the
+  // clear high-quality voice instead of the default robotic fallback.
+  const speak = useCallback(() => {
+    const synth = window.speechSynthesis;
+    if (!synth) return;
+    if (synth.getVoices().length) {
+      speakNow();
+      return;
+    }
+    let tries = 0;
+    const wait = setInterval(() => {
+      tries += 1;
+      if (synth.getVoices().length || tries > 20) {
+        clearInterval(wait);
+        speakNow();
+      }
+    }, 100);
+  }, [speakNow]);
 
   const toggle = useCallback(() => {
     const synth = window.speechSynthesis;
