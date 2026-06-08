@@ -2,6 +2,7 @@ import Background from "./components/Background.jsx";
 import Cursor from "./components/Cursor.jsx";
 import ScrollProgress from "./components/ScrollProgress.jsx";
 import Loader from "./components/Loader.jsx";
+import VoiceIntro from "./components/VoiceIntro.jsx";
 import Nav from "./components/Nav.jsx";
 import Hero from "./components/Hero.jsx";
 import Marquee from "./components/Marquee.jsx";
@@ -18,6 +19,7 @@ export default function App() {
       <Cursor />
       <ScrollProgress />
       <Loader />
+      <VoiceIntro />
       <Nav />
       <main>
         <Hero />

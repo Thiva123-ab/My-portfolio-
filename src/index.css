@@ -970,6 +970,81 @@ main { position: relative; z-index: 1; }
 .footer-top { color: var(--muted); transition: color 0.3s; }
 .footer-top:hover { color: var(--text); }
 
+/* ---------- Voice intro button ---------- */
+.voice-intro {
+  position: fixed;
+  right: clamp(16px, 4vw, 28px);
+  bottom: clamp(16px, 4vw, 28px);
+  z-index: 850;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: rgba(12, 12, 22, 0.72);
+  backdrop-filter: blur(12px);
+  color: var(--text);
+  cursor: pointer;
+  box-shadow: 0 12px 30px -14px rgba(0, 0, 0, 0.8);
+  transition: transform 0.35s var(--ease), border-color 0.35s, box-shadow 0.35s,
+    background 0.35s;
+}
+.voice-intro::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: var(--grad);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.35s;
+}
+.voice-intro:hover {
+  transform: translateY(-3px) scale(1.05);
+  border-color: transparent;
+  box-shadow: 0 16px 36px -16px rgba(124, 92, 255, 0.8);
+}
+.voice-intro:hover::before { opacity: 1; }
+.voice-intro:hover { color: #07070c; }
+
+.voice-speaker { transition: opacity 0.25s, transform 0.25s; }
+.voice-bars {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 20px;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 0.25s, transform 0.25s;
+}
+.voice-bars span {
+  width: 3px;
+  height: 6px;
+  border-radius: 2px;
+  background: currentColor;
+  animation: voiceBar 0.9s ease-in-out infinite;
+}
+.voice-bars span:nth-child(2) { animation-delay: 0.15s; }
+.voice-bars span:nth-child(3) { animation-delay: 0.3s; }
+.voice-bars span:nth-child(4) { animation-delay: 0.45s; }
+@keyframes voiceBar {
+  0%, 100% { height: 5px; }
+  50% { height: 18px; }
+}
+.voice-intro.is-speaking {
+  border-color: transparent;
+  color: #07070c;
+}
+.voice-intro.is-speaking::before { opacity: 1; }
+.voice-intro.is-speaking .voice-speaker { opacity: 0; transform: scale(0.6); }
+.voice-intro.is-speaking .voice-bars { opacity: 1; transform: scale(1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .voice-bars span { animation: none; height: 12px; }
+}
+
 /* ---------- Reveal animation ---------- */
 .reveal {
   opacity: 0;
