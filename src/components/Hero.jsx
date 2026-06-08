@@ -23,7 +23,7 @@ export default function Hero() {
           <Reveal as="p" className="hero-eyebrow" delay={0}>
             <span className="ping" /> Available for new opportunities
           </Reveal>
-          <h1 className="hero-title" data-cursor="hover">
+          <h1 className="hero-title">
             {TITLE_LINES.map((line, li) => (
               <span className="line" key={li}>
                 {line.map((w, wi) => (

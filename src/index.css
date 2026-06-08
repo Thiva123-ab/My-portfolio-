@@ -420,13 +420,6 @@ main { position: relative; z-index: 1; }
   0%, 18% { background-position: 200% center; }
   60%, 100% { background-position: -60% center; }
 }
-/* Interactive glow when hovering the headline */
-.hero-title:hover .word.shimmer {
-  filter: drop-shadow(0 6px 26px rgba(124, 92, 255, 0.45));
-}
-.hero-title:hover .word.gradient-text {
-  filter: drop-shadow(0 6px 30px rgba(24, 224, 200, 0.5));
-}
 .gradient-text {
   background: var(--grad);
   background-size: 200% auto;
