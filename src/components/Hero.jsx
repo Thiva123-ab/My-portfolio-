@@ -2,9 +2,19 @@ import Reveal from "./Reveal.jsx";
 import useMagnetic from "../hooks/useMagnetic.js";
 import profile from "../assets/profile.png";
 
+const TITLE_LINES = [
+  [{ text: "Full-Stack", cls: "shimmer" }],
+  [{ text: "Developer", cls: "gradient-text" }],
+  [
+    { text: "&", cls: "shimmer" },
+    { text: "Designer", cls: "shimmer" },
+  ],
+];
+
 export default function Hero() {
   const primaryRef = useMagnetic(0.25);
   const ghostRef = useMagnetic(0.25);
+  let charIndex = 0;
 
   return (
     <section className="hero" id="hero">
@@ -14,9 +24,24 @@ export default function Hero() {
             <span className="ping" /> Available for new opportunities
           </Reveal>
           <h1 className="hero-title" data-cursor="hover">
-            <span className="line"><span className="word shimmer">Full-Stack</span></span>
-            <span className="line"><span className="word gradient-text">Developer</span></span>
-            <span className="line"><span className="word shimmer">&amp; Designer</span></span>
+            {TITLE_LINES.map((line, li) => (
+              <span className="line" key={li}>
+                {line.map((w, wi) => (
+                  <span className={`word ${w.cls}`} key={wi}>
+                    {[...w.text].map((ch, ci) => (
+                      <span
+                        className="char"
+                        key={ci}
+                        style={{ animationDelay: `${charIndex++ * 0.04}s` }}
+                      >
+                        {ch}
+                      </span>
+                    ))}
+                    {wi < line.length - 1 ? "\u00A0" : null}
+                  </span>
+                ))}
+              </span>
+            ))}
           </h1>
           <Reveal as="p" className="hero-sub" delay={0.2}>
             I’m <strong>Thivanka Tharuka</strong> — a full-stack software developer
