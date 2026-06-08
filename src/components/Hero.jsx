@@ -13,10 +13,10 @@ export default function Hero() {
           <Reveal as="p" className="hero-eyebrow" delay={0}>
             <span className="ping" /> Available for new opportunities
           </Reveal>
-          <h1 className="hero-title">
-            <span className="line"><span className="word">Full-Stack</span></span>
+          <h1 className="hero-title" data-cursor="hover">
+            <span className="line"><span className="word shimmer">Full-Stack</span></span>
             <span className="line"><span className="word gradient-text">Developer</span></span>
-            <span className="line"><span className="word">&amp; Designer</span></span>
+            <span className="line"><span className="word shimmer">&amp; Designer</span></span>
           </h1>
           <Reveal as="p" className="hero-sub" delay={0.2}>
             I’m <strong>Thivanka Tharuka</strong> — a full-stack software developer
