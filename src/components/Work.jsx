@@ -5,6 +5,9 @@ import floodMap from "../assets/projects/flood/02-live-map.png";
 import floodReports from "../assets/projects/flood/03-reports.png";
 import floodAddReport from "../assets/projects/flood/04-add-report.png";
 import floodEmergency from "../assets/projects/flood/05-emergency-help.png";
+import floodHelpFeed from "../assets/projects/flood/06-help-feed.png";
+import floodAdmin from "../assets/projects/flood/07-admin-dashboard.png";
+import floodAnalytics from "../assets/projects/flood/08-analytics.png";
 
 const FLOOD_GALLERY = [
   { src: floodLanding, caption: "Landing — Real-time disaster response platform" },
@@ -12,6 +15,9 @@ const FLOOD_GALLERY = [
   { src: floodReports, caption: "My Reports — track status of reported incidents" },
   { src: floodAddReport, caption: "Submit a new flood / hazard report" },
   { src: floodEmergency, caption: "Emergency help requests with hotlines" },
+  { src: floodHelpFeed, caption: "Community Help Feed — live SOS requests with real-time updates" },
+  { src: floodAdmin, caption: "Administrator Dashboard — approve reports and coordinate rescues" },
+  { src: floodAnalytics, caption: "Situation Analytics — incident charts and PDF reporting" },
 ];
 
 const PROJECTS = [
