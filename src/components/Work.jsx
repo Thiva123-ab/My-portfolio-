@@ -33,6 +33,23 @@ const PROJECTS = [
   },
   {
     num: "02",
+    title: "Smart Sinhala Study (LectureLens)",
+    desc: "A bilingual AI study platform that turns lecture slides and notes into summaries, flashcards, and quizzes — with instant Sinhala translation for Sri Lankan students.",
+    features: [
+      "AI summaries, flashcards & quizzes from uploads",
+      "One-tap Sinhala translation (සිංහල)",
+      "Chat with your PDF — cited answers",
+      "Streaks, achievements & Pomodoro timer",
+      "Search, tags, favorites & Markdown export",
+    ],
+    tags: ["TypeScript", "React", "Supabase", "AI"],
+    href: "https://github.com/Thiva123-ab/smart-sinhala-study",
+    icon: "📚",
+    img: null,
+    gallery: null,
+  },
+  {
+    num: "03",
     title: "Pharmacy Stock System",
     desc: "A web app to manage pharmacy inventory — tracking stock levels, expiry, and sales in one clean dashboard.",
     tags: ["JavaScript", "Node.js", "Inventory"],
@@ -41,7 +58,7 @@ const PROJECTS = [
     img: null,
   },
   {
-    num: "03",
+    num: "04",
     title: "DEA Spring Boot Project",
     desc: "A robust backend application built with Java and Spring Boot, following clean, layered architecture.",
     tags: ["Java", "Spring Boot", "REST API"],
@@ -50,7 +67,7 @@ const PROJECTS = [
     img: null,
   },
   {
-    num: "04",
+    num: "05",
     title: "Gym Management System",
     desc: "A management system for a gym — handling memberships, plans, and member records.",
     tags: ["PHP", "MySQL", "Dashboard"],
@@ -174,6 +191,13 @@ export default function Work() {
             <div className="work-body">
               <h3>{p.title}</h3>
               <p>{p.desc}</p>
+              {p.features?.length > 0 && (
+                <ul className="work-features">
+                  {p.features.map((f) => (
+                    <li key={f}>{f}</li>
+                  ))}
+                </ul>
+              )}
               <div className="work-tags">
                 {p.tags.map((t) => (
                   <span key={t}>{t}</span>

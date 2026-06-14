@@ -115,7 +115,7 @@ export default function About() {
           </p>
           <div className="about-stats">
             <div className="stat"><Counter target={3} /><small>Cloud platforms</small></div>
-            <div className="stat"><Counter target={4} /><small>Featured projects</small></div>
+            <div className="stat"><Counter target={5} /><small>Featured projects</small></div>
             <div className="stat"><Counter target={100} suffix="%" /><small>Dedication</small></div>
           </div>
         </Reveal>

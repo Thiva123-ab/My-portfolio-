@@ -1,4 +1,4 @@
-const ITEMS = ["Web Design", "Frontend", "Animation", "UI / UX", "Creative Code"];
+const ITEMS = ["Web Design", "React", "TypeScript", "AI Apps", "UI / UX", "Creative Code"];
 
 export default function Marquee() {
   // Flat list of [text, ◆, text, ◆, ...], doubled for a seamless loop.
