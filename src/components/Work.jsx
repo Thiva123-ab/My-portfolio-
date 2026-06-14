@@ -8,6 +8,13 @@ import floodEmergency from "../assets/projects/flood/05-emergency-help.png";
 import floodHelpFeed from "../assets/projects/flood/06-help-feed.png";
 import floodAdmin from "../assets/projects/flood/07-admin-dashboard.png";
 import floodAnalytics from "../assets/projects/flood/08-analytics.png";
+import studySummary from "../assets/projects/sinhala-study/01-summary.png";
+import studyNotes from "../assets/projects/sinhala-study/02-summary-notes.png";
+import studyFlashQ from "../assets/projects/sinhala-study/03-flashcard-question.png";
+import studyFlashA from "../assets/projects/sinhala-study/04-flashcard-answer.png";
+import studyQuiz from "../assets/projects/sinhala-study/05-quiz.png";
+import studyFocus from "../assets/projects/sinhala-study/06-quiz-focus.png";
+import studyChat from "../assets/projects/sinhala-study/07-chat.png";
 
 const FLOOD_GALLERY = [
   { src: floodLanding, caption: "Landing — Real-time disaster response platform" },
@@ -18,6 +25,16 @@ const FLOOD_GALLERY = [
   { src: floodHelpFeed, caption: "Community Help Feed — live SOS requests with real-time updates" },
   { src: floodAdmin, caption: "Administrator Dashboard — approve reports and coordinate rescues" },
   { src: floodAnalytics, caption: "Situation Analytics — incident charts and PDF reporting" },
+];
+
+const STUDY_GALLERY = [
+  { src: studySummary, caption: "AI-generated summary with EN / සිංහල toggle" },
+  { src: studyNotes, caption: "Detailed notes — algorithms, iteration vs recursion" },
+  { src: studyFlashQ, caption: "Flashcards — question view with flip navigation" },
+  { src: studyFlashA, caption: "Flashcards — answer reveal" },
+  { src: studyQuiz, caption: "Auto-generated quiz from lecture material" },
+  { src: studyFocus, caption: "Quiz mode with built-in Pomodoro focus timer" },
+  { src: studyChat, caption: "Chat with your document — cited AI answers" },
 ];
 
 const PROJECTS = [
@@ -45,8 +62,8 @@ const PROJECTS = [
     tags: ["TypeScript", "React", "Supabase", "AI"],
     href: "https://github.com/Thiva123-ab/smart-sinhala-study",
     icon: "📚",
-    img: null,
-    gallery: null,
+    img: studySummary,
+    gallery: STUDY_GALLERY,
   },
   {
     num: "03",
