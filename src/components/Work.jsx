@@ -42,6 +42,13 @@ const PROJECTS = [
     num: "01",
     title: "Sri Lanka Flood Relief Live Map",
     desc: "An interactive live map that coordinates flood-relief efforts across Sri Lanka, connecting people in need with nearby resources and volunteers.",
+    features: [
+      "Interactive live map for real-time incident tracking",
+      "Submit and track flood/hazard reports and their status",
+      "Emergency SOS requests and live Community Help Feed",
+      "Administrator Dashboard to coordinate rescues",
+      "Situation analytics with charts and PDF report generation",
+    ],
     tags: ["JavaScript", "Maps API", "Realtime"],
     href: "https://github.com/Thiva123-ab/Sri-Lanka-Flood-Relief-Coordinator-Live-Map",
     icon: "🗺️",
