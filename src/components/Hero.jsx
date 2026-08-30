@@ -28,11 +28,17 @@ export default function Hero() {
               <span className="line" key={li}>
                 {line.map((w, wi) => (
                   <span className={`word ${w.cls}`} key={wi}>
-                    {[...w.text].map((ch, ci) => (
+                    {[...w.text].map((ch, ci, arr) => (
                       <span
                         className="char"
                         key={ci}
-                        style={{ animationDelay: `${charIndex++ * 0.04}s` }}
+                        style={{ 
+                          animationDelay: `${charIndex++ * 0.04}s`,
+                          ...(w.cls.includes('gradient-text') ? {
+                            backgroundSize: `${arr.length * 100}% auto`,
+                            backgroundPosition: `${(ci / (arr.length - 1 || 1)) * 100}% center`
+                          } : {})
+                        }}
                       >
                         {ch}
                       </span>
