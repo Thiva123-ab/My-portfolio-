@@ -102,9 +102,16 @@ const PROJECTS = [
   },
   {
     num: "06",
-    title: "My Garage",
-    desc: "A comprehensive garage management system.",
-    tags: ["Development"],
+    title: "AutoSync Garage Management",
+    desc: "A comprehensive garage management system with a customer booking portal and an admin dashboard for tracking inventory, services, and jobs.",
+    features: [
+      "Customer booking portal for automotive services",
+      "Admin dashboard with job tracking and low stock alerts",
+      "Inventory management system for parts and fluids",
+      "Service catalog with detailed pricing and time estimates",
+      "Firebase backend with Cloud Firestore integration"
+    ],
+    tags: ["React", "Firebase", "Firestore", "Dashboard"],
     href: "https://github.com/Thiva123-ab/My_Garage-",
     icon: "🚗",
     img: null,
