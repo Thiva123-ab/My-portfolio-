@@ -15,6 +15,19 @@ import studyFlashA from "../assets/projects/sinhala-study/04-flashcard-answer.pn
 import studyQuiz from "../assets/projects/sinhala-study/05-quiz.png";
 import studyFocus from "../assets/projects/sinhala-study/06-quiz-focus.png";
 import studyChat from "../assets/projects/sinhala-study/07-chat.png";
+import garageLanding from "../assets/projects/my-garage/01-landing.png";
+import garageServices from "../assets/projects/my-garage/02-services.png";
+import garageDashboard from "../assets/projects/my-garage/03-dashboard.png";
+import garageInventoryBackend from "../assets/projects/my-garage/04-inventory-backend.png";
+import garageBookingsBackend from "../assets/projects/my-garage/05-bookings-backend.png";
+
+const GARAGE_GALLERY = [
+  { src: garageLanding, caption: "AutoSync Landing Page — Service booking and overview" },
+  { src: garageServices, caption: "Service Catalog — Detailed list of available services" },
+  { src: garageDashboard, caption: "Admin Dashboard — Inventory management and low stock alerts" },
+  { src: garageInventoryBackend, caption: "Firebase Backend — Inventory collection in Firestore" },
+  { src: garageBookingsBackend, caption: "Firebase Backend — Bookings collection in Firestore" },
+];
 
 const FLOOD_GALLERY = [
   { src: floodLanding, caption: "Landing — Real-time disaster response platform" },
@@ -116,7 +129,8 @@ const PROJECTS = [
     tags: ["React", "Firebase", "Firestore", "Dashboard"],
     href: "https://github.com/Thiva123-ab/My_Garage-",
     icon: "🚗",
-    img: null,
+    img: garageLanding,
+    gallery: GARAGE_GALLERY,
   },
 ];
 
