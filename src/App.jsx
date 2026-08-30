@@ -9,6 +9,7 @@ import Marquee from "./components/Marquee.jsx";
 import About from "./components/About.jsx";
 import Skills from "./components/Skills.jsx";
 import Work from "./components/Work.jsx";
+import Resume from "./components/Resume.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 
@@ -27,6 +28,7 @@ export default function App() {
         <About />
         <Skills />
         <Work />
+        <Resume />
         <Contact />
       </main>
       <Footer />
