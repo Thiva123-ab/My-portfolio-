@@ -100,6 +100,15 @@ const PROJECTS = [
     icon: "🏋️",
     img: null,
   },
+  {
+    num: "06",
+    title: "My Garage",
+    desc: "A comprehensive garage management system.",
+    tags: ["Development"],
+    href: "https://github.com/Thiva123-ab/My_Garage-",
+    icon: "🚗",
+    img: null,
+  },
 ];
 
 function Lightbox({ gallery, index, onClose, onNav }) {
