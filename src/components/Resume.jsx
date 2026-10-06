@@ -34,6 +34,15 @@ export default function Resume() {
               
               <div className="resume-item">
                 <div className="resume-item-header">
+                  <h5>Motion-Strike — 3D Motion-Controlled Combat Game</h5>
+                  <span className="resume-date">October 2026</span>
+                </div>
+                <p>Engineered a next-generation browser-based 3D combat sports game powered by webcam computer vision, Google MediaPipe Pose, and Three.js. Tracks 33 3D skeletal landmarks at up to 60 FPS without external hardware, allowing players to perform real-world jabs, crosses, kicks, high blocks, and bob-and-weave slips. Designed an orthodox PBR skeletal rig, dynamic ringside broadcast camera with screen shake, procedural Web Audio sound synthesis, reactive opponent AI, and realistic impact particle physics.</p>
+                <p className="resume-tech"><strong>Technologies Used:</strong> JavaScript, Three.js, Google MediaPipe Pose, WebGL, Web Audio API, Vite, Git &amp; GitHub</p>
+              </div>
+
+              <div className="resume-item">
+                <div className="resume-item-header">
                   <h5>Recruiter-AI</h5>
                   <span className="resume-date">July 2026 - Present</span>
                 </div>

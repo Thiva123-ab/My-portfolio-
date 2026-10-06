@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import Reveal from "./Reveal.jsx";
+import motionStrikePreview from "../assets/projects/motion-strike/01-gameplay.jpg";
 import floodLanding from "../assets/projects/flood/01-landing.png";
 import floodMap from "../assets/projects/flood/02-live-map.png";
 import floodReports from "../assets/projects/flood/03-reports.png";
@@ -20,6 +21,10 @@ import garageServices from "../assets/projects/my-garage/02-services.png";
 import garageDashboard from "../assets/projects/my-garage/03-dashboard.png";
 import garageInventoryBackend from "../assets/projects/my-garage/04-inventory-backend.png";
 import garageBookingsBackend from "../assets/projects/my-garage/05-bookings-backend.png";
+
+const MOTION_STRIKE_GALLERY = [
+  { src: motionStrikePreview, caption: "Motion-Strike — Real-time 3D Webcam Boxing & Combat Sports Game" },
+];
 
 const GARAGE_GALLERY = [
   { src: garageLanding, caption: "AutoSync Landing Page — Service booking and overview" },
@@ -53,6 +58,27 @@ const STUDY_GALLERY = [
 const PROJECTS = [
   {
     num: "01",
+    title: "Motion-Strike — 3D Motion Combat Game",
+    desc: "A next-generation browser-based 3D combat sports game powered by Webcam Computer Vision, MediaPipe Pose Estimation, and Three.js — translating real-world body movements into responsive punches, kicks, blocks, and slips in real time.",
+    features: [
+      "Real-Time Webcam Motion Tracking: Google MediaPipe Pose tracks 33 3D skeletal landmarks at up to 60 FPS without special sensors",
+      "Close-Quarters 'Pocket' Combat: In-fighting range (0.92m spacing) with authentic head, chin & body contact dynamics",
+      "Authentic Boxing Kinematics: Lead Jab, Power Cross, Muay Thai Body Kick & Rising Uppercut Special finisher",
+      "Active Defensive Mechanics: Peek-a-Boo High Guard (70% damage absorption) and dynamic Body Slips & Rolls",
+      "Realistic Impact VFX & Hit Physics: Head snap, jaw whip, sweat droplet spray, contact sparks & tactical hit-stop micro-freezes",
+      "Tactical & Reactive CPU AI: Dynamic opponent with intelligent block rates, slip-counters & 1-2 punch combinations",
+      "Zero-Asset Procedural Audio: Web Audio API synthesis generating real-time low-end thuds, leather cracks, whooshes & bell rings",
+      "Cinematic Ringside Broadcast Camera: Low-angle dynamic framing with trauma screen shake and punch action zooms",
+      "Dual Control Scheme: Play physically via webcam pose tracking or test via responsive keyboard controls",
+    ],
+    tags: ["Three.js", "MediaPipe AI", "Computer Vision", "WebGL", "Web Audio API", "Vite"],
+    href: "https://github.com/Thiva123-ab/Motion-Strike",
+    icon: "🥊",
+    img: motionStrikePreview,
+    gallery: MOTION_STRIKE_GALLERY,
+  },
+  {
+    num: "02",
     title: "Sri Lanka Flood Relief Live Map",
     desc: "An interactive live map that coordinates flood-relief efforts across Sri Lanka, connecting people in need with nearby resources and volunteers.",
     features: [
@@ -69,7 +95,7 @@ const PROJECTS = [
     gallery: FLOOD_GALLERY,
   },
   {
-    num: "02",
+    num: "03",
     title: "Smart Sinhala Study (LectureLens)",
     desc: "A bilingual AI study platform that turns lecture slides and notes into summaries, flashcards, and quizzes — with instant Sinhala translation for Sri Lankan students.",
     features: [
@@ -87,34 +113,7 @@ const PROJECTS = [
     gallery: STUDY_GALLERY,
   },
   {
-    num: "03",
-    title: "Pharmacy Stock System",
-    desc: "A web app to manage pharmacy inventory — tracking stock levels, expiry, and sales in one clean dashboard.",
-    tags: ["JavaScript", "Node.js", "Inventory"],
-    href: "https://github.com/Thiva123-ab/Pharmacy-stock-system",
-    icon: "💊",
-    img: null,
-  },
-  {
     num: "04",
-    title: "DEA Spring Boot Project",
-    desc: "A robust backend application built with Java and Spring Boot, following clean, layered architecture.",
-    tags: ["Java", "Spring Boot", "REST API"],
-    href: "https://github.com/Thiva123-ab/DEA-Spring-Boot-Project",
-    icon: "🍃",
-    img: null,
-  },
-  {
-    num: "05",
-    title: "Gym Management System",
-    desc: "A management system for a gym — handling memberships, plans, and member records.",
-    tags: ["PHP", "MySQL", "Dashboard"],
-    href: "https://github.com/Thiva123-ab/gym",
-    icon: "🏋️",
-    img: null,
-  },
-  {
-    num: "06",
     title: "AutoSync Garage Management",
     desc: "A comprehensive garage management system with a customer booking portal and an admin dashboard for tracking inventory, services, and jobs.",
     features: [
@@ -131,6 +130,33 @@ const PROJECTS = [
     icon: "🚗",
     img: garageLanding,
     gallery: GARAGE_GALLERY,
+  },
+  {
+    num: "05",
+    title: "Pharmacy Stock System",
+    desc: "A web app to manage pharmacy inventory — tracking stock levels, expiry, and sales in one clean dashboard.",
+    tags: ["JavaScript", "Node.js", "Inventory"],
+    href: "https://github.com/Thiva123-ab/Pharmacy-stock-system",
+    icon: "💊",
+    img: null,
+  },
+  {
+    num: "06",
+    title: "DEA Spring Boot Project",
+    desc: "A robust backend application built with Java and Spring Boot, following clean, layered architecture.",
+    tags: ["Java", "Spring Boot", "REST API"],
+    href: "https://github.com/Thiva123-ab/DEA-Spring-Boot-Project",
+    icon: "🍃",
+    img: null,
+  },
+  {
+    num: "07",
+    title: "Gym Management System",
+    desc: "A management system for a gym — handling memberships, plans, and member records.",
+    tags: ["PHP", "MySQL", "Dashboard"],
+    href: "https://github.com/Thiva123-ab/gym",
+    icon: "🏋️",
+    img: null,
   },
 ];
 
