@@ -3,25 +3,28 @@ import Reveal from "./Reveal.jsx";
 
 const SKILLS = [
   { icon: "⚙️", title: "Backend", desc: "Java, Spring Boot, and MySQL — robust REST APIs and clean, layered architecture." },
+  { icon: "📱", title: "Mobile Apps", desc: "Native Android apps with Kotlin, Jetpack Compose, Material 3, and Room SQLite local-first persistence." },
   { icon: "☁️", title: "Cloud & DevOps", desc: "Containerized apps deployed across AWS, GCP, and Azure with Docker." },
   { icon: "💻", title: "Frontend", desc: "React, TypeScript, and modern responsive UIs with Tailwind CSS and accessible design patterns." },
-  { icon: "🤖", title: "AI & Modern Web", desc: "AI-powered apps with Supabase backends, TanStack Router, and real-time study tools." },
+  { icon: "🤖", title: "AI & Modern Web", desc: "AI-powered apps with Supabase, Gemini API, Three.js computer vision, and real-time study tools." },
   { icon: "🎨", title: "Design & HCI", desc: "UI/UX design, Human-Computer Interaction, and prototyping with Figma." },
 ];
 
 const LEVELS = [
   { name: "Java", level: 90 },
   { name: "Spring Boot", level: 85 },
+  { name: "Kotlin / Android", level: 84 },
   { name: "TypeScript / React", level: 82 },
-  { name: "MySQL", level: 85 },
+  { name: "MySQL / Room DB", level: 85 },
   { name: "JavaScript", level: 78 },
   { name: "Supabase / Cloud", level: 75 },
   { name: "UI/UX · Figma", level: 80 },
 ];
 
 const TECH = [
-  "Java", "Spring Boot", "TypeScript", "React", "MySQL", "JavaScript", "HTML", "CSS",
-  "Supabase", "Tailwind CSS", "Docker", "AWS", "GCP", "Azure", "REST API", "Git", "Figma", "PHP", "AI",
+  "Java", "Spring Boot", "Kotlin", "Android", "Jetpack Compose", "TypeScript", "React", "MySQL", "Room DB",
+  "JavaScript", "HTML", "CSS", "Supabase", "Tailwind CSS", "Docker", "AWS", "GCP", "Azure",
+  "REST API", "Git", "Figma", "Three.js", "AI", "PHP"
 ];
 
 function SkillCard({ skill, delay }) {
