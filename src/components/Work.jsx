@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import Reveal from "./Reveal.jsx";
 import motionStrikePreview from "../assets/projects/motion-strike/01-gameplay.jpg";
+import focusFlowMockup from "../assets/projects/focusflow/01-mockup.jpg";
 import floodLanding from "../assets/projects/flood/01-landing.png";
 import floodMap from "../assets/projects/flood/02-live-map.png";
 import floodReports from "../assets/projects/flood/03-reports.png";
@@ -24,6 +25,10 @@ import garageBookingsBackend from "../assets/projects/my-garage/05-bookings-back
 
 const MOTION_STRIKE_GALLERY = [
   { src: motionStrikePreview, caption: "Motion-Strike — Real-time 3D Webcam Boxing & Combat Sports Game" },
+];
+
+const FOCUSFLOW_GALLERY = [
+  { src: focusFlowMockup, caption: "FocusFlow — Android Time Management & Digital Wellbeing App (Material 3)" },
 ];
 
 const GARAGE_GALLERY = [
@@ -79,6 +84,26 @@ const PROJECTS = [
   },
   {
     num: "02",
+    title: "FocusFlow — Smart Time Management & Wellbeing Mobile App",
+    desc: "A modern, privacy-focused, local-first Android time management and digital wellbeing app built with Kotlin and Jetpack Compose — featuring on-device app usage tracking, productivity scoring, deep focus Pomodoro timers, and offline AI coaching.",
+    features: [
+      "Automatic App Usage Tracking (Local-First): Android UsageStatsManager extracts foreground time & open counts into encrypted on-device Room SQLite database",
+      "Intelligent 9-Category Classification: Auto-maps apps into Education, Work, Social Media, Gaming, Entertainment, etc., with custom overrides",
+      "Productivity Scoring Engine (0–100): 5-pillar formula balancing Goal Completion (30%), Productive Ratio (25%), Deep Focus (20%), Distraction Control (15%), & Streaks (10%)",
+      "Deep Focus Mode & Customizable Pomodoro: Tailored sessions (25m–120m) with distraction logging and presets (Classic 25/5, Deep Work 50/10, Ultradian 90/15)",
+      "Time Budgets & App Limits: Daily category budgets and app limits with proactive warning alerts at 75%, 90%, and 100% threshold consumption",
+      "Gamification (Streaks & Badges): Daily streak tracking and milestone badges including Deep Worker, Momentum, Unstoppable, and Goal Crusher",
+      "Offline-First AI Assistant & Privacy Aggregator: Local heuristics engine for scheduling & distraction tips plus optional cloud Gemini AI coaching",
+      "Complete Privacy & Data Ownership: Works 100% offline with one-tap data clearing and full data export to CSV and JSON formats",
+    ],
+    tags: ["Kotlin", "Android", "Jetpack Compose", "Room DB", "Material 3", "WorkManager", "AI"],
+    href: "https://github.com/Thiva123-ab/Smart-Time-Management-MobileApp",
+    icon: "📱",
+    img: focusFlowMockup,
+    gallery: FOCUSFLOW_GALLERY,
+  },
+  {
+    num: "03",
     title: "Sri Lanka Flood Relief Live Map",
     desc: "An interactive live map that coordinates flood-relief efforts across Sri Lanka, connecting people in need with nearby resources and volunteers.",
     features: [
@@ -95,7 +120,7 @@ const PROJECTS = [
     gallery: FLOOD_GALLERY,
   },
   {
-    num: "03",
+    num: "04",
     title: "Smart Sinhala Study (LectureLens)",
     desc: "A bilingual AI study platform that turns lecture slides and notes into summaries, flashcards, and quizzes — with instant Sinhala translation for Sri Lankan students.",
     features: [
@@ -113,7 +138,7 @@ const PROJECTS = [
     gallery: STUDY_GALLERY,
   },
   {
-    num: "04",
+    num: "05",
     title: "AutoSync Garage Management",
     desc: "A comprehensive garage management system with a customer booking portal and an admin dashboard for tracking inventory, services, and jobs.",
     features: [
@@ -132,7 +157,7 @@ const PROJECTS = [
     gallery: GARAGE_GALLERY,
   },
   {
-    num: "05",
+    num: "06",
     title: "Pharmacy Stock System",
     desc: "A web app to manage pharmacy inventory — tracking stock levels, expiry, and sales in one clean dashboard.",
     tags: ["JavaScript", "Node.js", "Inventory"],
@@ -141,7 +166,7 @@ const PROJECTS = [
     img: null,
   },
   {
-    num: "06",
+    num: "07",
     title: "DEA Spring Boot Project",
     desc: "A robust backend application built with Java and Spring Boot, following clean, layered architecture.",
     tags: ["Java", "Spring Boot", "REST API"],
@@ -150,7 +175,7 @@ const PROJECTS = [
     img: null,
   },
   {
-    num: "07",
+    num: "08",
     title: "Gym Management System",
     desc: "A management system for a gym — handling memberships, plans, and member records.",
     tags: ["PHP", "MySQL", "Dashboard"],

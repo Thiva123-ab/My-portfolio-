@@ -43,6 +43,15 @@ export default function Resume() {
 
               <div className="resume-item">
                 <div className="resume-item-header">
+                  <h5>FocusFlow — Smart Time Management &amp; Wellbeing Mobile App</h5>
+                  <span className="resume-date">October 2026</span>
+                </div>
+                <p>Engineered a modern, local-first Android digital wellbeing and time management application using Kotlin and Jetpack Compose. Utilizes Android’s UsageStatsManager to track foreground app time and open counts into an encrypted on-device Room SQLite database. Engineered a 5-pillar productivity scoring engine (0-100), deep focus Pomodoro timers, category time budgets with alert notifications, streak-based gamification badges, and an offline-first AI heuristic coach with privacy-preserving Gemini API integration.</p>
+                <p className="resume-tech"><strong>Technologies Used:</strong> Kotlin, Android SDK, Jetpack Compose, Material 3, Room SQLite, WorkManager, Gemini API, Git &amp; GitHub</p>
+              </div>
+
+              <div className="resume-item">
+                <div className="resume-item-header">
                   <h5>Recruiter-AI</h5>
                   <span className="resume-date">July 2026 - Present</span>
                 </div>
@@ -109,11 +118,13 @@ export default function Resume() {
               <div className="resume-tags">
                 <span>Python</span>
                 <span>Java</span>
+                <span>Kotlin</span>
+                <span>Android (Compose)</span>
                 <span>Data Structures</span>
                 <span>Algorithms</span>
-                <span>SQL, MySQL</span>
+                <span>SQL, MySQL, Room</span>
                 <span>JavaScript</span>
-                <span>Web Dev (HTML/CSS)</span>
+                <span>TypeScript / React</span>
                 <span>Spring Boot</span>
                 <span>API / Postman</span>
               </div>
