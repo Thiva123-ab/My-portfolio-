@@ -2,6 +2,14 @@ import { useCallback, useEffect, useState } from "react";
 import Reveal from "./Reveal.jsx";
 import motionStrikePreview from "../assets/projects/motion-strike/01-gameplay.jpg";
 import focusFlowMockup from "../assets/projects/focusflow/01-mockup.jpg";
+import focusFlowDashboard from "../assets/projects/focusflow/02-dashboard-profile.jpeg";
+import focusFlowTimer from "../assets/projects/focusflow/03-deep-focus-timer.jpeg";
+import focusFlowAnalytics from "../assets/projects/focusflow/04-productivity-analytics.jpeg";
+import focusFlowAI from "../assets/projects/focusflow/05-ai-productivity-coach.jpeg";
+import focusFlowNotes from "../assets/projects/focusflow/06-add-day-notes.jpeg";
+import focusFlowTimeBlocks from "../assets/projects/focusflow/07-recorded-time-blocks.jpeg";
+import focusFlowTransport from "../assets/projects/focusflow/08-live-transport-tracker.jpeg";
+import focusFlowSchedule from "../assets/projects/focusflow/09-time-planner-schedule.jpeg";
 import floodLanding from "../assets/projects/flood/01-landing.png";
 import floodMap from "../assets/projects/flood/02-live-map.png";
 import floodReports from "../assets/projects/flood/03-reports.png";
@@ -28,7 +36,15 @@ const MOTION_STRIKE_GALLERY = [
 ];
 
 const FOCUSFLOW_GALLERY = [
-  { src: focusFlowMockup, caption: "FocusFlow — Android Time Management & Digital Wellbeing App (Material 3)" },
+  { src: focusFlowMockup, caption: "FocusFlow — Android Time Management & Digital Wellbeing (Material 3)" },
+  { src: focusFlowDashboard, caption: "Dashboard & Profile — Daily Productivity Score (55/100) & Quick Settings" },
+  { src: focusFlowTimer, caption: "Focus & Flow — Deep Focus Session, Session Lengths (25m) & DND Mode" },
+  { src: focusFlowAnalytics, caption: "Productivity Analytics — 7-Day Score Trends, Productive Ratio & Distractions" },
+  { src: focusFlowAI, caption: "AI Productivity Coach — Smart Local AI Brain with Sinhala/English Guidance" },
+  { src: focusFlowSchedule, caption: "Time Planner & Schedule — Live Timeline, Daily Blocks & Task Progress" },
+  { src: focusFlowTimeBlocks, caption: "Recorded Time Blocks — Commute Tracking & ADBMS Lecture Blocks" },
+  { src: focusFlowTransport, caption: "Live Transport Tracker — Real-time Commute & Travel Duration Monitoring" },
+  { src: focusFlowNotes, caption: "Day Notes & Ideas — Reflections, Color Tags & Quick In-Block Tasks" },
 ];
 
 const GARAGE_GALLERY = [
