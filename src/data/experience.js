@@ -1,25 +1,5 @@
 export const EXPERIENCE = [
   {
-    title: "Software Engineering Intern candidate",
-    org: "Open to enterprise internships · NSBM Green University",
-    date: "2026 career fair",
-    kind: "Now",
-    points: [
-      "Seeking a Software Engineering internship. Full-stack work in Java/Spring Boot, React, and Kotlin is in public GitHub repos.",
-      "Not listed as freelance, Microsoft Student Ambassador, or AWS Student Builder group leader.",
-    ],
-  },
-  {
-    title: "Hackathon teammate — 3rd, Google Gemini track",
-    org: "Cursor Buildathon · Crisis Copilot · team HalfByte",
-    date: "2026",
-    kind: "Hackathon",
-    points: [
-      "120 teams. 3rd in the Gemini track, 16th overall. First hackathon.",
-      "Crisis Copilot: Gemini multimodal triage for emergency reports. Not a project named Beacon.",
-    ],
-  },
-  {
     title: "Volunteer / organizing support",
     org: "IDEATHON 1.0 · CompuVate, NSBM Green University",
     date: "30 Sep 2025",

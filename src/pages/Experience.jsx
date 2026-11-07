@@ -7,25 +7,25 @@ export default function Experience() {
     <>
       <Seo
         title="Experience"
-        description="Honest campus and hackathon activity — intern candidate, Crisis Copilot hackathon, IDEATHON volunteer, AWS community attendee."
+        description="Volunteer, workshops, and community attendance — IDEATHON 1.0, AWS Student Community Day, IEEE DevForge, Hacktoberfest Hack Day."
         path="/experience"
       />
-      <section className="pro-section page-section">
-        <div className="pro-head">
-          <p>Experience</p>
-          <Reveal as="h1">A clean timeline recruiters can trust</Reveal>
+      <section className="section page-section">
+        <div className="section-head">
+          <span className="section-index">Path</span>
+          <Reveal as="h1" className="section-title">Experience</Reveal>
         </div>
         <p className="page-lead">
-          No freelance book, Microsoft Student Ambassador, or AWS Student Builder leadership is claimed.
+          Campus and community activity only. No freelance gigs are listed because none were provided for this site.
+          Titles match the certificate or ticket — not inflated leadership.
         </p>
-        <ol className="pro-timeline pro-timeline-full">
+        <ol className="timeline">
           {EXPERIENCE.map((item, i) => (
-            <Reveal as="li" key={item.org} delay={i * 0.06}>
-              <span className="pro-dot" />
-              <span className="pro-kind">{item.kind}</span>
-              <span className="pro-when">{item.date}</span>
+            <Reveal as="li" className="timeline-item" key={item.org} delay={i * 0.08}>
+              <span className="timeline-kind">{item.kind}</span>
               <h2>{item.title}</h2>
               <p className="timeline-org">{item.org}</p>
+              <p className="timeline-date">{item.date}</p>
               <ul className="work-features">
                 {item.points.map((p) => <li key={p}>{p}</li>)}
               </ul>

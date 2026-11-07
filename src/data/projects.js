@@ -205,32 +205,9 @@ export const PROJECTS = [
     ],
   },
   {
-    slug: "crisis-copilot",
-    num: "03b",
-    title: "Crisis Copilot",
-    blurb: "24-hour Cursor Buildathon: multimodal emergency triage with Gemini. 3rd in the Google Gemini track (team HalfByte).",
-    desc: "Hackathon prototype for chaotic emergency communication — photo/audio capture, Gemini triage, live translation, and first-aid prompts. Not a production dispatcher product. Built with teammates at Cursor Buildathon / TechTalk360.",
-    features: [
-      "Panic Snap photo + audio capture",
-      "Gemini multimodal triage for dispatch priority",
-      "Live translation for emergency reports",
-      "3rd place, Google Gemini track · 16th overall (120 teams)",
-    ],
-    tags: ["React", "Gemini", "Hackathon"],
-    filters: ["react", "ai"],
-    github: "https://github.com/Thiva123-ab",
-    githubLabel: "GitHub profile",
-    githubNote: "Team hackathon prototype. Public repo not listed — this is not a project named Beacon.",
-    live: "https://www.linkedin.com/posts/thivanka-tharuka_cursorbuildathon-googlegemini-techtalk360-activity-7488813224696659968-yJmX",
-    caseStudy: false,
-    icon: "🚨",
-    img: null,
-    gallery: null,
-  },
-  {
     slug: "pharmacy-stock",
     num: "06",
-    title: "PharmaCare — Pharmacy Stock & Delivery",
+    title: "Pharmacy Stock & Delivery",
     blurb: "Spring Boot + MySQL pharmacy ops: inventory, Rx upload, JWT roles, live order status.",
     desc: "Full-stack pharmacy inventory, prescription, order, and delivery system. Java 21, Spring Boot, Spring Security (JWT), MySQL, and WebSockets — team coursework with role-based dashboards.",
     features: [
@@ -303,7 +280,7 @@ export const PROJECTS = [
   },
 ];
 
-export const FEATURED_SLUGS = ["recruiter-ai", "lecturelens", "crisis-copilot", "pharmacy-stock"];
+export const FEATURED_SLUGS = ["flood-relief", "lecturelens", "recruiter-ai"];
 
 export function getProject(slug) {
   return PROJECTS.find((p) => p.slug === slug);
