@@ -1,7 +1,13 @@
-const ITEMS = ["Web Design", "React", "TypeScript", "AI Apps", "UI / UX", "Creative Code"];
+const ITEMS = [
+  "Software Engineering Intern",
+  "Java",
+  "Spring Boot",
+  "React",
+  "Kotlin",
+  "Open to internships",
+];
 
 export default function Marquee() {
-  // Flat list of [text, ◆, text, ◆, ...], doubled for a seamless loop.
   const single = ITEMS.flatMap((item) => [item, "◆"]);
   const loop = [...single, ...single];
   return (

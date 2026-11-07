@@ -1,37 +1,28 @@
-import Background from "./components/Background.jsx";
-import Cursor from "./components/Cursor.jsx";
-import ScrollProgress from "./components/ScrollProgress.jsx";
-import Loader from "./components/Loader.jsx";
-import VoiceIntro from "./components/VoiceIntro.jsx";
-import Nav from "./components/Nav.jsx";
-import Hero from "./components/Hero.jsx";
-import Marquee from "./components/Marquee.jsx";
-import About from "./components/About.jsx";
-import Skills from "./components/Skills.jsx";
-import Work from "./components/Work.jsx";
-import Resume from "./components/Resume.jsx";
-import Contact from "./components/Contact.jsx";
-import Footer from "./components/Footer.jsx";
+import { Navigate, Route, Routes } from "react-router-dom";
+import Layout from "./components/Layout.jsx";
+import Home from "./pages/Home.jsx";
+import Projects from "./pages/Projects.jsx";
+import ProjectCase from "./pages/ProjectCase.jsx";
+import Experience from "./pages/Experience.jsx";
+import Certifications from "./pages/Certifications.jsx";
+import ResumePage from "./pages/ResumePage.jsx";
+import ContactPage from "./pages/ContactPage.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 export default function App() {
   return (
-    <>
-      <Background />
-      <Cursor />
-      <ScrollProgress />
-      <Loader />
-      <VoiceIntro />
-      <Nav />
-      <main>
-        <Hero />
-        <Marquee />
-        <About />
-        <Skills />
-        <Work />
-        <Resume />
-        <Contact />
-      </main>
-      <Footer />
-    </>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="projects" element={<Projects />} />
+        <Route path="projects/:slug" element={<ProjectCase />} />
+        <Route path="experience" element={<Experience />} />
+        <Route path="certifications" element={<Certifications />} />
+        <Route path="resume" element={<ResumePage />} />
+        <Route path="contact" element={<ContactPage />} />
+        <Route path="work" element={<Navigate to="/projects" replace />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   );
 }
