@@ -16,7 +16,7 @@ export default function Hero() {
           </h1>
           <p className="hero-pro-sub">
             {SITE.name} — CS undergraduate at NSBM Green University, graduating Feb 2028.
-            Core stack: Spring Boot, React, Docker, and AWS Educate Cloud 101.
+            Core stack: Spring Boot, React, Docker, and AWS Educate Cloud 101 (not a multi-cloud expert, not Next.js-first).
           </p>
           <div className="hero-pro-cta">
             <a href={CV_HREF} download className="btn-pro btn-pro-primary">
