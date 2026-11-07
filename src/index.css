@@ -768,6 +768,34 @@ main { position: relative; z-index: 1; }
   text-align: center;
   margin-top: 8px;
 }
+.radar-certs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 14px;
+}
+.radar-certs-label {
+  flex-basis: 100%;
+  text-align: center;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.radar-cert {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-2);
+  border: 1px solid var(--border);
+  background: rgba(24, 224, 200, 0.06);
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+.radar-cert:hover {
+  border-color: var(--accent-2);
+  color: var(--text);
+}
 .graph-row {
   display: block;
   width: 100%;

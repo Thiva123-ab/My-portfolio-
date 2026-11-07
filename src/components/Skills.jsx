@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Reveal from "./Reveal.jsx";
+import { CERTIFICATIONS } from "../data/certifications.js";
 
 const SKILLS = [
   {
@@ -27,7 +28,7 @@ const SKILLS = [
   {
     icon: "☁️",
     title: "Cloud & containers",
-    desc: "Docker, AWS Educate Cloud 101, KodeKloud AWS labs, Kubernetes beginners.",
+    desc: "LinkedIn/Credly AWS Educate Cloud 101, KodeKloud AWS + Docker + Kubernetes beginner labs.",
     proof: "/certifications",
     proofLabel: "Certifications",
   },
@@ -67,10 +68,10 @@ const GRAPH = [
     note: "FocusFlow — Compose, Room, Material 3",
   },
   {
-    name: "SQL / MySQL",
-    score: 4,
-    detail: "3 repos",
-    note: "Spring Data JPA on flood + pharmacy systems",
+    name: "Python",
+    score: 3,
+    detail: "2 certs",
+    note: "UoM CODL Python Programming + Python for Beginners",
   },
   {
     name: "AI",
@@ -80,11 +81,13 @@ const GRAPH = [
   },
   {
     name: "Cloud",
-    score: 2,
-    detail: "Beginner",
-    note: "Docker + AWS Educate 101 + K8s labs",
+    score: 3,
+    detail: "LinkedIn + labs",
+    note: "AWS Educate 101 (Credly/LinkedIn) · KodeKloud AWS, Docker, K8s beginners",
   },
 ];
+
+const GRAPH_CERTS = CERTIFICATIONS.filter((c) => c.graph === "Cloud" || c.graph === "Python" || c.linkedin);
 
 const TECH = [
   "Java", "Spring Boot", "Spring Security", "MySQL", "WebSockets",
@@ -175,7 +178,23 @@ function SkillRadar({ active, onHover }) {
           );
         })}
       </svg>
-      <p className="radar-caption">Scale 1–5 from repos and certs — not a fake “expert %”.</p>
+      <p className="radar-caption">Scale 1–5 from repos + LinkedIn/Credly courses — not exam %.</p>
+      <div className="radar-certs">
+        <span className="radar-certs-label">Certificates on this graph</span>
+        {GRAPH_CERTS.map((c) => (
+          <a
+            key={c.title}
+            className="radar-cert"
+            href={c.href || "https://www.linkedin.com/in/thivanka-tharuka"}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor="hover"
+            onMouseEnter={() => onHover(GRAPH.findIndex((g) => g.name === c.graph))}
+          >
+            {c.linkedin ? "LinkedIn · " : ""}{c.title}
+          </a>
+        ))}
+      </div>
     </div>
   );
 }
