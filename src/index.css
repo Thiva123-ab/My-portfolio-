@@ -1267,6 +1267,7 @@ main { position: relative; z-index: 1; }
     position: fixed;
     inset: 0 0 0 auto;
     width: min(78vw, 320px);
+    z-index: 902;
     flex-direction: column;
     justify-content: center;
     padding: 40px;
