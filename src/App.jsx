@@ -8,6 +8,7 @@ import Certifications from "./pages/Certifications.jsx";
 import ResumePage from "./pages/ResumePage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import HackerRank from "./pages/HackerRank.jsx";
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="certifications" element={<Certifications />} />
         <Route path="resume" element={<ResumePage />} />
         <Route path="contact" element={<ContactPage />} />
+        <Route path="hackerrank" element={<HackerRank />} />
         <Route path="work" element={<Navigate to="/projects" replace />} />
         <Route path="*" element={<NotFound />} />
       </Route>

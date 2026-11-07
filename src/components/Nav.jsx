@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const LINKS = [
-  { to: "/", label: "Home", end: true },
+  { to: "/", label: "About", end: true },
   { to: "/projects", label: "Projects" },
   { to: "/experience", label: "Experience" },
-  { to: "/certifications", label: "Certifications" },
-  { to: "/resume", label: "Resume" },
+  { to: "/hackerrank", label: "HackerRank" },
   { to: "/contact", label: "Contact" },
 ];
 
@@ -15,7 +14,7 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 12);
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
@@ -27,23 +26,21 @@ export default function Nav() {
   }, [open]);
 
   return (
-    <header className={`nav ${scrolled ? "scrolled" : ""}`}>
-      <NavLink to="/" className="nav-logo" data-cursor="hover" onClick={() => setOpen(false)}>
-        <span className="logo-mark">◆</span> Thivanka<span className="dot">.</span>
+    <header className={`nav-pro ${scrolled ? "is-scrolled" : ""}`}>
+      <NavLink to="/" className="nav-pro-logo" onClick={() => setOpen(false)}>
+        <span className="nav-pro-mark" />
+        Thivanka
       </NavLink>
       {open && <button className="nav-backdrop" aria-label="Close menu" onClick={() => setOpen(false)} />}
-      <nav className={`nav-links ${open ? "open" : ""}`} aria-label="Primary">
+      <nav className={`nav-pro-links ${open ? "open" : ""}`} aria-label="Primary">
         {LINKS.map((l) => (
-          <NavLink
-            key={l.to}
-            to={l.to}
-            end={l.end}
-            data-cursor="hover"
-            onClick={() => setOpen(false)}
-          >
+          <NavLink key={l.to} to={l.to} end={l.end} onClick={() => setOpen(false)}>
             {l.label}
           </NavLink>
         ))}
+        <NavLink to="/resume" className="nav-pro-cta" onClick={() => setOpen(false)}>
+          Resume
+        </NavLink>
       </nav>
       <button
         className={`nav-toggle ${open ? "open" : ""}`}
