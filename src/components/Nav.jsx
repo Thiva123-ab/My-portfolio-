@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const LINKS = [
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#work", label: "Work" },
-  { href: "#resume", label: "Resume" },
-  { href: "#contact", label: "Contact" },
+  { to: "/", label: "Home", end: true },
+  { to: "/projects", label: "Projects" },
+  { to: "/experience", label: "Experience" },
+  { to: "/certifications", label: "Certifications" },
+  { to: "/resume", label: "Resume" },
+  { to: "/contact", label: "Contact" },
 ];
 
 export default function Nav() {
@@ -19,21 +21,34 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
   return (
     <header className={`nav ${scrolled ? "scrolled" : ""}`}>
-      <a href="#hero" className="nav-logo" data-cursor="hover">
+      <NavLink to="/" className="nav-logo" data-cursor="hover" onClick={() => setOpen(false)}>
         <span className="logo-mark">◆</span> Thivanka<span className="dot">.</span>
-      </a>
-      <nav className={`nav-links ${open ? "open" : ""}`}>
+      </NavLink>
+      {open && <button className="nav-backdrop" aria-label="Close menu" onClick={() => setOpen(false)} />}
+      <nav className={`nav-links ${open ? "open" : ""}`} aria-label="Primary">
         {LINKS.map((l) => (
-          <a key={l.href} href={l.href} data-cursor="hover" onClick={() => setOpen(false)}>
+          <NavLink
+            key={l.to}
+            to={l.to}
+            end={l.end}
+            data-cursor="hover"
+            onClick={() => setOpen(false)}
+          >
             {l.label}
-          </a>
+          </NavLink>
         ))}
       </nav>
       <button
         className={`nav-toggle ${open ? "open" : ""}`}
         aria-label="Toggle menu"
+        aria-expanded={open}
         onClick={() => setOpen((o) => !o)}
       >
         <span />

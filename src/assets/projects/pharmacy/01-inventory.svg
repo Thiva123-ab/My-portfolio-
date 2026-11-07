@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#0c0c16"/>
+  <rect x="0" y="0" width="220" height="720" fill="#10101c"/>
+  <rect x="24" y="28" width="172" height="18" rx="4" fill="#7c5cff"/>
+  <rect x="24" y="70" width="140" height="10" rx="3" fill="#2a2a3c"/>
+  <rect x="24" y="110" width="172" height="36" rx="8" fill="#1a1430"/>
+  <rect x="40" y="122" width="90" height="10" rx="3" fill="#18e0c8"/>
+  <rect x="24" y="158" width="172" height="36" rx="8" fill="#151522"/>
+  <rect x="24" y="206" width="172" height="36" rx="8" fill="#151522"/>
+  <rect x="24" y="254" width="172" height="36" rx="8" fill="#151522"/>
+  <text x="260" y="56" fill="#ECECF2" font-family="Segoe UI, sans-serif" font-size="28" font-weight="700">Inventory</text>
+  <text x="260" y="86" fill="#8b8b9e" font-family="Segoe UI, sans-serif" font-size="14">Pharmacy stock · Spring Boot + MySQL</text>
+  <rect x="260" y="120" width="220" height="88" rx="14" fill="#141422" stroke="#2a2a3c"/>
+  <text x="280" y="154" fill="#8b8b9e" font-size="13" font-family="Segoe UI, sans-serif">SKUs</text>
+  <text x="280" y="186" fill="#ECECF2" font-size="28" font-weight="700" font-family="Segoe UI, sans-serif">248</text>
+  <rect x="500" y="120" width="220" height="88" rx="14" fill="#141422" stroke="#2a2a3c"/>
+  <text x="520" y="154" fill="#8b8b9e" font-size="13" font-family="Segoe UI, sans-serif">Low stock</text>
+  <text x="520" y="186" fill="#ff5d8f" font-size="28" font-weight="700" font-family="Segoe UI, sans-serif">12</text>
+  <rect x="740" y="120" width="220" height="88" rx="14" fill="#141422" stroke="#2a2a3c"/>
+  <text x="760" y="154" fill="#8b8b9e" font-size="13" font-family="Segoe UI, sans-serif">Expiring 30d</text>
+  <text x="760" y="186" fill="#18e0c8" font-size="28" font-weight="700" font-family="Segoe UI, sans-serif">7</text>
+  <rect x="260" y="232" width="980" height="440" rx="16" fill="#12121c" stroke="#2a2a3c"/>
+  <rect x="280" y="256" width="940" height="36" rx="8" fill="#1b1b28"/>
+  <text x="300" y="280" fill="#8b8b9e" font-size="13" font-family="Segoe UI, sans-serif">Medicine</text>
+  <text x="620" y="280" fill="#8b8b9e" font-size="13" font-family="Segoe UI, sans-serif">Qty</text>
+  <text x="760" y="280" fill="#8b8b9e" font-size="13" font-family="Segoe UI, sans-serif">Expiry</text>
+  <text x="940" y="280" fill="#8b8b9e" font-size="13" font-family="Segoe UI, sans-serif">Status</text>
+  <text x="300" y="336" fill="#ECECF2" font-size="15" font-family="Segoe UI, sans-serif">Amoxicillin 500mg</text>
+  <text x="620" y="336" fill="#ECECF2" font-size="15" font-family="Segoe UI, sans-serif">84</text>
+  <text x="760" y="336" fill="#8b8b9e" font-size="15" font-family="Segoe UI, sans-serif">2027-03</text>
+  <text x="940" y="336" fill="#18e0c8" font-size="15" font-family="Segoe UI, sans-serif">In stock</text>
+  <text x="300" y="392" fill="#ECECF2" font-size="15" font-family="Segoe UI, sans-serif">Paracetamol 500mg</text>
+  <text x="620" y="392" fill="#ff5d8f" font-size="15" font-family="Segoe UI, sans-serif">9</text>
+  <text x="760" y="392" fill="#8b8b9e" font-size="15" font-family="Segoe UI, sans-serif">2026-12</text>
+  <text x="940" y="392" fill="#ff5d8f" font-size="15" font-family="Segoe UI, sans-serif">Low</text>
+  <text x="300" y="448" fill="#ECECF2" font-size="15" font-family="Segoe UI, sans-serif">Omeprazole 20mg</text>
+  <text x="620" y="448" fill="#ECECF2" font-size="15" font-family="Segoe UI, sans-serif">142</text>
+  <text x="760" y="448" fill="#8b8b9e" font-size="15" font-family="Segoe UI, sans-serif">2028-01</text>
+  <text x="940" y="448" fill="#18e0c8" font-size="15" font-family="Segoe UI, sans-serif">In stock</text>
+  <text x="300" y="504" fill="#ECECF2" font-size="15" font-family="Segoe UI, sans-serif">Salbutamol inhaler</text>
+  <text x="620" y="504" fill="#ECECF2" font-size="15" font-family="Segoe UI, sans-serif">36</text>
+  <text x="760" y="504" fill="#8b8b9e" font-size="15" font-family="Segoe UI, sans-serif">2027-08</text>
+  <text x="940" y="504" fill="#18e0c8" font-size="15" font-family="Segoe UI, sans-serif">In stock</text>
+</svg>

@@ -1,5 +1,6 @@
 import Reveal from "./Reveal.jsx";
 import useMagnetic from "../hooks/useMagnetic.js";
+import { SITE } from "../data/site.js";
 
 const ICONS = {
   github: (
@@ -17,30 +18,10 @@ const ICONS = {
 };
 
 const SOCIALS = [
-  {
-    key: "github",
-    label: "GitHub",
-    handle: "@Thiva123-ab",
-    href: "https://github.com/Thiva123-ab",
-  },
-  {
-    key: "linkedin",
-    label: "LinkedIn",
-    handle: "Thivanka Tharuka",
-    href: "https://www.linkedin.com/in/thivanka-tharuka",
-  },
-  {
-    key: "whatsapp",
-    label: "WhatsApp",
-    handle: "+94 71 735 9120",
-    href: "https://wa.me/94717359120",
-  },
-  {
-    key: "email",
-    label: "Email",
-    handle: "thivankatharuka36@gmail.com",
-    href: "mailto:thivankatharuka36@gmail.com",
-  },
+  { key: "email", label: "Email", handle: SITE.email, href: `mailto:${SITE.email}` },
+  { key: "whatsapp", label: "WhatsApp", handle: SITE.whatsappDisplay, href: SITE.whatsappHref },
+  { key: "linkedin", label: "LinkedIn", handle: "Thivanka Tharuka", href: SITE.linkedin },
+  { key: "github", label: "GitHub", handle: "@Thiva123-ab", href: SITE.github },
 ];
 
 export default function Contact() {
@@ -49,15 +30,15 @@ export default function Contact() {
   return (
     <section className="section contact" id="contact">
       <div className="section-head">
-        <span className="section-index">04</span>
-        <Reveal as="h2" className="section-title">Let’s build something</Reveal>
+        <span className="section-index">06</span>
+        <Reveal as="h2" className="section-title">Let’s talk internships</Reveal>
       </div>
       <Reveal className="contact-inner" delay={0.1}>
         <p className="contact-lead">
-          Have a project in mind or just want to say hi? My inbox is always open.
+          Fastest paths for career-fair follow-up: email or WhatsApp. Sri Lanka timezone (UTC+5:30).
         </p>
-        <a ref={emailRef} href="mailto:thivankatharuka36@gmail.com" className="contact-email" data-cursor="hover">
-          thivankatharuka36@gmail.com
+        <a ref={emailRef} href={`mailto:${SITE.email}`} className="contact-email" data-cursor="hover">
+          {SITE.email}
         </a>
         <div className="contact-socials">
           {SOCIALS.map((s) => {

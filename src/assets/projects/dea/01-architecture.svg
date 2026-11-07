@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#0c0c16"/>
+  <text x="64" y="64" fill="#ECECF2" font-family="Segoe UI, sans-serif" font-size="28" font-weight="700">DEA Spring Boot · layered API</text>
+  <text x="64" y="96" fill="#8b8b9e" font-family="Segoe UI, sans-serif" font-size="15">Java · Spring Boot · REST · JPA · MySQL</text>
+  <rect x="80" y="160" width="260" height="120" rx="16" fill="#17132a" stroke="#7c5cff"/>
+  <text x="210" y="214" text-anchor="middle" fill="#ECECF2" font-size="18" font-weight="700" font-family="Segoe UI, sans-serif">Controllers</text>
+  <text x="210" y="244" text-anchor="middle" fill="#8b8b9e" font-size="13" font-family="Segoe UI, sans-serif">REST endpoints</text>
+  <rect x="380" y="160" width="260" height="120" rx="16" fill="#132422" stroke="#18e0c8"/>
+  <text x="510" y="214" text-anchor="middle" fill="#ECECF2" font-size="18" font-weight="700" font-family="Segoe UI, sans-serif">Services</text>
+  <text x="510" y="244" text-anchor="middle" fill="#8b8b9e" font-size="13" font-family="Segoe UI, sans-serif">Business rules</text>
+  <rect x="680" y="160" width="260" height="120" rx="16" fill="#24131c" stroke="#ff5d8f"/>
+  <text x="810" y="214" text-anchor="middle" fill="#ECECF2" font-size="18" font-weight="700" font-family="Segoe UI, sans-serif">Repositories</text>
+  <text x="810" y="244" text-anchor="middle" fill="#8b8b9e" font-size="13" font-family="Segoe UI, sans-serif">Spring Data JPA</text>
+  <rect x="980" y="160" width="220" height="120" rx="16" fill="#12121c" stroke="#2a2a3c"/>
+  <text x="1090" y="214" text-anchor="middle" fill="#ECECF2" font-size="18" font-weight="700" font-family="Segoe UI, sans-serif">MySQL</text>
+  <text x="1090" y="244" text-anchor="middle" fill="#8b8b9e" font-size="13" font-family="Segoe UI, sans-serif">Persistent store</text>
+  <path d="M340 220 H380" stroke="#7c5cff" stroke-width="3"/>
+  <path d="M640 220 H680" stroke="#18e0c8" stroke-width="3"/>
+  <path d="M940 220 H980" stroke="#ff5d8f" stroke-width="3"/>
+  <rect x="80" y="340" width="1120" height="300" rx="18" fill="#12121c" stroke="#2a2a3c"/>
+  <text x="112" y="392" fill="#ECECF2" font-size="18" font-weight="700" font-family="Segoe UI, sans-serif">Coursework backend (NSBM DEA)</text>
+  <text x="112" y="436" fill="#8b8b9e" font-size="15" font-family="Segoe UI, sans-serif">Role-based pharmacy stock &amp; delivery API: inventory, orders, prescriptions, JWT auth.</text>
+  <text x="112" y="476" fill="#8b8b9e" font-size="15" font-family="Segoe UI, sans-serif">Same domain as the Pharmacy Stock System  this repo is the Spring Boot assignment codebase.</text>
+  <text x="112" y="532" fill="#7c5cff" font-size="14" font-family="Segoe UI, sans-serif">SecurityConfig · JwtService · WebSocketConfig · Inventory / Order / Delivery services</text>
+</svg>

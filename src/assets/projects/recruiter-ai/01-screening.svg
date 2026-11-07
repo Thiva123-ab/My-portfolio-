@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#0c0c16"/>
+  <text x="56" y="58" fill="#ECECF2" font-family="Segoe UI, sans-serif" font-size="28" font-weight="700">Recruiter-AI</text>
+  <text x="56" y="90" fill="#8b8b9e" font-family="Segoe UI, sans-serif" font-size="15">React · Node · Gemini  candidate screening assistant</text>
+  <rect x="56" y="128" width="740" height="520" rx="18" fill="#12121c" stroke="#2a2a3c"/>
+  <rect x="84" y="156" width="684" height="64" rx="12" fill="#171724"/>
+  <text x="104" y="194" fill="#8b8b9e" font-size="15" font-family="Segoe UI, sans-serif">Job: Software Engineering Intern · Java / Spring Boot / React</text>
+  <rect x="84" y="244" width="684" height="120" rx="12" fill="#171724"/>
+  <text x="104" y="284" fill="#ECECF2" font-size="16" font-family="Segoe UI, sans-serif">Candidate summary (Gemini)</text>
+  <text x="104" y="316" fill="#8b8b9e" font-size="14" font-family="Segoe UI, sans-serif">Strong Spring Boot + React project evidence. Internship-ready</text>
+  <text x="104" y="340" fill="#8b8b9e" font-size="14" font-family="Segoe UI, sans-serif">full-stack profile with disaster-relief and study-tool builds.</text>
+  <rect x="84" y="388" width="210" height="220" rx="12" fill="#17132a"/>
+  <text x="104" y="428" fill="#7c5cff" font-size="13" font-family="Segoe UI, sans-serif">MATCH</text>
+  <text x="104" y="478" fill="#ECECF2" font-size="36" font-weight="700" font-family="Segoe UI, sans-serif">82</text>
+  <rect x="314" y="388" width="210" height="220" rx="12" fill="#132422"/>
+  <text x="334" y="428" fill="#18e0c8" font-size="13" font-family="Segoe UI, sans-serif">SKILLS FOUND</text>
+  <text x="334" y="468" fill="#ECECF2" font-size="14" font-family="Segoe UI, sans-serif">Java, Spring, React</text>
+  <text x="334" y="496" fill="#ECECF2" font-size="14" font-family="Segoe UI, sans-serif">MySQL, Kotlin</text>
+  <rect x="544" y="388" width="224" height="220" rx="12" fill="#24131c"/>
+  <text x="564" y="428" fill="#ff5d8f" font-size="13" font-family="Segoe UI, sans-serif">GAPS</text>
+  <text x="564" y="468" fill="#ECECF2" font-size="14" font-family="Segoe UI, sans-serif">Production AWS deploys</text>
+  <rect x="828" y="128" width="396" height="520" rx="18" fill="#12121c" stroke="#2a2a3c"/>
+  <text x="856" y="176" fill="#ECECF2" font-size="18" font-weight="700" font-family="Segoe UI, sans-serif">Pipeline</text>
+  <text x="856" y="230" fill="#8b8b9e" font-size="14" font-family="Segoe UI, sans-serif">1. Upload / paste CV</text>
+  <text x="856" y="274" fill="#8b8b9e" font-size="14" font-family="Segoe UI, sans-serif">2. Node API + Gemini</text>
+  <text x="856" y="318" fill="#8b8b9e" font-size="14" font-family="Segoe UI, sans-serif">3. Skills vs job spec</text>
+  <text x="856" y="362" fill="#8b8b9e" font-size="14" font-family="Segoe UI, sans-serif">4. Recruiter-facing note</text>
+  <text x="856" y="430" fill="#5a5a6e" font-size="13" font-family="Segoe UI, sans-serif">Source: personal project (React, Node, Gemini).</text>
+  <text x="856" y="456" fill="#5a5a6e" font-size="13" font-family="Segoe UI, sans-serif">Public GitHub repo not listed yet </text>
+  <text x="856" y="478" fill="#5a5a6e" font-size="13" font-family="Segoe UI, sans-serif">link goes to GitHub profile.</text>
+</svg>

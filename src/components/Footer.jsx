@@ -1,10 +1,22 @@
+import { Link } from "react-router-dom";
+import { SITE } from "../data/site.js";
+
 export default function Footer() {
   return (
     <footer className="footer">
-      <p>© {new Date().getFullYear()} Thivanka Tharuka. Designed &amp; built with care.</p>
-      <a href="#hero" className="footer-top" data-cursor="hover">
+      <div className="footer-copy">
+        <p>© {new Date().getFullYear()} {SITE.name}. Built for internship recruiting.</p>
+        <nav className="footer-nav" aria-label="Footer">
+          <Link to="/projects" data-cursor="hover">Projects</Link>
+          <Link to="/resume" data-cursor="hover">Resume</Link>
+          <Link to="/contact" data-cursor="hover">Contact</Link>
+          <a href={SITE.github} target="_blank" rel="noopener noreferrer" data-cursor="hover">GitHub</a>
+          <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer" data-cursor="hover">LinkedIn</a>
+        </nav>
+      </div>
+      <Link to="/" className="footer-top" data-cursor="hover">
         Back to top ↑
-      </a>
+      </Link>
     </footer>
   );
 }

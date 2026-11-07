@@ -1,41 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useEffect } from "react";
 import Reveal from "./Reveal.jsx";
 import profile from "../assets/profile.png";
-
-function Counter({ target, suffix = "" }) {
-  const ref = useRef(null);
-  const [val, setVal] = useState(0);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        const dur = 1400;
-        const start = performance.now();
-        const step = (now) => {
-          const p = Math.min(1, (now - start) / dur);
-          const eased = 1 - Math.pow(1 - p, 3);
-          setVal(Math.round(eased * target));
-          if (p < 1) requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
-        io.unobserve(el);
-      },
-      { threshold: 0.5 }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [target]);
-
-  return (
-    <span className="num" ref={ref}>
-      {val}
-      {suffix}
-    </span>
-  );
-}
+import { SITE } from "../data/site.js";
 
 function TiltCard() {
   const wrapRef = useRef(null);
@@ -70,14 +36,14 @@ function TiltCard() {
       <div className="tilt" ref={tiltRef}>
         <div className="tilt-inner">
           <div className="tilt-photo">
-            <img src={profile} alt="Portrait of Thivanka Tharuka" loading="lazy" />
+            <img src={profile} alt={`Portrait of ${SITE.name}`} loading="lazy" />
           </div>
-          <h3>Thivanka Tharuka</h3>
-          <p>Full-Stack Developer</p>
+          <h3>{SITE.name}</h3>
+          <p>{SITE.role}</p>
           <ul className="tilt-list">
             <li>Based in Sri Lanka</li>
-            <li>CS Student · NSBM Green University</li>
-            <li>Open to internships &amp; freelance</li>
+            <li>CS · NSBM Green University</li>
+            <li>Graduating Feb 2028</li>
           </ul>
         </div>
       </div>
@@ -95,28 +61,25 @@ export default function About() {
       <div className="about-grid">
         <Reveal className="about-text" delay={0.1}>
           <p className="lead">
-            I’m a full-stack software developer and Computer Science student at
-            NSBM Green University, Sri Lanka — focused on backend architecture and
-            scalable, cloud-ready applications.
+            I’m {SITE.name} — a Computer Science undergraduate at NSBM Green
+            University, targeting a Software Engineering internship.
           </p>
           <p>
-            My core expertise is in backend development with <strong>Java</strong>,
-            <strong> Spring Boot</strong>, and <strong>MySQL</strong>, paired with
-            deploying scalable, containerized applications across cloud platforms
-            like AWS, GCP, and Azure.
+            I build full-stack systems in <strong>Java</strong>,
+            <strong> Spring Boot</strong>, <strong>React</strong>, and
+            <strong> Kotlin</strong>. Evidence is in the repos: flood-relief
+            coordination (Spring, WebSockets, Leaflet), LectureLens (React,
+            TypeScript, Supabase, AI), and FocusFlow (Compose + Room).
           </p>
           <p>
-            Beyond the code, I’m deeply interested in Human-Computer Interaction
-            (HCI) and UI/UX design. I use tools like Figma to make sure my
-            applications aren’t just functionally sound, but genuinely intuitive —
-            whether I’m mapping geospatial data for disaster management or building
-            streamlined campus utility platforms, I’m passionate about engineering
-            solutions that make a real-world impact.
+            Cloud practice is honest and still growing: <strong>Docker</strong>,
+            AWS Educate Cloud 101, KodeKloud AWS labs, and Kubernetes for
+            beginners. I do not claim equal expertise across AWS, GCP, and Azure.
           </p>
-          <div className="about-stats">
-            <div className="stat"><Counter target={3} /><small>Cloud platforms</small></div>
-            <div className="stat"><Counter target={8} /><small>Featured projects</small></div>
-            <div className="stat"><Counter target={100} suffix="%" /><small>Dedication</small></div>
+          <div className="about-facts">
+            <div className="fact"><strong>NSBM</strong><small>BSc (Hons) CS · 2024–Feb 2028</small></div>
+            <div className="fact"><strong>8</strong><small>Featured public projects</small></div>
+            <div className="fact"><strong>Intern</strong><small>Open for Nov 2026 career fair</small></div>
           </div>
         </Reveal>
         <Reveal delay={0.25}>

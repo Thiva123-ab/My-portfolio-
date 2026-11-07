@@ -1,30 +1,59 @@
-import { useEffect, useRef, useState } from "react";
 import Reveal from "./Reveal.jsx";
+import { Link } from "react-router-dom";
 
 const SKILLS = [
-  { icon: "⚙️", title: "Backend", desc: "Java, Spring Boot, and MySQL — robust REST APIs and clean, layered architecture." },
-  { icon: "📱", title: "Mobile Apps", desc: "Native Android apps with Kotlin, Jetpack Compose, Material 3, and Room SQLite local-first persistence." },
-  { icon: "☁️", title: "Cloud & DevOps", desc: "Containerized apps deployed across AWS, GCP, and Azure with Docker." },
-  { icon: "💻", title: "Frontend", desc: "React, TypeScript, and modern responsive UIs with Tailwind CSS and accessible design patterns." },
-  { icon: "🤖", title: "AI & Modern Web", desc: "AI-powered apps with Supabase, Gemini API, Three.js computer vision, and real-time study tools." },
-  { icon: "🎨", title: "Design & HCI", desc: "UI/UX design, Human-Computer Interaction, and prototyping with Figma." },
-];
-
-const LEVELS = [
-  { name: "Java", level: 90 },
-  { name: "Spring Boot", level: 85 },
-  { name: "Kotlin / Android", level: 84 },
-  { name: "TypeScript / React", level: 82 },
-  { name: "MySQL / Room DB", level: 85 },
-  { name: "JavaScript", level: 78 },
-  { name: "Supabase / Cloud", level: 75 },
-  { name: "UI/UX · Figma", level: 80 },
+  {
+    icon: "⚙️",
+    title: "Backend",
+    desc: "Java, Spring Boot, MySQL, Spring Security, WebSockets — Flood Relief Live Map and Pharmacy Stock.",
+    proof: "/projects/flood-relief",
+    proofLabel: "Flood Relief case study",
+  },
+  {
+    icon: "💻",
+    title: "Frontend",
+    desc: "React and TypeScript UIs — LectureLens, AutoSync Garage, Recruiter-AI. Not listed as a Next.js specialist (LectureLens uses TanStack Start).",
+    proof: "/projects/lecturelens",
+    proofLabel: "LectureLens case study",
+  },
+  {
+    icon: "📱",
+    title: "Mobile",
+    desc: "Native Android with Kotlin, Jetpack Compose, Material 3, Room — FocusFlow.",
+    proof: "/projects/focusflow",
+    proofLabel: "FocusFlow case study",
+  },
+  {
+    icon: "☁️",
+    title: "Cloud & containers",
+    desc: "Docker, AWS Educate Cloud 101, KodeKloud AWS labs, Kubernetes beginners. No multi-cloud expert claim.",
+    proof: "/certifications",
+    proofLabel: "Certifications",
+  },
+  {
+    icon: "🤖",
+    title: "AI in products",
+    desc: "LectureLens study tools (Supabase + AI), Recruiter-AI (Gemini), Motion-Strike (MediaPipe pose).",
+    proof: "/projects/lecturelens",
+    proofLabel: "See AI projects",
+  },
+  {
+    icon: "🎨",
+    title: "Design & HCI",
+    desc: "Figma and UI/UX interest applied to maps, study tools, and Android wellbeing flows.",
+    proof: "/projects",
+    proofLabel: "Project grid",
+  },
 ];
 
 const TECH = [
-  "Java", "Spring Boot", "Kotlin", "Android", "Jetpack Compose", "TypeScript", "React", "MySQL", "Room DB",
-  "JavaScript", "HTML", "CSS", "Supabase", "Tailwind CSS", "Docker", "AWS", "GCP", "Azure",
-  "REST API", "Git", "Figma", "Three.js", "AI", "PHP"
+  "Java", "Spring Boot", "Spring Security", "MySQL", "WebSockets",
+  "Kotlin", "Jetpack Compose", "Room",
+  "TypeScript", "React", "TanStack Start", "Supabase",
+  "Node.js", "Gemini API", "Firebase",
+  "HTML", "CSS", "Leaflet", "Three.js", "MediaPipe",
+  "Docker", "AWS Educate", "Kubernetes (beginner)",
+  "Git", "Figma",
 ];
 
 function SkillCard({ skill, delay }) {
@@ -38,43 +67,10 @@ function SkillCard({ skill, delay }) {
       <span className="skill-icon">{skill.icon}</span>
       <h3>{skill.title}</h3>
       <p>{skill.desc}</p>
+      <Link className="skill-proof" to={skill.proof} data-cursor="hover">
+        {skill.proofLabel} →
+      </Link>
     </Reveal>
-  );
-}
-
-function SkillBar({ name, level, delay }) {
-  const ref = useRef(null);
-  const [shown, setShown] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShown(true);
-          io.unobserve(el);
-        }
-      },
-      { threshold: 0.4 }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  return (
-    <div className="bar-row" ref={ref}>
-      <div className="bar-top">
-        <span>{name}</span>
-        <span className="bar-pct">{level}%</span>
-      </div>
-      <div className="bar-track">
-        <span
-          className="bar-fill"
-          style={{ width: shown ? `${level}%` : "0%", transitionDelay: `${delay}s` }}
-        />
-      </div>
-    </div>
   );
 }
 
@@ -83,26 +79,17 @@ export default function Skills() {
     <section className="section skills" id="skills">
       <div className="section-head">
         <span className="section-index">02</span>
-        <Reveal as="h2" className="section-title">Skills Dashboard</Reveal>
+        <Reveal as="h2" className="section-title">Skills with evidence</Reveal>
       </div>
 
-      <div className="skills-dash">
-        <div className="skills-cards">
-          {SKILLS.map((s, i) => (
-            <SkillCard key={s.title} skill={s} delay={i * 0.08} />
-          ))}
-        </div>
-
-        <Reveal className="skills-panel" delay={0.15}>
-          <h3 className="panel-title">Proficiency</h3>
-          {LEVELS.map((l, i) => (
-            <SkillBar key={l.name} name={l.name} level={l.level} delay={i * 0.08} />
-          ))}
-        </Reveal>
+      <div className="skills-cards skills-cards-full">
+        {SKILLS.map((s, i) => (
+          <SkillCard key={s.title} skill={s} delay={i * 0.08} />
+        ))}
       </div>
 
       <Reveal className="tech-cloud" delay={0.1}>
-        <span className="tech-label">Tech I work with</span>
+        <span className="tech-label">Tools I actually use in repos</span>
         <div className="tech-badges">
           {TECH.map((t) => (
             <span className="tech-badge" key={t} data-cursor="hover">{t}</span>
