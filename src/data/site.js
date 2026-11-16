@@ -3,9 +3,13 @@ export const SITE = {
   legalName: "Gunamunige Thivanka Tharuka Priyantha",
   role: "Full Stack Developer",
   school: "NSBM Green University",
-  degree: "BSc (Hons) Computer Science",
-  years: "2024–Feb 2028",
+  degree: "BSc (Hons) in Computer Science",
+  years: "2024–2028",
   location: "Sri Lanka",
+  address: "No 62, Bategallana, Mahagama",
+  dob: "2004.03.12",
+  phone: "+94 717359120",
+  phone2: "+94 721470660",
   email: "thivankatharuka36@gmail.com",
   whatsappDisplay: "+94 71 735 9120",
   whatsappHref: "https://wa.me/94717359120",
@@ -13,7 +17,7 @@ export const SITE = {
   github: "https://github.com/Thiva123-ab",
   url: "https://thiva123-ab.github.io/My-portfolio-",
   description:
-  "Computer Science undergraduate at NSBM (graduating Feb 2028). Building scalable, high-performance full-stack applications with Java, Spring Boot, React, and Kotlin. Open to full-stack opportunities.",
+    "Computer Science undergraduate at NSBM (2024–2028) & Full Stack Developer. Building scalable, high-performance web and mobile applications with Java, Spring Boot, React, and Kotlin.",
 };
 
 export const CV_HREF = `${import.meta.env.BASE_URL}Thivanka_Tharuka_CV.pdf`;
