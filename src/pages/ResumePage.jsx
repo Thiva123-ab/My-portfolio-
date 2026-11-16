@@ -55,15 +55,40 @@ export default function ResumePage() {
           <div className="cv-pdf-preview-wrap">
             <div className="cv-pdf-toolbar">
               <span>Official Document Preview (Thivanka_Tharuka_CV.pdf)</span>
-              <a href={CV_HREF} target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-sm">
-                Open in new tab <ExternalLink size={13} />
-              </a>
+              <div className="cv-pdf-toolbar-actions">
+                <a href={CV_HREF} target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-sm">
+                  <span>Open in tab</span>
+                  <ExternalLink size={13} />
+                </a>
+                <a href={CV_HREF} download="Thivanka_Tharuka_CV.pdf" className="btn btn-primary btn-sm">
+                  <Download size={13} />
+                  <span>Download</span>
+                </a>
+              </div>
             </div>
-            <iframe
-              src={CV_HREF}
-              title="Official CV PDF Preview"
-              className="cv-pdf-frame"
-            />
+            {/* Desktop iframe, hidden on mobile for performance and iOS Safari stability */}
+            <div className="cv-iframe-container">
+              <iframe
+                src={CV_HREF}
+                title="Official CV PDF Preview"
+                className="cv-pdf-frame desktop-pdf"
+              />
+              <div className="mobile-pdf-card">
+                <FileText size={36} className="mobile-pdf-icon" />
+                <h3>Official CV (PDF)</h3>
+                <p>Previewing full PDF documents inside mobile browsers can be unstable. Tap below to view or download directly.</p>
+                <div className="mobile-pdf-actions">
+                  <a href={CV_HREF} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                    <ExternalLink size={15} />
+                    <span>Open PDF in Viewer</span>
+                  </a>
+                  <a href={CV_HREF} download="Thivanka_Tharuka_CV.pdf" className="btn btn-ghost">
+                    <Download size={15} />
+                    <span>Save to Device</span>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         ) : (
         <div className="cv-sheet" id="cv">

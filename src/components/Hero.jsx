@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Download, MapPin, Sparkles } from "lucide-react";
+import { ArrowRight, Download, MapPin } from "lucide-react";
 import { Linkedin } from "./BrandIcons.jsx";
 import Reveal from "./Reveal.jsx";
 import useMagnetic from "../hooks/useMagnetic.js";
@@ -87,31 +87,33 @@ export default function Hero() {
           </Reveal>
 
           <Reveal className="hero-cta" delay={0.35}>
-            <Link ref={primaryRef} to="/projects" className="btn btn-primary" data-cursor="hover">
+            <Link ref={primaryRef} to="/projects" className="btn btn-primary btn-hero-primary" data-cursor="hover">
               <span>View projects</span>
               <ArrowRight size={17} />
             </Link>
-            <a
-              ref={ghostRef}
-              href={CV_HREF}
-              download="Thivanka_Tharuka_CV.pdf"
-              className="btn btn-ghost"
-              data-cursor="hover"
-            >
-              <Download size={16} />
-              <span>Download CV</span>
-            </a>
-            <a
-              ref={linkedRef}
-              href={SITE.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-ghost"
-              data-cursor="hover"
-            >
-              <Linkedin size={16} />
-              <span>LinkedIn</span>
-            </a>
+            <div className="hero-cta-secondary-row">
+              <a
+                ref={ghostRef}
+                href={CV_HREF}
+                download="Thivanka_Tharuka_CV.pdf"
+                className="btn btn-ghost btn-hero-secondary"
+                data-cursor="hover"
+              >
+                <Download size={16} />
+                <span>Download CV</span>
+              </a>
+              <a
+                ref={linkedRef}
+                href={SITE.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-ghost btn-hero-secondary"
+                data-cursor="hover"
+              >
+                <Linkedin size={16} />
+                <span>LinkedIn</span>
+              </a>
+            </div>
           </Reveal>
         </div>
 
@@ -119,7 +121,6 @@ export default function Hero() {
           <div className="portrait-frame">
             <span className="portrait-ring" aria-hidden="true" />
             <img src={profile} alt={`Portrait of ${SITE.name}`} loading="eager" />
-            {/* Useful secondary badge replacing duplicate status (Fix #3) */}
             <span className="portrait-badge">
               <MapPin size={13} className="portrait-badge-icon" />
               <span>Sri Lanka · NSBM Undergrad</span>
