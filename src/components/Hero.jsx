@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Reveal from "./Reveal.jsx";
 import useMagnetic from "../hooks/useMagnetic.js";
@@ -7,13 +8,29 @@ import { SITE, CV_HREF } from "../data/site.js";
 const TITLE_LINES = [
   [{ text: "Full", cls: "shimmer" }, { text: "Stack", cls: "shimmer" }],
   [{ text: "Developer", cls: "gradient-text" }],
+  [{ text: "&", cls: "shimmer" }, { text: "Software", cls: "shimmer" }, { text: "Engineer", cls: "gradient-text" }],
+];
+
+const SPECIALTIES = [
+  "Scalable Backend & Cloud Systems",
+  "Modern React & TypeScript UIs",
+  "Java & Spring Boot Architectures",
+  "High-Performance Clean Code Solutions",
 ];
 
 export default function Hero() {
   const primaryRef = useMagnetic(0.25);
   const ghostRef = useMagnetic(0.25);
   const linkedRef = useMagnetic(0.25);
+  const [specIndex, setSpecIndex] = useState(0);
   let charIndex = 0;
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setSpecIndex((prev) => (prev + 1) % SPECIALTIES.length);
+    }, 2800);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section className="hero" id="hero">
@@ -35,9 +52,9 @@ export default function Hero() {
                           animationDelay: `${charIndex++ * 0.04}s`,
                           ...(w.cls.includes("gradient-text")
                             ? {
-                              backgroundSize: `${arr.length * 100}% auto`,
-                              backgroundPosition: `${(ci / (arr.length - 1 || 1)) * 100}% center`,
-                            }
+                                backgroundSize: `${arr.length * 100}% auto`,
+                                backgroundPosition: `${(ci / (arr.length - 1 || 1)) * 100}% center`,
+                              }
                             : {}),
                         }}
                       >
@@ -50,6 +67,15 @@ export default function Hero() {
               </span>
             ))}
           </h1>
+          <Reveal className="hero-tagline-wrap" delay={0.15}>
+            <div className="hero-tagline-pill">
+              <span className="hero-tagline-dot" />
+              <span className="hero-tagline-label">Specializing in:</span>
+              <span className="hero-tagline-swap" key={specIndex}>
+                {SPECIALTIES[specIndex]}
+              </span>
+            </div>
+          </Reveal>
           <Reveal as="p" className="hero-sub" delay={0.2}>
             Computer Science undergraduate at NSBM (graduating Feb 2028). Building scalable,
             high-performance full-stack systems with Java, Spring Boot, React, and Kotlin.
@@ -68,7 +94,7 @@ export default function Hero() {
                 />
               </svg>
             </Link>
-            <a ref={ghostRef} href={CV_HREF} download className="btn btn-ghost" data-cursor="hover">
+            <a ref={ghostRef} href={CV_HREF} download="Thivanka_Tharuka_CV.pdf" className="btn btn-ghost" data-cursor="hover">
               Download CV
             </a>
             <a
