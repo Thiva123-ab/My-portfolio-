@@ -161,7 +161,132 @@ export default function ResumePage() {
               <section className="cv-block">
                 <h3>👥 Group Projects (Team Collaboration)</h3>
 
-                {/* Group Project 1 */}
+                {/* Group Project 1: Crisis Copilot */}
+                <article className="cv-project-card group-card">
+                  <div className="cv-row">
+                    <div className="cv-title-group">
+                      <strong>Crisis Copilot — Emergency Response AI Platform</strong>
+                      <span className="cv-type-badge group">Team Project</span>
+                    </div>
+                    <span className="cv-date-badge">2026</span>
+                  </div>
+                  <p>
+                    An intelligent, full-stack disaster response and crisis communication platform designed to connect
+                    victims with responders in real time. Features Google Gemini AI-driven emergency triage and severity
+                    classification, live incident dispatch feeds, and high-priority responder dashboards built with
+                    React 19, Supabase PostgreSQL, and Tailwind CSS.
+                  </p>
+                  <div className="cv-project-footer">
+                    <div className="cv-tech-row">
+                      <span className="cv-tech-label">Technologies Used:</span>
+                      <span>React 19, Node.js, Express, Google Gemini AI, Supabase PostgreSQL, Tailwind CSS</span>
+                    </div>
+                    <a
+                      href="https://github.com/Y-Udayanga/CrisisCopilot"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cv-repo-btn"
+                      data-cursor="hover"
+                    >
+                      GitHub Repo ↗
+                    </a>
+                  </div>
+                </article>
+
+                {/* Group Project 2: Recruiter-AI */}
+                <article className="cv-project-card group-card">
+                  <div className="cv-row">
+                    <div className="cv-title-group">
+                      <strong>Recruiter-AI — Intelligent Talent Acquisition Platform</strong>
+                      <span className="cv-type-badge group">Collaborative Team</span>
+                    </div>
+                    <span className="cv-date-badge">2026</span>
+                  </div>
+                  <p>
+                    A comprehensive recruitment management system featuring dedicated candidate, recruiter, and admin
+                    portals. Integrates Google Gemini AI to automatically parse applicant resumes, calculate role match
+                    scores against job specifications, and streamline interview pipelines and scheduling.
+                  </p>
+                  <div className="cv-project-footer">
+                    <div className="cv-tech-row">
+                      <span className="cv-tech-label">Technologies Used:</span>
+                      <span>React, Node.js, Express, Gemini AI, Tailwind CSS, REST APIs</span>
+                    </div>
+                    <a
+                      href="https://github.com/mchithna/Recruiter-AI"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cv-repo-btn"
+                      data-cursor="hover"
+                    >
+                      GitHub Repo ↗
+                    </a>
+                  </div>
+                </article>
+
+                {/* Group Project 3: NASA Space Apps */}
+                <article className="cv-project-card group-card">
+                  <div className="cv-row">
+                    <div className="cv-title-group">
+                      <strong>NovaExplorer — NASA Space Apps Challenge 2026</strong>
+                      <span className="cv-type-badge group">Hackathon Team</span>
+                    </div>
+                    <span className="cv-date-badge">2026</span>
+                  </div>
+                  <p>
+                    An interactive, gamified space exploration and education platform developed for the NASA Space Apps
+                    Challenge 2026. Built with TypeScript and React, leveraging open NASA astrophysics datasets to deliver
+                    interactive space learning modules, celestial exploration milestones, and scientific quizzes.
+                  </p>
+                  <div className="cv-project-footer">
+                    <div className="cv-tech-row">
+                      <span className="cv-tech-label">Technologies Used:</span>
+                      <span>TypeScript, React, NASA Open Data, Tailwind CSS, Web APIs</span>
+                    </div>
+                    <a
+                      href="https://github.com/mchithna/NASASpaceApps"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cv-repo-btn"
+                      data-cursor="hover"
+                    >
+                      GitHub Repo ↗
+                    </a>
+                  </div>
+                </article>
+
+                {/* Group Project 4: SuwaDaru */}
+                <article className="cv-project-card group-card">
+                  <div className="cv-row">
+                    <div className="cv-title-group">
+                      <strong>SuwaDaru — Child Health &amp; Caregiver Companion</strong>
+                      <span className="cv-type-badge group">Healthcare Team</span>
+                    </div>
+                    <span className="cv-date-badge">2026</span>
+                  </div>
+                  <p>
+                    A mobile-first child development and caregiver health tracking platform. Connects to Supabase Auth,
+                    PostgreSQL, and real-time database synchronization to record growth analytics, vaccination schedules,
+                    pediatric appointments, and daily nutrition logs.
+                  </p>
+                  <div className="cv-project-footer">
+                    <div className="cv-tech-row">
+                      <span className="cv-tech-label">Technologies Used:</span>
+                      <span>TypeScript, React, Supabase, PostgreSQL, Realtime, Tailwind CSS</span>
+                    </div>
+                    <a
+                      href="https://github.com/Y-Udayanga/Suwadaru"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cv-repo-btn"
+                      data-cursor="hover"
+                    >
+                      GitHub Repo ↗
+                    </a>
+                  </div>
+                </article>
+
+                {/* Group Project 5: Pharmacy Stock */}
                 <article className="cv-project-card group-card">
                   <div className="cv-row">
                     <div className="cv-title-group">
@@ -197,7 +322,7 @@ export default function ResumePage() {
                   </div>
                 </article>
 
-                {/* Group Project 2 */}
+                {/* Group Project 6: AutoSync Garage */}
                 <article className="cv-project-card group-card">
                   <div className="cv-row">
                     <div className="cv-title-group">
@@ -219,37 +344,6 @@ export default function ResumePage() {
                     </div>
                     <a
                       href="https://github.com/Thiva123-ab/My_Garage-"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="cv-repo-btn"
-                      data-cursor="hover"
-                    >
-                      GitHub Repo ↗
-                    </a>
-                  </div>
-                </article>
-
-                {/* Group Project 3 */}
-                <article className="cv-project-card group-card">
-                  <div className="cv-row">
-                    <div className="cv-title-group">
-                      <strong>DEA Spring Boot Enterprise Architecture</strong>
-                      <span className="cv-type-badge group">Team Coursework</span>
-                    </div>
-                    <span className="cv-date-badge">2025</span>
-                  </div>
-                  <p>
-                    University module project engineered with a clean layered architecture (Controller → Service →
-                    Repository pattern). Incorporates Spring Security with JWT token authentication, JPA Hibernate
-                    entities for inventory and orders, and WebSocket endpoints for real-time status propagation.
-                  </p>
-                  <div className="cv-project-footer">
-                    <div className="cv-tech-row">
-                      <span className="cv-tech-label">Technologies Used:</span>
-                      <span>Java, Spring Boot, Spring Security, JWT, MySQL, JPA Hibernate, REST APIs</span>
-                    </div>
-                    <a
-                      href="https://github.com/Thiva123-ab/DEA-Spring-Boot-Project"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="cv-repo-btn"

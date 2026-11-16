@@ -6,6 +6,9 @@ export default function ProjectCard({ project, index = 0, onOpenGallery, compact
   return (
     <article className={`work-card ${compact ? "work-card-compact" : ""}`}>
       <div className={`work-thumb thumb-${index % 4}`}>
+        {project.groupProject && (
+          <span className="work-badge-group">👥 Group Project</span>
+        )}
         {project.img ? (
           <img src={project.img} alt={`${project.title} preview`} loading="lazy" />
         ) : (

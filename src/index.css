@@ -1544,6 +1544,24 @@ img {
     color: rgba(255, 255, 255, 0.85);
   }
 
+  .work-badge-group {
+    position: absolute;
+    top: 12px;
+    left: 14px;
+    background: rgba(124, 92, 255, 0.85);
+    backdrop-filter: blur(8px);
+    color: #ffffff;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+    box-shadow: 0 4px 14px rgba(124, 92, 255, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    letter-spacing: 0.04em;
+    z-index: 2;
+  }
+
   .work-body {
     padding: 24px 24px 26px;
     display: flex;
