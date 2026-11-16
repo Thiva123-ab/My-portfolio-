@@ -10,30 +10,36 @@ export default function Background() {
     const canvas = canvasRef.current;
     if (!canvas || reduced) return;
 
+    const isMobile = window.innerWidth < 768;
     const ctx = canvas.getContext("2d");
     let w, h, dpr, particles = [];
     let raf;
+    let isPaused = false;
     const mouse = { x: -9999, y: -9999 };
     const palette = ["124,92,255", "24,224,200", "255,93,143"];
 
     const resize = () => {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       w = canvas.width = window.innerWidth * dpr;
       h = canvas.height = window.innerHeight * dpr;
       canvas.style.width = window.innerWidth + "px";
       canvas.style.height = window.innerHeight + "px";
-      const count = Math.min(120, Math.floor((window.innerWidth * window.innerHeight) / 14000));
+      
+      // Significantly optimized particle density
+      const maxCount = isMobile ? 32 : 65;
+      const count = Math.min(maxCount, Math.floor((window.innerWidth * window.innerHeight) / 22000));
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.4 * dpr,
-        vy: (Math.random() - 0.5) * 0.4 * dpr,
-        r: (Math.random() * 1.6 + 0.6) * dpr,
+        vx: (Math.random() - 0.5) * 0.3 * dpr,
+        vy: (Math.random() - 0.5) * 0.3 * dpr,
+        r: (Math.random() * 1.4 + 0.6) * dpr,
         c: palette[(Math.random() * palette.length) | 0],
       }));
     };
 
     const onMove = (e) => {
+      if (isMobile) return;
       mouse.x = e.clientX * dpr;
       mouse.y = e.clientY * dpr;
     };
@@ -42,9 +48,19 @@ export default function Background() {
       mouse.y = -9999;
     };
 
-    const linkDist = 130;
+    const onVisibility = () => {
+      isPaused = document.hidden;
+      if (!isPaused) {
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(draw);
+      }
+    };
+
+    const linkDist = isMobile ? 85 : 120;
     const draw = () => {
+      if (isPaused) return;
       ctx.clearRect(0, 0, w, h);
+
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
         p.x += p.vx;
@@ -52,17 +68,19 @@ export default function Background() {
         if (p.x < 0 || p.x > w) p.vx *= -1;
         if (p.y < 0 || p.y > h) p.vy *= -1;
 
-        const mdx = p.x - mouse.x;
-        const mdy = p.y - mouse.y;
-        const md = Math.hypot(mdx, mdy);
-        if (md < 120 * dpr) {
-          p.x += (mdx / md) * 0.8;
-          p.y += (mdy / md) * 0.8;
+        if (!isMobile) {
+          const mdx = p.x - mouse.x;
+          const mdy = p.y - mouse.y;
+          const md = Math.hypot(mdx, mdy);
+          if (md < 100 * dpr) {
+            p.x += (mdx / md) * 0.6;
+            p.y += (mdy / md) * 0.6;
+          }
         }
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${p.c}, 0.8)`;
+        ctx.fillStyle = `rgba(${p.c}, 0.75)`;
         ctx.fill();
 
         for (let j = i + 1; j < particles.length; j++) {
@@ -75,7 +93,7 @@ export default function Background() {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(q.x, q.y);
-            ctx.strokeStyle = `rgba(${p.c}, ${0.12 * (1 - dist / max)})`;
+            ctx.strokeStyle = `rgba(${p.c}, ${0.1 * (1 - dist / max)})`;
             ctx.lineWidth = dpr;
             ctx.stroke();
           }
@@ -88,6 +106,7 @@ export default function Background() {
     window.addEventListener("resize", resize);
     window.addEventListener("mousemove", onMove);
     window.addEventListener("mouseout", onOut);
+    document.addEventListener("visibilitychange", onVisibility);
     draw();
 
     return () => {
@@ -95,15 +114,14 @@ export default function Background() {
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseout", onOut);
+      document.removeEventListener("visibilitychange", onVisibility);
     };
   }, [reduced]);
 
   return (
-    <>
-      <canvas className="bg-canvas" ref={canvasRef} aria-hidden="true" />
-      <div className="grain" aria-hidden="true" />
-      <div className="glow glow-1" aria-hidden="true" />
-      <div className="glow glow-2" aria-hidden="true" />
-    </>
+    <div className="bg-canvas-wrap" aria-hidden="true">
+      <div className="bg-gradient-glow" />
+      <canvas ref={canvasRef} className="bg-canvas" />
+    </div>
   );
 }

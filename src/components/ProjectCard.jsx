@@ -1,82 +1,99 @@
 import { Link } from "react-router-dom";
+import { ExternalLink, Github, Eye, Layers } from "lucide-react";
 
 export default function ProjectCard({ project, index = 0, onOpenGallery, compact = false }) {
-  const githubLabel = project.githubLabel || "View on GitHub";
+  const githubLabel = project.githubLabel || "GitHub Repo";
 
   return (
     <article className={`work-card ${compact ? "work-card-compact" : ""}`}>
+      {/* Card Header Bar (No overlapping on screenshot) */}
+      <div className="work-card-bar">
+        <span className="work-card-num">{project.num}</span>
+        <div className="work-card-meta-tags">
+          {project.groupProject ? (
+            <span className="work-badge-group">👥 Group Project</span>
+          ) : (
+            <span className="work-badge-solo">👤 Lead / Solo</span>
+          )}
+        </div>
+      </div>
+
       <div className={`work-thumb thumb-${index % 4}`}>
-        {project.groupProject && (
-          <span className="work-badge-group">👥 Group Project</span>
-        )}
         {project.img ? (
           <img src={project.img} alt={`${project.title} preview`} loading="lazy" />
         ) : (
-          <span className="thumb-icon">{project.icon}</span>
+          <div className="thumb-fallback">
+            <span className="thumb-icon">{project.icon || "💻"}</span>
+            <span className="thumb-fallback-title">{project.title}</span>
+          </div>
         )}
         {project.gallery?.length > 0 && (
           <button
+            type="button"
             className="thumb-view"
             onClick={() => onOpenGallery?.(project.gallery, 0)}
             data-cursor="hover"
             aria-label={`View ${project.gallery.length} screenshots of ${project.title}`}
           >
-            View {project.gallery.length} screenshots
+            <Eye size={14} /> View {project.gallery.length} screenshots
           </button>
         )}
-        <span className="work-num">{project.num}</span>
       </div>
+
       <div className="work-body">
-        <h3>{project.title}</h3>
-        <p>{compact ? project.blurb : project.desc}</p>
+        <h3 className="work-title">{project.title}</h3>
+        <p className="work-desc">{compact ? project.blurb : project.desc}</p>
+
         {!compact && project.features?.length > 0 && (
           <ul className="work-features">
-            {project.features.slice(0, 5).map((f) => (
+            {project.features.slice(0, 4).map((f) => (
               <li key={f}>{f}</li>
             ))}
           </ul>
         )}
+
         {project.githubNote && <p className="work-note">{project.githubNote}</p>}
+
         <div className="work-tags">
           {project.tags.map((t) => (
-            <span key={t}>{t}</span>
+            <span key={t} className="work-tag-pill">{t}</span>
           ))}
         </div>
+
         <div className="work-actions">
           {project.caseStudy && (
-            <Link className="work-link" to={`/projects/${project.slug}`} data-cursor="hover">
-              Case study
-              <svg viewBox="0 0 24 24" width="16" height="16">
-                <path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+            <Link className="btn btn-primary btn-sm" to={`/projects/${project.slug}`} data-cursor="hover">
+              <span>Case study</span>
+              <ExternalLink size={14} />
             </Link>
           )}
-          {project.gallery && (
+
+          {project.gallery?.length > 0 && (
             <button
               type="button"
-              className="work-link work-link-btn"
+              className="btn btn-ghost btn-sm"
               onClick={() => onOpenGallery?.(project.gallery, 0)}
               data-cursor="hover"
             >
               Gallery
             </button>
           )}
+
           {project.live && (
-            <a className="work-link" href={project.live} target="_blank" rel="noopener noreferrer" data-cursor="hover">
-              Live demo
+            <a className="btn btn-ghost btn-sm" href={project.live} target="_blank" rel="noopener noreferrer" data-cursor="hover">
+              Live Demo
             </a>
           )}
+
           <a
-            className="work-link"
+            className="btn btn-ghost btn-sm btn-github"
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
             data-cursor="hover"
           >
-            {githubLabel}
-            <svg viewBox="0 0 24 24" width="16" height="16">
-              <path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <Github size={14} />
+            <span>{githubLabel}</span>
           </a>
         </div>
       </div>

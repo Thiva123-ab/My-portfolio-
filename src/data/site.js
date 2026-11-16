@@ -15,7 +15,7 @@ export const SITE = {
   whatsappHref: "https://wa.me/94717359120",
   linkedin: "https://www.linkedin.com/in/thivanka-tharuka",
   github: "https://github.com/Thiva123-ab",
-  url: "https://thiva123-ab.github.io/My-portfolio-",
+  url: "https://www.thivankatharuka.tech",
   description:
     "Computer Science undergraduate at NSBM (2024–2028) & Full Stack Developer. Building scalable, high-performance web and mobile applications with Java, Spring Boot, React, and Kotlin.",
 };

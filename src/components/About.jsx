@@ -1,7 +1,9 @@
 import { useRef, useEffect } from "react";
+import { MapPin, GraduationCap, FolderGit2, CheckCircle, Clock } from "lucide-react";
 import Reveal from "./Reveal.jsx";
 import profile from "../assets/profile.png";
 import { SITE } from "../data/site.js";
+import NowBlock from "./NowBlock.jsx";
 
 function TiltCard() {
   const wrapRef = useRef(null);
@@ -18,7 +20,7 @@ function TiltCard() {
       const r = wrap.getBoundingClientRect();
       const px = (e.clientX - r.left) / r.width - 0.5;
       const py = (e.clientY - r.top) / r.height - 0.5;
-      tilt.style.transform = `rotateY(${px * 14}deg) rotateX(${-py * 14}deg)`;
+      tilt.style.transform = `rotateY(${px * 12}deg) rotateX(${-py * 12}deg)`;
     };
     const onLeave = () => {
       tilt.style.transform = "rotateY(0) rotateX(0)";
@@ -39,11 +41,17 @@ function TiltCard() {
             <img src={profile} alt={`Portrait of ${SITE.name}`} loading="lazy" />
           </div>
           <h3>{SITE.name}</h3>
-          <p>{SITE.role}</p>
+          <p className="tilt-role">{SITE.role}</p>
           <ul className="tilt-list">
-            <li>Based in Sri Lanka</li>
-            <li>CS · NSBM Green University</li>
-            <li>Graduating Feb 2028</li>
+            <li>
+              <MapPin size={14} /> Based in Sri Lanka
+            </li>
+            <li>
+              <GraduationCap size={14} /> CS · NSBM Green University
+            </li>
+            <li>
+              <Clock size={14} /> Graduating Feb 2028
+            </li>
           </ul>
         </div>
       </div>
@@ -56,7 +64,9 @@ export default function About() {
     <section className="section about" id="about">
       <div className="section-head">
         <span className="section-index">01</span>
-        <Reveal as="h2" className="section-title">About</Reveal>
+        <Reveal as="h2" className="section-title">
+          About Me
+        </Reveal>
       </div>
       <div className="about-grid">
         <Reveal className="about-text" delay={0.1}>
@@ -77,12 +87,26 @@ export default function About() {
             beginners. I do not claim equal expertise across AWS, GCP, and Azure.
           </p>
           <div className="about-facts">
-            <div className="fact"><strong>NSBM</strong><small>BSc (Hons) CS · 2024–Feb 2028</small></div>
-            <div className="fact"><strong>12</strong><small>Featured public projects</small></div>
-            <div className="fact"><strong>Status</strong><small>Open to Opportunities</small></div>
+            <div className="fact">
+              <strong>NSBM</strong>
+              <small>BSc (Hons) CS · 2024–Feb 2028</small>
+            </div>
+            <div className="fact">
+              <strong>12</strong>
+              <small>Featured public projects</small>
+            </div>
+            <div className="fact">
+              <strong>Status</strong>
+              <small>Open to Opportunities</small>
+            </div>
+          </div>
+
+          <div style={{ marginTop: "24px" }}>
+            <NowBlock />
           </div>
         </Reveal>
-        <Reveal delay={0.25}>
+
+        <Reveal delay={0.25} className="about-tilt-wrap">
           <TiltCard />
         </Reveal>
       </div>

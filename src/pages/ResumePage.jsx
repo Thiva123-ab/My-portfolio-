@@ -1,8 +1,12 @@
+import { useState } from "react";
+import { Download, FileText, Printer, Eye, ExternalLink } from "lucide-react";
 import Seo from "../components/Seo.jsx";
 import { SITE, CV_HREF } from "../data/site.js";
 import profile from "../assets/profile.png";
 
 export default function ResumePage() {
+  const [viewMode, setViewMode] = useState("interactive"); // "interactive" or "pdf"
+
   return (
     <>
       <Seo
@@ -14,7 +18,7 @@ export default function ResumePage() {
         <div className="resume-header">
           <div className="resume-title-wrap">
             <h1>Curriculum Vitae</h1>
-            <p className="resume-subtitle">Official CV — download PDF or print</p>
+            <p className="resume-subtitle">Official CV — interactive view, inline PDF, or download</p>
           </div>
           <div className="hero-cta">
             <a
@@ -23,33 +27,45 @@ export default function ResumePage() {
               className="btn btn-primary"
               data-cursor="hover"
             >
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <polyline points="7 10 12 15 17 10" />
-                <line x1="12" y1="15" x2="12" y2="3" />
-              </svg>
+              <Download size={16} />
               <span>Download PDF</span>
             </a>
-            <a
-              href={CV_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-ghost"
+            <button
+              type="button"
+              className={`btn ${viewMode === "pdf" ? "btn-primary" : "btn-ghost"}`}
+              onClick={() => setViewMode((m) => (m === "pdf" ? "interactive" : "pdf"))}
               data-cursor="hover"
             >
-              View PDF
-            </a>
+              <FileText size={16} />
+              <span>{viewMode === "pdf" ? "Interactive CV" : "Inline PDF Preview"}</span>
+            </button>
             <button
               type="button"
               className="btn btn-ghost"
               onClick={() => window.print()}
               data-cursor="hover"
             >
-              Print
+              <Printer size={16} />
+              <span>Print</span>
             </button>
           </div>
         </div>
 
+        {viewMode === "pdf" ? (
+          <div className="cv-pdf-preview-wrap">
+            <div className="cv-pdf-toolbar">
+              <span>Official Document Preview (Thivanka_Tharuka_CV.pdf)</span>
+              <a href={CV_HREF} target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-sm">
+                Open in new tab <ExternalLink size={13} />
+              </a>
+            </div>
+            <iframe
+              src={CV_HREF}
+              title="Official CV PDF Preview"
+              className="cv-pdf-frame"
+            />
+          </div>
+        ) : (
         <div className="cv-sheet" id="cv">
           {/* Top CV Header */}
           <header className="cv-top-banner">
@@ -579,6 +595,7 @@ export default function ResumePage() {
             </main>
           </div>
         </div>
+        )}
       </section>
     </>
   );

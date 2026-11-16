@@ -6,7 +6,13 @@ export default function Cursor() {
   const ringRef = useRef(null);
 
   useEffect(() => {
-    if (window.matchMedia("(max-width: 900px)").matches) return;
+    if (
+      window.matchMedia("(max-width: 900px)").matches ||
+      window.matchMedia("(pointer: coarse)").matches ||
+      ("ontouchstart" in window)
+    ) {
+      return;
+    }
     const dot = dotRef.current;
     const ring = ringRef.current;
     let mx = window.innerWidth / 2;
