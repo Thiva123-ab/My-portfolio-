@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const INTRO_TEXT =
-  "Hi, I'm Thivanka Tharuka — a Software Engineering intern candidate at NSBM Green University.";
+"Hi, I'm Thivanka Tharuka — a Full Stack Developer and Computer Science undergraduate at NSBM Green University.";
 
 export default function VoiceIntro() {
   const [supported, setSupported] = useState(false);

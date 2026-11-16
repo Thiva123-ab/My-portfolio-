@@ -1,7 +1,7 @@
 export const SITE = {
   name: "Thivanka Tharuka",
   legalName: "Gunamunige Thivanka Tharuka Priyantha",
-  role: "Software Engineering Intern candidate",
+  role: "Full Stack Developer",
   school: "NSBM Green University",
   degree: "BSc (Hons) Computer Science",
   years: "2024–Feb 2028",
@@ -13,7 +13,7 @@ export const SITE = {
   github: "https://github.com/Thiva123-ab",
   url: "https://thiva123-ab.github.io/My-portfolio-",
   description:
-    "CS undergraduate at NSBM (graduating Feb 2028). Building scalable full-stack apps with Java, Spring Boot, React, and Kotlin. Open to Software Engineering internships.",
+  "Computer Science undergraduate at NSBM (graduating Feb 2028). Building scalable, high-performance full-stack applications with Java, Spring Boot, React, and Kotlin. Open to full-stack opportunities.",
 };
 
 export const CV_HREF = `${import.meta.env.BASE_URL}Thivanka_Tharuka_CV.pdf`;

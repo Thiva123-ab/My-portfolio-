@@ -61,8 +61,8 @@ export default function About() {
       <div className="about-grid">
         <Reveal className="about-text" delay={0.1}>
           <p className="lead">
-            I’m {SITE.name} — a Computer Science undergraduate at NSBM Green
-            University, targeting a Software Engineering internship.
+            I’m {SITE.name} — a Full Stack Developer and Computer Science undergraduate at NSBM Green
+            University, dedicated to architecting and building high-performance digital products.
           </p>
           <p>
             I build full-stack systems in <strong>Java</strong>,
@@ -79,7 +79,7 @@ export default function About() {
           <div className="about-facts">
             <div className="fact"><strong>NSBM</strong><small>BSc (Hons) CS · 2024–Feb 2028</small></div>
             <div className="fact"><strong>8</strong><small>Featured public projects</small></div>
-            <div className="fact"><strong>Intern</strong><small>Open for Nov 2026 career fair</small></div>
+            <div className="fact"><strong>Status</strong><small>Open to Opportunities</small></div>
           </div>
         </Reveal>
         <Reveal delay={0.25}>

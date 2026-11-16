@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-copy">
-        <p>© {new Date().getFullYear()} {SITE.name}. Built for internship recruiting.</p>
+        <p>© {new Date().getFullYear()} {SITE.name}. Full Stack Developer.</p>
         <nav className="footer-nav" aria-label="Footer">
           <Link to="/projects" data-cursor="hover">Projects</Link>
           <Link to="/resume" data-cursor="hover">Resume</Link>

@@ -7,14 +7,14 @@ export default function ResumePage() {
     <>
       <Seo
         title="Resume"
-        description="One-page intern CV: NSBM CS, Java/Spring/React/Kotlin projects, honest certs. No home address."
+        description="One-page CV: NSBM CS, Java/Spring/React/Kotlin projects, honest certs. No home address."
         path="/resume"
       />
       <section className="section page-section resume">
         <div className="resume-header">
           <div className="resume-title-wrap">
             <h1>Resume</h1>
-            <p className="resume-subtitle">One-page intern CV — print or download PDF</p>
+            <p className="resume-subtitle">Professional Full Stack Resume — print or download PDF</p>
           </div>
           <div className="hero-cta">
             <a href={CV_HREF} download className="btn btn-primary" data-cursor="hover">
@@ -45,8 +45,8 @@ export default function ResumePage() {
           <section className="cv-block">
             <h3>Profile</h3>
             <p>
-              Computer Science undergraduate (NSBM, graduating Feb 2028) seeking a Software Engineering internship.
-              I ship full-stack apps in Java/Spring Boot, React, and Kotlin. Cloud practice: Docker, AWS Educate Cloud 101,
+              Computer Science undergraduate (NSBM, graduating Feb 2028) & Full Stack Developer.
+              I build scalable full-stack applications in Java/Spring Boot, React, and Kotlin. Cloud practice: Docker, AWS Educate Cloud 101,
               KodeKloud AWS labs, and beginner Kubernetes — not multi-cloud expert claims.
             </p>
           </section>

@@ -1,10 +1,10 @@
 const ITEMS = [
-  "Software Engineering Intern",
+  "Full Stack Developer",
   "Java",
   "Spring Boot",
   "React",
   "Kotlin",
-  "Open to internships",
+  "Open to Opportunities",
 ];
 
 export default function Marquee() {

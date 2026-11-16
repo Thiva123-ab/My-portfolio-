@@ -6,7 +6,7 @@ export default function ContactPage() {
     <>
       <Seo
         title="Contact"
-        description="Email, WhatsApp, LinkedIn, and GitHub for Thivanka Tharuka — Software Engineering intern candidate."
+        description="Email, WhatsApp, LinkedIn, and GitHub for Thivanka Tharuka — Full Stack Developer."
         path="/contact"
       />
       <div className="page-section-pad">

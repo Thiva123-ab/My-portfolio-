@@ -31,11 +31,11 @@ export default function Contact() {
     <section className="section contact" id="contact">
       <div className="section-head">
         <span className="section-index">06</span>
-        <Reveal as="h2" className="section-title">Let’s talk internships</Reveal>
+        <Reveal as="h2" className="section-title">Let’s connect</Reveal>
       </div>
       <Reveal className="contact-inner" delay={0.1}>
         <p className="contact-lead">
-          Fastest paths for career-fair follow-up: email or WhatsApp. Sri Lanka timezone (UTC+5:30).
+          Have an opportunity, project, or want to collaborate? Reach out via email or WhatsApp. Sri Lanka timezone (UTC+5:30).
         </p>
         <a ref={emailRef} href={`mailto:${SITE.email}`} className="contact-email" data-cursor="hover">
           {SITE.email}

@@ -5,8 +5,8 @@ import profile from "../assets/profile.png";
 import { SITE, CV_HREF } from "../data/site.js";
 
 const TITLE_LINES = [
-  [{ text: "Software", cls: "shimmer" }, { text: "Engineering", cls: "shimmer" }],
-  [{ text: "Intern", cls: "gradient-text" }, { text: "candidate", cls: "shimmer" }],
+  [{ text: "Full", cls: "shimmer" }, { text: "Stack", cls: "shimmer" }],
+  [{ text: "Developer", cls: "gradient-text" }],
 ];
 
 export default function Hero() {
@@ -20,7 +20,7 @@ export default function Hero() {
       <div className="hero-layout">
         <div className="hero-inner">
           <Reveal as="p" className="hero-eyebrow" delay={0}>
-            <span className="ping" /> Open to internships
+            <span className="ping" /> Available for Opportunities
           </Reveal>
           <h1 className="hero-title">
             {TITLE_LINES.map((line, li) => (
@@ -35,9 +35,9 @@ export default function Hero() {
                           animationDelay: `${charIndex++ * 0.04}s`,
                           ...(w.cls.includes("gradient-text")
                             ? {
-                                backgroundSize: `${arr.length * 100}% auto`,
-                                backgroundPosition: `${(ci / (arr.length - 1 || 1)) * 100}% center`,
-                              }
+                              backgroundSize: `${arr.length * 100}% auto`,
+                              backgroundPosition: `${(ci / (arr.length - 1 || 1)) * 100}% center`,
+                            }
                             : {}),
                         }}
                       >
@@ -51,8 +51,8 @@ export default function Hero() {
             ))}
           </h1>
           <Reveal as="p" className="hero-sub" delay={0.2}>
-            CS undergraduate at NSBM (graduating Feb 2028). I build scalable
-            full-stack apps with Java, Spring Boot, React, and Kotlin.
+            Computer Science undergraduate at NSBM (graduating Feb 2028). Building scalable,
+            high-performance full-stack systems with Java, Spring Boot, React, and Kotlin.
           </Reveal>
           <Reveal className="hero-cta" delay={0.35}>
             <Link ref={primaryRef} to="/projects" className="btn btn-primary" data-cursor="hover">
@@ -89,7 +89,7 @@ export default function Hero() {
             <span className="portrait-ring" aria-hidden="true" />
             <img src={profile} alt={`Portrait of ${SITE.name}`} loading="eager" />
             <span className="portrait-badge">
-              <span className="ping" /> Open to internships
+              <span className="ping" /> Available for Opportunities
             </span>
           </div>
         </Reveal>
