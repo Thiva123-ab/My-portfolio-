@@ -1,6 +1,7 @@
 import { useCallback, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
-import { ArrowLeft, ExternalLink, Github, Eye, CheckCircle2, ChevronRight, Layers } from "lucide-react";
+import { ArrowLeft, ExternalLink, Eye, CheckCircle2, ChevronRight, Layers } from "lucide-react";
+import { Github } from "../components/BrandIcons.jsx";
 import Seo from "../components/Seo.jsx";
 import Reveal from "../components/Reveal.jsx";
 import Lightbox from "../components/Lightbox.jsx";

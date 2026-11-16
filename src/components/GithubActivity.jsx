@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Github, Star, GitFork, ExternalLink, Activity } from "lucide-react";
+import { Star, GitFork, ExternalLink, Activity } from "lucide-react";
+import { Github } from "./BrandIcons.jsx";
 import { SITE } from "../data/site.js";
 
 const CACHE_KEY = "github_profile_cache";

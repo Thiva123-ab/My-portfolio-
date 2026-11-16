@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { ExternalLink, Github, Eye, Layers } from "lucide-react";
+import { ExternalLink, Eye, Layers } from "lucide-react";
+import { Github } from "./BrandIcons.jsx";
 
 export default function ProjectCard({ project, index = 0, onOpenGallery, compact = false }) {
   const githubLabel = project.githubLabel || "GitHub Repo";
