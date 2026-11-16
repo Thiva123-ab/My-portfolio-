@@ -78,7 +78,7 @@ export default function About() {
           </p>
           <div className="about-facts">
             <div className="fact"><strong>NSBM</strong><small>BSc (Hons) CS · 2024–Feb 2028</small></div>
-            <div className="fact"><strong>8</strong><small>Featured public projects</small></div>
+            <div className="fact"><strong>9</strong><small>Featured public projects</small></div>
             <div className="fact"><strong>Status</strong><small>Open to Opportunities</small></div>
           </div>
         </Reveal>

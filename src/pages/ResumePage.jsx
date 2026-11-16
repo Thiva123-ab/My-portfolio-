@@ -92,7 +92,7 @@ export default function ResumePage() {
               <div className="cv-side-block">
                 <h3>Tech Skills</h3>
                 <div className="cv-tag-cloud">
-                  {["Python", "Java", "Data Structures", "Algorithms", "SQL", "MySQL", "JavaScript", "HTML / CSS", "Spring Boot", "REST API", "Postman", "React", "TypeScript", "Git & GitHub"].map((s) => (
+                  {["Python", "Java", "Data Structures", "Algorithms", "SQL", "MySQL", "JavaScript", "HTML / CSS", "Spring Boot", "REST API", "Postman", "React", "TypeScript", "Next.js", "Git & GitHub"].map((s) => (
                     <span key={s} className="cv-skill-pill">{s}</span>
                   ))}
                 </div>
@@ -101,11 +101,11 @@ export default function ResumePage() {
               <div className="cv-side-block">
                 <h3>Soft Skills</h3>
                 <ul className="cv-bullet-list">
-                  <li>Teamwork</li>
+                  <li>Teamwork &amp; Collaboration</li>
                   <li>Time Management</li>
                   <li>Leadership</li>
                   <li>Effective Communication</li>
-                  <li>Critical Thinking</li>
+                  <li>Critical Thinking &amp; Problem Solving</li>
                 </ul>
               </div>
 
@@ -121,15 +121,15 @@ export default function ResumePage() {
                 <h3>Links & Profiles</h3>
                 <ul className="cv-info-list">
                   <li>
-                    <span className="cv-label">LinkedIn:</span>
-                    <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer">
-                      linkedin.com/in/thivanka-tharuka
-                    </a>
-                  </li>
-                  <li>
                     <span className="cv-label">GitHub:</span>
                     <a href={SITE.github} target="_blank" rel="noopener noreferrer">
                       github.com/Thiva123-ab
+                    </a>
+                  </li>
+                  <li>
+                    <span className="cv-label">LinkedIn:</span>
+                    <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer">
+                      linkedin.com/in/thivanka-tharuka
                     </a>
                   </li>
                   <li>
@@ -157,14 +157,17 @@ export default function ResumePage() {
                 </p>
               </section>
 
-              {/* Projects */}
+              {/* Group Projects Section */}
               <section className="cv-block">
-                <h3>Featured Projects</h3>
+                <h3>👥 Group Projects (Team Collaboration)</h3>
 
-                {/* Project 1 */}
-                <article className="cv-project-card">
+                {/* Group Project 1 */}
+                <article className="cv-project-card group-card">
                   <div className="cv-row">
-                    <strong>Pharmacy Stock and Delivery System</strong>
+                    <div className="cv-title-group">
+                      <strong>Pharmacy Stock and Delivery System</strong>
+                      <span className="cv-type-badge group">Team of 3</span>
+                    </div>
                     <span className="cv-date-badge">September 2025</span>
                   </div>
                   <p>
@@ -177,16 +180,98 @@ export default function ResumePage() {
                     Collaborated in a team of three using Git and GitHub for version control, branching, and
                     collaborative development.
                   </p>
-                  <div className="cv-tech-row">
-                    <span className="cv-tech-label">Technologies Used:</span>
-                    <span>HTML, CSS, JavaScript, Bootstrap, Java Spring Boot, MySQL, REST API, Git &amp; GitHub</span>
+                  <div className="cv-project-footer">
+                    <div className="cv-tech-row">
+                      <span className="cv-tech-label">Technologies Used:</span>
+                      <span>HTML, CSS, JavaScript, Bootstrap, Java Spring Boot, MySQL, REST API, Git &amp; GitHub</span>
+                    </div>
+                    <a
+                      href="https://github.com/Thiva123-ab/Pharmacy-stock-system"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cv-repo-btn"
+                      data-cursor="hover"
+                    >
+                      GitHub Repo ↗
+                    </a>
                   </div>
                 </article>
 
-                {/* Project 2 */}
+                {/* Group Project 2 */}
+                <article className="cv-project-card group-card">
+                  <div className="cv-row">
+                    <div className="cv-title-group">
+                      <strong>AutoSync Garage Management System</strong>
+                      <span className="cv-type-badge group">Collaborative Project</span>
+                    </div>
+                    <span className="cv-date-badge">2025 – 2026</span>
+                  </div>
+                  <p>
+                    A comprehensive automotive service and garage management platform featuring a customer
+                    service booking portal and an administrative dashboard for inventory, appointment scheduling,
+                    and automated service updates. Powered by React, Firebase, and Firestore collections with
+                    multi-user coordination and real-time stock alerts.
+                  </p>
+                  <div className="cv-project-footer">
+                    <div className="cv-tech-row">
+                      <span className="cv-tech-label">Technologies Used:</span>
+                      <span>React, Firebase, Cloud Firestore, JavaScript, Flutter / Dart, Git &amp; GitHub</span>
+                    </div>
+                    <a
+                      href="https://github.com/Thiva123-ab/My_Garage-"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cv-repo-btn"
+                      data-cursor="hover"
+                    >
+                      GitHub Repo ↗
+                    </a>
+                  </div>
+                </article>
+
+                {/* Group Project 3 */}
+                <article className="cv-project-card group-card">
+                  <div className="cv-row">
+                    <div className="cv-title-group">
+                      <strong>DEA Spring Boot Enterprise Architecture</strong>
+                      <span className="cv-type-badge group">Team Coursework</span>
+                    </div>
+                    <span className="cv-date-badge">2025</span>
+                  </div>
+                  <p>
+                    University module project engineered with a clean layered architecture (Controller → Service →
+                    Repository pattern). Incorporates Spring Security with JWT token authentication, JPA Hibernate
+                    entities for inventory and orders, and WebSocket endpoints for real-time status propagation.
+                  </p>
+                  <div className="cv-project-footer">
+                    <div className="cv-tech-row">
+                      <span className="cv-tech-label">Technologies Used:</span>
+                      <span>Java, Spring Boot, Spring Security, JWT, MySQL, JPA Hibernate, REST APIs</span>
+                    </div>
+                    <a
+                      href="https://github.com/Thiva123-ab/DEA-Spring-Boot-Project"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cv-repo-btn"
+                      data-cursor="hover"
+                    >
+                      GitHub Repo ↗
+                    </a>
+                  </div>
+                </article>
+              </section>
+
+              {/* Individual / Solo Projects Section */}
+              <section className="cv-block">
+                <h3>👤 Individual &amp; Featured Projects</h3>
+
+                {/* Solo Project 1 */}
                 <article className="cv-project-card">
                   <div className="cv-row">
-                    <strong>Sri Lanka Flood Relief Coordinator Live Map</strong>
+                    <div className="cv-title-group">
+                      <strong>Sri Lanka Flood Relief Coordinator Live Map</strong>
+                      <span className="cv-type-badge solo">Solo Project</span>
+                    </div>
                     <span className="cv-date-badge">December 2025</span>
                   </div>
                   <p>
@@ -195,60 +280,182 @@ export default function ResumePage() {
                     backend engineered with Java Spring Boot, MySQL, and WebSockets to handle real-time data,
                     help requests, and verified emergency alerts. An interactive live map was implemented using
                     JavaScript, Leaflet.js, and OpenStreetMap, allowing users to pinpoint flood hazards, request
-                    rescues, and locate safe zones using custom geolocation markers. The application incorporates a
-                    robust role-based authentication system utilizing Spring Security to securely manage data access
-                    for public users, victims, and administrative responders. Additionally, a responsive frontend
-                    dashboard was designed to aggregate community reports and government alerts, facilitating rapid
-                    decision-making and resource allocation during crisis situations.
+                    rescues, and locate safe zones using custom geolocation markers. Features role-based access
+                    control via Spring Security for public users, victims, and administrative responders.
                   </p>
-                  <div className="cv-tech-row">
-                    <span className="cv-tech-label">Technologies Used:</span>
-                    <span>Java Spring Boot, MySQL, WebSockets, Spring Security, Leaflet.js, OpenStreetMap, JavaScript</span>
+                  <div className="cv-project-footer">
+                    <div className="cv-tech-row">
+                      <span className="cv-tech-label">Technologies Used:</span>
+                      <span>Java Spring Boot, MySQL, WebSockets, Spring Security, Leaflet.js, OpenStreetMap, JavaScript</span>
+                    </div>
+                    <a
+                      href="https://github.com/Thiva123-ab/Sri-Lanka-Flood-Relief-Coordinator-Live-Map"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cv-repo-btn"
+                      data-cursor="hover"
+                    >
+                      GitHub Repo ↗
+                    </a>
                   </div>
                 </article>
 
-                {/* Project 3 */}
+                {/* Solo Project 2 */}
                 <article className="cv-project-card">
                   <div className="cv-row">
-                    <strong>LectureLens — AI-Powered Bilingual Study Assistant</strong>
+                    <div className="cv-title-group">
+                      <strong>LectureLens — AI-Powered Bilingual Study Assistant</strong>
+                      <span className="cv-type-badge solo">Lead Project</span>
+                    </div>
                     <span className="cv-date-badge">June 2026</span>
                   </div>
                   <p>
                     Developed an AI-powered, bilingual study assistant utilizing a modern full-stack architecture
                     featuring React 19, TypeScript, Tailwind CSS, and TanStack Start for server-side rendering. The
                     robust backend utilizes Supabase and a PostgreSQL database equipped with Row-Level Security
-                    (RLS), safeguarded by Google OAuth and protected routes. By integrating the Lovable AI Gateway,
-                    the application enables users to upload lecture documents for AI-driven text extraction,
-                    automatically generating structured summaries, interactive flashcards, and adaptive quizzes
-                    backed by a real-time skills analytics dashboard. A core feature is the intelligent conversational AI
-                    tutor that allows users to chat directly with their PDFs, alongside a seamless, one-tap translation
-                    tool converting study materials into native Sinhala script. To optimize learning and user retention,
-                    the platform incorporates automated weak-topic detection, a built-in Pomodoro focus timer,
-                    robust document management with Markdown export capabilities, and interactive gamification
-                    elements such as daily study streaks and unlockable achievement badges.
+                    (RLS), safeguarded by Google OAuth and protected routes. Integrates Lovable AI Gateway for
+                    automated text extraction, structured summaries, flashcards, adaptive quizzes, Pomodoro timer,
+                    and interactive document chat with one-tap Sinhala (සිංහල) translation.
                   </p>
-                  <div className="cv-tech-row">
-                    <span className="cv-tech-label">Technologies Used:</span>
-                    <span>React 19, TypeScript, Tailwind CSS, TanStack Start, Supabase, PostgreSQL, AI Gateway</span>
+                  <div className="cv-project-footer">
+                    <div className="cv-tech-row">
+                      <span className="cv-tech-label">Technologies Used:</span>
+                      <span>React 19, TypeScript, Tailwind CSS, TanStack Start, Supabase, PostgreSQL, AI Gateway</span>
+                    </div>
+                    <a
+                      href="https://github.com/Thiva123-ab/study_buddy"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cv-repo-btn"
+                      data-cursor="hover"
+                    >
+                      GitHub Repo ↗
+                    </a>
                   </div>
                 </article>
 
-                {/* Project 4 */}
+                {/* Solo Project 3 */}
                 <article className="cv-project-card">
                   <div className="cv-row">
-                    <strong>Recruiter-AI – Intelligent Hiring Assistant</strong>
+                    <div className="cv-title-group">
+                      <strong>Nova Bank — Modern Online Banking Platform</strong>
+                      <span className="cv-type-badge solo">New Full Stack Project</span>
+                    </div>
+                    <span className="cv-date-badge">2026</span>
+                  </div>
+                  <p>
+                    A modern, full-stack financial web application engineered with TypeScript and React. Offers
+                    secure account balance overviews, real-time transaction history, funds transfer simulations,
+                    and rich responsive financial charts for seamless user money management.
+                  </p>
+                  <div className="cv-project-footer">
+                    <div className="cv-tech-row">
+                      <span className="cv-tech-label">Technologies Used:</span>
+                      <span>TypeScript, React, Next.js / Node.js, Tailwind CSS, REST APIs</span>
+                    </div>
+                    <a
+                      href="https://github.com/Thiva123-ab/Nova_bank-"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cv-repo-btn"
+                      data-cursor="hover"
+                    >
+                      GitHub Repo ↗
+                    </a>
+                  </div>
+                </article>
+
+                {/* Solo Project 4 */}
+                <article className="cv-project-card">
+                  <div className="cv-row">
+                    <div className="cv-title-group">
+                      <strong>FocusFlow — Android Time Management &amp; Wellbeing</strong>
+                      <span className="cv-type-badge solo">Mobile App</span>
+                    </div>
+                    <span className="cv-date-badge">2026</span>
+                  </div>
+                  <p>
+                    Privacy-first Android digital wellbeing app built with Kotlin, Jetpack Compose, and Room SQLite.
+                    Features on-device usage tracking with encrypted local persistence, five-pillar productivity
+                    scoring, deep focus Pomodoro sessions, and an optional AI productivity coach.
+                  </p>
+                  <div className="cv-project-footer">
+                    <div className="cv-tech-row">
+                      <span className="cv-tech-label">Technologies Used:</span>
+                      <span>Kotlin, Jetpack Compose, Room SQLite, Material 3, WorkManager</span>
+                    </div>
+                    <a
+                      href="https://github.com/Thiva123-ab/Smart-Time-Management-MobileApp"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cv-repo-btn"
+                      data-cursor="hover"
+                    >
+                      GitHub Repo ↗
+                    </a>
+                  </div>
+                </article>
+
+                {/* Solo Project 5 */}
+                <article className="cv-project-card">
+                  <div className="cv-row">
+                    <div className="cv-title-group">
+                      <strong>Recruiter-AI – Intelligent Hiring Assistant</strong>
+                      <span className="cv-type-badge solo">AI Project</span>
+                    </div>
                     <span className="cv-date-badge">July 2026 – Present</span>
                   </div>
                   <p>
                     Developed a JavaScript-based intelligent recruiting application designed to streamline and
-                    automate the hiring process. Integrated AI capabilities using OpenAI API / Gemini API to assist
-                    in evaluating candidate profiles and improving screening efficiency. Built with React.js and
-                    Node.js, the project demonstrates a strong ability to build practical, AI-driven solutions for
-                    modern human resources challenges.
+                    automate the candidate screening process. Integrates generative AI (OpenAI API / Gemini API) to
+                    extract candidate qualifications, match against job requirements, and generate structured
+                    evaluations for talent teams.
                   </p>
-                  <div className="cv-tech-row">
-                    <span className="cv-tech-label">Technologies Used:</span>
-                    <span>React.js, Node.js, Gemini API / OpenAI API, JavaScript</span>
+                  <div className="cv-project-footer">
+                    <div className="cv-tech-row">
+                      <span className="cv-tech-label">Technologies Used:</span>
+                      <span>React.js, Node.js, Gemini API / OpenAI API, JavaScript</span>
+                    </div>
+                    <a
+                      href="https://github.com/Thiva123-ab"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cv-repo-btn"
+                      data-cursor="hover"
+                    >
+                      GitHub Profile ↗
+                    </a>
+                  </div>
+                </article>
+
+                {/* Solo Project 6 */}
+                <article className="cv-project-card">
+                  <div className="cv-row">
+                    <div className="cv-title-group">
+                      <strong>Motion-Strike — Computer Vision Combat Demo</strong>
+                      <span className="cv-type-badge solo">Interactive Demo</span>
+                    </div>
+                    <span className="cv-date-badge">2026</span>
+                  </div>
+                  <p>
+                    Real-time browser 3D demo powered by MediaPipe Pose tracking and Three.js WebGL. Detects 33 human
+                    landmarks via live webcam video feed to map physical punches, blocks, and body movement into 3D
+                    space at interactive frame rates without additional hardware.
+                  </p>
+                  <div className="cv-project-footer">
+                    <div className="cv-tech-row">
+                      <span className="cv-tech-label">Technologies Used:</span>
+                      <span>JavaScript, Three.js, MediaPipe Pose, WebGL, Vite</span>
+                    </div>
+                    <a
+                      href="https://github.com/Thiva123-ab/Motion-Strike"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cv-repo-btn"
+                      data-cursor="hover"
+                    >
+                      GitHub Repo ↗
+                    </a>
                   </div>
                 </article>
               </section>
