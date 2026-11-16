@@ -8,7 +8,6 @@ import { SITE, CV_HREF } from "../data/site.js";
 const TITLE_LINES = [
   [{ text: "Full", cls: "shimmer" }, { text: "Stack", cls: "shimmer" }],
   [{ text: "Developer", cls: "gradient-text" }],
-  [{ text: "&", cls: "shimmer" }, { text: "Software", cls: "shimmer" }, { text: "Engineer", cls: "gradient-text" }],
 ];
 
 const SPECIALTIES = [
