@@ -452,6 +452,7 @@ img {
   .nav.scrolled {
     padding: 14px clamp(20px, 5vw, 64px);
     background: rgba(7, 7, 12, 0.6);
+    -webkit-backdrop-filter: blur(14px);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
   }
@@ -653,6 +654,7 @@ img {
     white-space: nowrap;
     color: var(--text);
     background: rgba(10, 10, 18, 0.7);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border: 1px solid var(--border);
   }
@@ -975,6 +977,7 @@ img {
     background: rgba(255, 255, 255, 0.035);
     border: 1px solid rgba(124, 92, 255, 0.28);
     border-radius: 999px;
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
   }
@@ -1051,6 +1054,7 @@ img {
     background: rgba(255, 255, 255, 0.035);
     border: 1px solid rgba(255, 255, 255, 0.09);
     border-radius: 999px;
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
     font-size: 0.88rem;
@@ -1741,6 +1745,7 @@ img {
     background: rgba(0, 0, 0, 0.3);
     padding: 5px 11px;
     border-radius: 999px;
+    -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
   }
 
@@ -1759,6 +1764,7 @@ img {
     top: 12px;
     left: 14px;
     background: rgba(124, 92, 255, 0.85);
+    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     color: #ffffff;
     font-family: var(--font-mono, monospace);
@@ -1889,6 +1895,7 @@ img {
     border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 999px;
     background: rgba(7, 7, 14, 0.55);
+    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     color: #fff;
     font-family: var(--font-display);
@@ -1929,6 +1936,7 @@ img {
     justify-content: center;
     padding: clamp(16px, 4vw, 48px);
     background: rgba(5, 5, 10, 0.82);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     animation: lightboxIn 0.3s var(--ease);
   }
@@ -2235,6 +2243,7 @@ img {
     border-radius: 50%;
     border: 1px solid var(--border);
     background: rgba(12, 12, 22, 0.72);
+    -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     color: var(--text);
     cursor: pointer;
@@ -2480,8 +2489,8 @@ img {
     position: fixed;
     inset: 0;
     background: rgba(4, 4, 8, 0.85);
-    backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
     z-index: 9999;
     display: flex;
     justify-content: flex-end;
@@ -2880,7 +2889,6 @@ img {
 
     .filter-row-wrap {
       overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
       padding-bottom: 6px;
     }
@@ -4113,6 +4121,7 @@ img {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.75);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   z-index: 10000;
   display: flex;
@@ -4270,6 +4279,7 @@ img {
   border-radius: 16px;
   padding: 24px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
 
@@ -4434,6 +4444,7 @@ img {
   justify-content: space-between;
   gap: 14px;
   cursor: pointer;
+  -webkit-user-select: none;
   user-select: none;
   transition: opacity 0.2s;
 }
@@ -5284,6 +5295,7 @@ img {
   line-height: 1;
   background: linear-gradient(135deg, #7c5cff, #18e0c8 60%, #ff5d8f);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
   margin-bottom: 12px;
@@ -5363,8 +5375,8 @@ img {
   .nav {
     padding: calc(env(safe-area-inset-top, 0px) + 12px) 20px 12px !important;
     background: rgba(7, 7, 12, 0.88) !important;
-    backdrop-filter: blur(16px) !important;
     -webkit-backdrop-filter: blur(16px) !important;
+    backdrop-filter: blur(16px) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
     display: flex;
     align-items: center;
@@ -5420,6 +5432,7 @@ img {
   .mobile-last-name {
     background: linear-gradient(135deg, #8B7CFF 0%, #4EA8F3 50%, #2DE2C8 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
@@ -5467,7 +5480,7 @@ img {
 
   /* 2. Mobile Hero Layout (< 640px) */
   .hero {
-    min-height: auto;
+    min-height: 0;
     padding-top: calc(env(safe-area-inset-top, 0px) + 80px);
     padding-bottom: 56px;
     display: flex;
@@ -5550,6 +5563,7 @@ img {
     border-radius: 9999px;
     background: rgba(14, 14, 22, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.12);
+    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     color: #ECECF2;
     font-size: 0.72rem;
@@ -5637,6 +5651,7 @@ img {
   .mobile-name-gradient {
     background: linear-gradient(135deg, #8B7CFF 0%, #4EA8F3 48%, #2DE2C8 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
@@ -5900,6 +5915,7 @@ img {
   background: rgba(14, 14, 22, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 20px 24px;
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   transition: transform 0.25s var(--ease), border-color 0.25s, box-shadow 0.25s;
 }
