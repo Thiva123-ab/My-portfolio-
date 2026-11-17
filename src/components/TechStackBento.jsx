@@ -9,17 +9,17 @@ import {
   Layers,
   ChevronDown,
   ChevronUp,
-  Sparkles,
 } from "lucide-react";
 import { SKILL_CATEGORIES } from "../data/skills.js";
+import Card from "./Card.jsx";
 
 const ICON_MAP = {
-  Server: Server,
-  Layout: Layout,
-  Smartphone: Smartphone,
-  Database: Database,
-  Cloud: Cloud,
-  Wrench: Wrench,
+  Server,
+  Layout,
+  Smartphone,
+  Database,
+  Cloud,
+  Wrench,
 };
 
 export default function TechStackBento() {
@@ -39,62 +39,67 @@ export default function TechStackBento() {
       : SKILL_CATEGORIES.filter((c) => c.id === activeTab);
 
   return (
-    <section className="section skills-bento-section" id="skills">
+    <section className="section skills-section" id="skills">
+      {/* Consistent Section Heading Pattern */}
       <div className="section-head">
         <span className="section-index">02</span>
         <h2 className="section-title">Tech Stack &amp; Skills</h2>
       </div>
-      <p className="section-lead">
+      <p className="section-lead max-w-2xl">
         Honest, verified technical competencies derived directly from shipped repositories and coursework labs.
         Zero inflated titles or artificial percentage bars.
       </p>
 
-      {/* Filter Tabs */}
-      <div className="skills-filter-tabs" role="tablist" aria-label="Filter skill categories">
-        <button
-          type="button"
-          className={`filter-tab ${activeTab === "all" ? "active" : ""}`}
-          onClick={() => setActiveTab("all")}
-          data-cursor="hover"
-        >
-          All Domains
-        </button>
-        {SKILL_CATEGORIES.map((cat) => (
+      {/* Filter Tabs: Horizontally scrollable row on mobile */}
+      <div className="skills-filter-wrapper">
+        <div className="skills-filter-tabs" role="tablist" aria-label="Filter skill categories">
           <button
-            key={cat.id}
             type="button"
-            className={`filter-tab ${activeTab === cat.id ? "active" : ""}`}
-            onClick={() => {
-              setActiveTab(cat.id);
-              // Auto-expand when specifically selected via tab for convenience
-              setExpandedCards((prev) => ({ ...prev, [cat.id]: true }));
-            }}
+            className={`filter-tab ${activeTab === "all" ? "active" : ""}`}
+            onClick={() => setActiveTab("all")}
             data-cursor="hover"
           >
-            {cat.title}
+            All Domains
           </button>
-        ))}
+          {SKILL_CATEGORIES.map((cat) => (
+            <button
+              key={cat.id}
+              type="button"
+              className={`filter-tab ${activeTab === cat.id ? "active" : ""}`}
+              onClick={() => {
+                setActiveTab(cat.id);
+                setExpandedCards((prev) => ({ ...prev, [cat.id]: true }));
+              }}
+              data-cursor="hover"
+            >
+              {cat.title}
+            </button>
+          ))}
+        </div>
       </div>
 
-      {/* Bento Grid with Simple Compact Cards & Click-to-Expand Details */}
-      <div className="bento-grid">
-        {categories.map((cat) => {
+      {/* Skills Grid: 1 col on mobile, 2 col on sm/md, 3 col on lg */}
+      <div className="skills-card-grid">
+        {categories.map((cat, idx) => {
           const IconComp = ICON_MAP[cat.icon] || Layers;
           const isExpanded = !!expandedCards[cat.id];
+          const previewSkills = cat.skills.slice(0, 4);
+          const hasMore = cat.skills.length > 4;
 
           return (
-            <article
+            <Card
               key={cat.id}
-              className={`bento-card bento-${cat.id} ${isExpanded ? "is-expanded" : "is-compact"}`}
+              className={`skills-stack-card ${isExpanded ? "is-expanded" : ""}`}
+              delay={idx * 0.05}
             >
-              {/* Card Header (Clickable to toggle) */}
+              {/* Card Header: 44px Icon Tile + Single-Line Title + Count Badge with Chevron */}
               <div
-                className="bento-card-header"
+                className="skills-card-header"
                 onClick={() => toggleCard(cat.id)}
                 role="button"
                 tabIndex={0}
                 aria-expanded={isExpanded}
-                aria-label={`${cat.title} details`}
+                aria-label={`Toggle ${cat.title} skills details`}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
@@ -103,78 +108,100 @@ export default function TechStackBento() {
                 }}
                 data-cursor="hover"
               >
-                <div className="bento-header-left">
-                  <div className="bento-icon-box">
+                <div className="skills-header-left">
+                  <div className="skills-icon-tile" aria-hidden="true">
                     <IconComp size={22} />
                   </div>
-                  <div>
-                    <h3 className="bento-card-title">{cat.title}</h3>
-                    <p className="bento-card-desc">{cat.description}</p>
-                  </div>
+                  <h3 className="skills-card-title truncate" title={cat.title}>
+                    {cat.title}
+                  </h3>
                 </div>
 
-                <div className="bento-toggle-indicator">
-                  <span className="bento-skills-count">{cat.skills.length} Skills</span>
-                  {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                <div className="skills-header-right">
+                  <span className="skills-count-badge">
+                    {cat.skills.length} Skills
+                  </span>
+                  <span className="skills-chevron" aria-hidden="true">
+                    {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                  </span>
                 </div>
               </div>
 
-              {/* Compact Mode: Clean inline skill tags preview */}
-              {!isExpanded && (
-                <div className="bento-compact-body">
-                  <div className="bento-mini-tags">
-                    {cat.skills.map((s) => (
-                      <span key={s.name} className="bento-mini-tag">
+              {/* Description below header at FULL card width (max 2 lines) */}
+              <p className="skills-card-desc">
+                {cat.description}
+              </p>
+
+              {/* Skill Chips Container */}
+              <div className="skills-chips-area">
+                {/* Compact Mode: First 4 chips + (+X more) chip */}
+                {!isExpanded && (
+                  <div className="skills-chips-wrap">
+                    {previewSkills.map((s) => (
+                      <span key={s.name} className="skill-chip">
                         {s.name}
                       </span>
                     ))}
+                    {hasMore && (
+                      <button
+                        type="button"
+                        className="skill-chip skill-chip-more"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleCard(cat.id);
+                        }}
+                        aria-label={`Show ${cat.skills.length - 4} more skills`}
+                      >
+                        +{cat.skills.length - 4} more
+                      </button>
+                    )}
                   </div>
+                )}
 
-                  <button
-                    type="button"
-                    className="bento-expand-btn"
-                    onClick={() => toggleCard(cat.id)}
-                    data-cursor="hover"
-                  >
-                    <span>View proficiency &amp; details</span>
-                    <ChevronDown size={14} />
-                  </button>
-                </div>
-              )}
+                {/* Expanded Mode: Full breakdown with proficiency context */}
+                {isExpanded && (
+                  <div className="skills-expanded-list">
+                    <div className="skills-chips-wrap expanded-chips">
+                      {cat.skills.map((s) => (
+                        <span key={s.name} className="skill-chip active-chip">
+                          {s.name}
+                        </span>
+                      ))}
+                    </div>
 
-              {/* Expanded Mode: Full breakdown with badges and context */}
-              {isExpanded && (
-                <div className="bento-expanded-body">
-                  <div className="bento-skills-list">
-                    {cat.skills.map((s, idx) => (
-                      <div key={idx} className="bento-skill-pill">
-                        <div className="skill-pill-top">
-                          <span className="skill-name">{s.name}</span>
-                          <span
-                            className={`skill-level-badge badge-${s.level
-                              .toLowerCase()
-                              .replace(/[^a-z0-9]/g, "-")}`}
-                          >
-                            {s.level}
-                          </span>
+                    <div className="skills-detail-pills">
+                      {cat.skills.map((s, sIdx) => (
+                        <div key={sIdx} className="skill-context-item">
+                          <div className="skill-context-top">
+                            <span className="skill-context-name">{s.name}</span>
+                            <span
+                              className={`skill-context-badge badge-${s.level
+                                .toLowerCase()
+                                .replace(/[^a-z0-9]/g, "-")}`}
+                            >
+                              {s.level}
+                            </span>
+                          </div>
+                          <span className="skill-context-text">{s.context}</span>
                         </div>
-                        <span className="skill-context">{s.context}</span>
-                      </div>
-                    ))}
-                  </div>
+                      ))}
+                    </div>
 
-                  <button
-                    type="button"
-                    className="bento-collapse-btn"
-                    onClick={() => toggleCard(cat.id)}
-                    data-cursor="hover"
-                  >
-                    <span>Show less</span>
-                    <ChevronUp size={14} />
-                  </button>
-                </div>
-              )}
-            </article>
+                    <button
+                      type="button"
+                      className="skills-collapse-trigger"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleCard(cat.id);
+                      }}
+                    >
+                      <span>Show less</span>
+                      <ChevronUp size={14} />
+                    </button>
+                  </div>
+                )}
+              </div>
+            </Card>
           );
         })}
       </div>

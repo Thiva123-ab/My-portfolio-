@@ -1,9 +1,12 @@
 import { motion, useReducedMotion } from "framer-motion";
+import TypingBox from "./TypingBox.jsx";
 
 /**
  * HeroHeading Component
  *
  * Implements refined typography, deliberate hierarchy, and perceptual 2-stop gradient.
+ * Contains the "— HELLO, I'M" eyebrow, "Thivanka Tharuka" heading, and the
+ * unified <TypingBox /> specialization badge.
  *
  * Variants:
  * - "gradient" (recommended default): Crisp off-white "Thivanka" + smooth violet-to-teal gradient "Tharuka"
@@ -68,7 +71,7 @@ export default function HeroHeading({ variant = "gradient" }) {
     },
   };
 
-  const roleVariants = {
+  const typingBoxVariants = {
     hidden: shouldReduceMotion
       ? { opacity: 1, y: 0 }
       : { opacity: 0, y: 16 },
@@ -77,7 +80,7 @@ export default function HeroHeading({ variant = "gradient" }) {
       y: 0,
       transition: {
         duration: shouldReduceMotion ? 0 : 0.6,
-        delay: shouldReduceMotion ? 0 : 0.38,
+        delay: shouldReduceMotion ? 0 : 0.32,
         ease: transitionEase,
       },
     },
@@ -90,7 +93,7 @@ export default function HeroHeading({ variant = "gradient" }) {
       initial="hidden"
       animate="visible"
     >
-      {/* Soft background radial glow (10% opacity) */}
+      {/* Soft background radial glow */}
       <div className="hero-heading-glow" aria-hidden="true" />
 
       {/* Hierarchy Step 1: Small Mono Eyebrow Greeting */}
@@ -132,17 +135,16 @@ export default function HeroHeading({ variant = "gradient" }) {
         </motion.span>
       </h1>
 
-      {/* Hierarchy Step 3: Understated, Confident Role Line */}
-      <motion.div className="hero-role-subline" variants={roleVariants}>
-        <span className="role-subline-text">
-          Full Stack Developer
-          <span className="role-subline-sep">·</span>
-          Java &amp; Spring Boot
-          <span className="role-subline-sep">·</span>
-          React &amp; TypeScript
-          <span className="role-subline-sep">·</span>
-          Kotlin
-        </span>
+      {/* Hierarchy Step 3: Rounded Specializing In Typing Box */}
+      <motion.div className="hero-typing-box-wrapper" variants={typingBoxVariants}>
+        <TypingBox
+          words={[
+            "Full Stack Developer",
+            "Java & Spring Boot",
+            "React & TypeScript",
+            "Kotlin",
+          ]}
+        />
       </motion.div>
     </motion.div>
   );

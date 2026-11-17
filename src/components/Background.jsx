@@ -80,7 +80,7 @@ export default function Background() {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${p.c}, 0.75)`;
+        ctx.fillStyle = isMobile ? `rgba(${p.c}, 0.25)` : `rgba(${p.c}, 0.75)`;
         ctx.fill();
 
         for (let j = i + 1; j < particles.length; j++) {
@@ -93,7 +93,7 @@ export default function Background() {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(q.x, q.y);
-            ctx.strokeStyle = `rgba(${p.c}, ${0.1 * (1 - dist / max)})`;
+            ctx.strokeStyle = `rgba(${p.c}, ${(isMobile ? 0.035 : 0.1) * (1 - dist / max)})`;
             ctx.lineWidth = dpr;
             ctx.stroke();
           }
