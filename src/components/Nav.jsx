@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { Search, Volume2, VolumeX, Menu, X, Download, Mail, ExternalLink } from "lucide-react";
+import { Search, Volume2, VolumeX, Menu, X, Download, Mail, Palette } from "lucide-react";
 import { Github, Linkedin } from "./BrandIcons.jsx";
 import { SITE, CV_HREF } from "../data/site.js";
 
@@ -8,8 +8,8 @@ const NAV_ITEMS = [
   { path: "/", sectionId: "hero", label: "Home" },
   { path: "/#about", sectionId: "about", label: "About" },
   { path: "/#skills", sectionId: "skills", label: "Skills" },
+  { path: "/#experience", sectionId: "experience", label: "Experience" },
   { path: "/projects", sectionId: "work", label: "Projects" },
-  { path: "/experience", label: "Experience" },
   { path: "/certifications", label: "Certifications" },
   { path: "/resume", label: "Resume" },
   { path: "/contact", label: "Contact" },
@@ -26,7 +26,7 @@ export default function Nav({ onOpenCmd, soundEnabled, onToggleSound }) {
 
   // Compact navbar height on scroll
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
@@ -53,7 +53,7 @@ export default function Nav({ onOpenCmd, soundEnabled, onToggleSound }) {
   useEffect(() => {
     if (!isHome) return;
 
-    const sections = ["hero", "about", "skills", "work", "certstrip", "contact"];
+    const sections = ["hero", "about", "skills", "experience", "work", "certstrip", "contact"];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -87,9 +87,36 @@ export default function Nav({ onOpenCmd, soundEnabled, onToggleSound }) {
 
   return (
     <header className={`nav ${scrolled ? "scrolled" : ""}`}>
+      {/* =========================================================
+          MOBILE HEADER BRAND (< 640px)
+          Left: Square rounded logo badge with glowing purple-to-teal border,
+          then "Thivanka Tharuka" (first name white, last name purple-to-teal gradient).
+          ========================================================= */}
       <NavLink
         to="/"
-        className="nav-logo"
+        className="mobile-header-brand mobile-only"
+        onClick={() => {
+          setOpen(false);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
+        aria-label="Thivanka Tharuka Home"
+      >
+        <span className="mobile-logo-badge" aria-hidden="true">
+          <span className="mobile-logo-glyph">◆</span>
+        </span>
+        <span className="mobile-brand-title">
+          <span className="mobile-first-name">Thivanka </span>
+          <span className="mobile-last-name">Tharuka</span>
+        </span>
+      </NavLink>
+
+      {/* =========================================================
+          DESKTOP & TABLET LOGO (>= 640px)
+          Original desktop wordmark preserved with 0 regressions.
+          ========================================================= */}
+      <NavLink
+        to="/"
+        className="nav-logo desktop-tablet-only"
         data-cursor="hover"
         onClick={() => {
           setOpen(false);
@@ -122,8 +149,37 @@ export default function Nav({ onOpenCmd, soundEnabled, onToggleSound }) {
         })}
       </nav>
 
-      {/* Controls: Search, Audio, Mobile Hamburger */}
-      <div className="nav-actions">
+      {/* =========================================================
+          MOBILE HEADER CONTROLS (< 640px)
+          Right: 48px rounded-xl theme/palette button & 48px rounded-xl hamburger button.
+          ========================================================= */}
+      <div className="mobile-header-controls mobile-only">
+        <button
+          type="button"
+          className="mobile-btn-48 mobile-palette-btn"
+          onClick={() => onOpenCmd(true)}
+          title="Theme & Command Palette (Ctrl+K)"
+          aria-label="Open Theme and Command Palette"
+        >
+          <Palette size={20} />
+        </button>
+
+        <button
+          type="button"
+          className={`mobile-btn-48 mobile-hamburger-btn ${open ? "open" : ""}`}
+          onClick={() => setOpen((o) => !o)}
+          aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={open}
+        >
+          {open ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </div>
+
+      {/* =========================================================
+          DESKTOP & TABLET CONTROLS (>= 640px)
+          Search, Audio toggle, and tablet drawer toggle preserved.
+          ========================================================= */}
+      <div className="nav-actions desktop-tablet-only">
         {/* Command Palette Trigger */}
         <button
           type="button"
@@ -149,9 +205,9 @@ export default function Nav({ onOpenCmd, soundEnabled, onToggleSound }) {
           {soundEnabled ? <Volume2 size={16} /> : <VolumeX size={16} />}
         </button>
 
-        {/* Mobile menu toggle (Visible below 1024px) */}
+        {/* Tablet menu toggle (Visible between 640px and 1024px) */}
         <button
-          className={`nav-toggle ${open ? "open" : ""}`}
+          className={`nav-toggle tablet-nav-toggle ${open ? "open" : ""}`}
           aria-label={open ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={open}
           onClick={() => setOpen((o) => !o)}

@@ -6,6 +6,7 @@ import Hero from "../components/Hero.jsx";
 import Marquee from "../components/Marquee.jsx";
 import About from "../components/About.jsx";
 import TechStackBento from "../components/TechStackBento.jsx";
+import ExperienceMilestones from "../components/ExperienceMilestones.jsx";
 import Reveal from "../components/Reveal.jsx";
 import ProjectCard from "../components/ProjectCard.jsx";
 import Lightbox from "../components/Lightbox.jsx";
@@ -33,6 +34,7 @@ export default function Home() {
       <Marquee />
       <About />
       <TechStackBento />
+      <ExperienceMilestones />
       
       <section className="section work" id="work">
         <div className="section-head">
