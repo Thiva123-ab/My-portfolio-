@@ -80,6 +80,19 @@ img {
   color: #fff;
 }
 
+/* ---------- Accessibility Utilities ---------- */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
 /* ---------- Background layers ---------- */
 .bg-canvas {
   position: fixed;
@@ -5404,99 +5417,144 @@ img {
    ========================================================= */
 .hero-typing-box-wrapper {
   width: 100%;
-  margin-top: 14px;
+  margin-top: 18px;
+  margin-bottom: 8px;
 }
 
-.typing-box-container {
-  border-radius: 16px;
-  background: rgba(14, 14, 22, 0.85);
-  border: 1px solid rgba(139, 124, 255, 0.35);
-  box-shadow: 0 0 20px rgba(139, 124, 255, 0.12), 0 0 28px rgba(45, 226, 200, 0.08);
-  padding: 11px 16px;
-  min-height: 48px;
+.hero-typing-box {
   width: 100%;
   max-width: 580px;
+  border-radius: 16px;
+  background: linear-gradient(var(--card), var(--card)) padding-box,
+              linear-gradient(135deg, var(--accent-purple), var(--accent-teal)) border-box;
+  border: 1px solid transparent;
+  box-shadow: 0 0 24px rgba(139, 124, 255, 0.16), 0 0 32px rgba(45, 226, 200, 0.1);
+  padding: 18px 22px;
+  min-height: 64px;
   display: flex;
   align-items: center;
-  overflow: hidden;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
-.typing-box-container:hover {
-  border-color: rgba(45, 226, 200, 0.45);
-  box-shadow: 0 0 24px rgba(139, 124, 255, 0.18), 0 0 32px rgba(45, 226, 200, 0.14);
+@media (min-width: 768px) {
+  .hero-typing-box {
+    padding: 20px 24px;
+    min-height: 68px;
+  }
 }
 
-.typing-box-content {
-  display: flex;
-  align-items: center;
+.hero-typing-box:hover {
+  box-shadow: 0 0 32px rgba(139, 124, 255, 0.24), 0 0 42px rgba(45, 226, 200, 0.18);
+}
+
+.hero-typing-inner {
   width: 100%;
-  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.typing-box-pulse {
+.hero-typing-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.hero-typing-dot-wrap {
   position: relative;
   width: 8px;
   height: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 10px;
   flex-shrink: 0;
 }
 
-.typing-box-pulse-ring {
+.hero-typing-dot-ring {
   position: absolute;
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: #2DE2C8;
+  background: var(--accent-teal);
   opacity: 0.75;
   animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
-.typing-box-pulse-dot {
+.hero-typing-dot {
   position: relative;
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #2DE2C8;
+  background: var(--accent-teal);
+  box-shadow: 0 0 8px var(--accent-teal);
 }
 
-.typing-box-label {
+.hero-typing-prefix {
   font-family: var(--font-mono, monospace);
-  font-size: 0.74rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
   letter-spacing: 0.16em;
   color: var(--muted);
-  font-weight: 700;
-  margin-right: 8px;
-  flex-shrink: 0;
   white-space: nowrap;
 }
 
-.typing-box-text-wrap {
-  display: inline-flex;
+.hero-typing-dynamic {
+  display: flex;
   align-items: center;
+  gap: 3px;
   min-width: 0;
-  overflow: hidden;
-  white-space: nowrap;
 }
 
-.typing-box-typed-text {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.88rem;
+.hero-typing-word {
+  font-family: var(--font-display, "Sora", sans-serif);
+  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
   font-weight: 600;
-  color: #ffffff;
+  background: linear-gradient(135deg, var(--accent-purple) 0%, #4EA8F3 45%, var(--accent-teal) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
-.typing-box-caret {
-  color: #2DE2C8;
-  font-weight: 300;
-  animation: caretBlink 0.9s infinite;
+.hero-typing-caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.25em;
+  background-color: var(--accent-teal);
+  box-shadow: 0 0 6px var(--accent-teal);
+  animation: caretBlink 1s infinite;
+  vertical-align: middle;
   margin-left: 2px;
+  flex-shrink: 0;
+}
+
+/* Mobile: below 640px stacked layout with stable fixed min-height */
+@media (max-width: 639px) {
+  .hero-typing-box {
+    padding: 16px;
+    min-height: 86px;
+  }
+
+  .hero-typing-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .hero-typing-prefix {
+    font-size: 0.74rem;
+    letter-spacing: 0.18em;
+  }
+
+  .hero-typing-word {
+    font-size: clamp(1.18rem, 5.2vw, 1.42rem);
+    font-weight: 600;
+    white-space: nowrap;
+  }
 }
 
 /* =========================================================

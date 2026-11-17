@@ -4,8 +4,12 @@ import { useReducedMotion } from "framer-motion";
 /**
  * Reusable TypingBox Component
  *
- * Displays a unified rounded box with a pulsing teal dot,
- * mono "SPECIALIZING IN:" label, and typewriter role animation.
+ * Displays a continuous typewriter animation inside a premium rounded card:
+ * - Mobile (< 640px): Stacked layout (pulsing dot + prefix on top, large gradient typed word below)
+ * - Desktop (>= 640px): Single-line layout (pulsing dot + prefix + gradient typed word + caret)
+ * - Fixed min-height to prevent layout jumps
+ * - Accessible sr-only text + aria-live="off"
+ * - Respects prefers-reduced-motion
  */
 export default function TypingBox({
   words = [
@@ -14,6 +18,7 @@ export default function TypingBox({
     "React & TypeScript",
     "Kotlin",
   ],
+  prefix = "Specializing in:",
   typeSpeed = 70,
   deleteSpeed = 40,
   pauseTime = 1400,
@@ -27,10 +32,10 @@ export default function TypingBox({
   useEffect(() => {
     if (shouldReduceMotion) {
       setDisplayedText(words[wordIndex]);
-      const interval = setInterval(() => {
+      const timer = setInterval(() => {
         setWordIndex((prev) => (prev + 1) % words.length);
-      }, 3000);
-      return () => clearInterval(interval);
+      }, 2000);
+      return () => clearInterval(timer);
     }
 
     const currentWord = words[wordIndex] || "";
@@ -62,31 +67,33 @@ export default function TypingBox({
 
   return (
     <div
-      className={`typing-box-container ${className}`}
+      className={`hero-typing-box ${className}`}
       role="region"
       aria-label="Technical Specialization"
     >
-      {/* Screen-reader accessible full text */}
+      {/* Screen reader accessible full text (strictly visually hidden via .sr-only) */}
       <span className="sr-only">
-        Specializing in: {words.join(", ")}
+        {prefix} {words.join(", ")}
       </span>
 
-      {/* Visual Content (aria-live off to prevent screen-reader spam) */}
-      <div className="typing-box-content" aria-live="off" aria-hidden="true">
-        {/* Pulsing Teal Indicator Dot */}
-        <span className="typing-box-pulse">
-          <span className="typing-box-pulse-ring" />
-          <span className="typing-box-pulse-dot" />
-        </span>
+      {/* Visual Presentation (aria-live off to prevent screen-reader spam) */}
+      <div className="hero-typing-inner" aria-hidden="true" aria-live="off">
+        {/* Pulsing Teal Dot + Prefix Label */}
+        <div className="hero-typing-meta">
+          <span className="hero-typing-dot-wrap">
+            <span className="hero-typing-dot-ring" />
+            <span className="hero-typing-dot" />
+          </span>
+          <span className="hero-typing-prefix">{prefix}</span>
+        </div>
 
-        {/* Monospace Eyebrow Label */}
-        <span className="typing-box-label">SPECIALIZING IN:</span>
-
-        {/* Dynamic Typed Role on the Same Line */}
-        <span className="typing-box-text-wrap">
-          <span className="typing-box-typed-text">{displayedText}</span>
-          {!shouldReduceMotion && <span className="typing-box-caret">|</span>}
-        </span>
+        {/* Dynamic Typed Word in Gradient + 2px Teal Caret */}
+        <div className="hero-typing-dynamic">
+          <span className="hero-typing-word">
+            {displayedText}
+          </span>
+          {!shouldReduceMotion && <span className="hero-typing-caret" />}
+        </div>
       </div>
     </div>
   );

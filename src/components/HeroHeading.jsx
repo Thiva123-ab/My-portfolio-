@@ -144,6 +144,7 @@ export default function HeroHeading({ variant = "gradient" }) {
             "React & TypeScript",
             "Kotlin",
           ]}
+          prefix="Specializing in:"
         />
       </motion.div>
     </motion.div>
