@@ -8,8 +8,15 @@ import profile from "../assets/profile.png";
 import { SITE, CV_HREF } from "../data/site.js";
 
 const TITLE_LINES = [
-  [{ text: "Full", cls: "shimmer" }, { text: "Stack", cls: "shimmer" }],
-  [{ text: "Developer", cls: "gradient-text" }],
+  [{ text: "Hi,", cls: "shimmer" }, { text: "I’m", cls: "shimmer" }],
+  [{ text: "Thivanka", cls: "gradient-text" }, { text: "Tharuka", cls: "gradient-text" }],
+];
+
+const ROLES = [
+  "Full Stack Developer",
+  "Software Engineer",
+  "Java & Spring Boot Developer",
+  "React & TypeScript Developer",
 ];
 
 const SPECIALTIES = [
@@ -24,14 +31,52 @@ export default function Hero() {
   const ghostRef = useMagnetic(0.25);
   const linkedRef = useMagnetic(0.25);
   const [specIndex, setSpecIndex] = useState(0);
+
+  // Typewriter effect state
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [typedText, setTypedText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
   let charIndex = 0;
 
+  // Specialties rotation timer
   useEffect(() => {
     const timer = setInterval(() => {
       setSpecIndex((prev) => (prev + 1) % SPECIALTIES.length);
-    }, 2800);
+    }, 3200);
     return () => clearInterval(timer);
   }, []);
+
+  // Continuous professional typewriter animation
+  useEffect(() => {
+    const currentFull = ROLES[roleIndex];
+    let timeout;
+
+    if (!isDeleting) {
+      if (typedText.length < currentFull.length) {
+        timeout = setTimeout(() => {
+          setTypedText(currentFull.slice(0, typedText.length + 1));
+        }, 85);
+      } else {
+        // Word completed: pause before erasing
+        timeout = setTimeout(() => {
+          setIsDeleting(true);
+        }, 2200);
+      }
+    } else {
+      if (typedText.length > 0) {
+        timeout = setTimeout(() => {
+          setTypedText(currentFull.slice(0, typedText.length - 1));
+        }, 40);
+      } else {
+        // Erased: switch to next role
+        setIsDeleting(false);
+        setRoleIndex((prev) => (prev + 1) % ROLES.length);
+      }
+    }
+
+    return () => clearTimeout(timeout);
+  }, [typedText, isDeleting, roleIndex]);
 
   return (
     <section className="hero" id="hero">
@@ -42,6 +87,7 @@ export default function Hero() {
             <span>Available for Opportunities</span>
           </Reveal>
 
+          {/* Main Title: Hi, I'm Thivanka Tharuka */}
           <h1 className="hero-title">
             {TITLE_LINES.map((line, li) => (
               <span className="line" key={li}>
@@ -71,7 +117,19 @@ export default function Hero() {
             ))}
           </h1>
 
-          <Reveal className="hero-tagline-wrap" delay={0.15}>
+          {/* Subtitle Line with Continuous Professional Typewriter Animation */}
+          <Reveal className="hero-typewriter-wrap" delay={0.12}>
+            <div className="hero-typewriter-box">
+              <span className="typewriter-badge">Role</span>
+              <h2 className="hero-typewriter-text">
+                <span>{typedText}</span>
+                <span className="hero-typewriter-cursor">|</span>
+              </h2>
+            </div>
+          </Reveal>
+
+          {/* Specialization Rotating Tagline */}
+          <Reveal className="hero-tagline-wrap" delay={0.16}>
             <div className="hero-tagline-pill">
               <span className="hero-tagline-dot" />
               <span className="hero-tagline-label">Specializing in:</span>

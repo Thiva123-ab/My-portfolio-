@@ -822,12 +822,84 @@ img {
     }
   }
 
+  /* Hero Typewriter Subtitle */
+  .hero-typewriter-wrap {
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-typewriter-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 7px 18px;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(124, 92, 255, 0.28);
+    border-radius: 999px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  .typewriter-badge {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: rgba(24, 224, 200, 0.15);
+    border: 1px solid rgba(24, 224, 200, 0.4);
+    color: #18e0c8;
+    padding: 3px 9px;
+    border-radius: 999px;
+  }
+
+  .hero-typewriter-text {
+    font-family: var(--font-display);
+    font-size: clamp(1.18rem, 2.4vw, 1.6rem);
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: -0.01em;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .hero-typewriter-cursor {
+    display: inline-block;
+    margin-left: 3px;
+    color: #18e0c8;
+    font-weight: 300;
+    animation: blinkCursor 0.9s infinite;
+  }
+
+  @keyframes blinkCursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
   .hero-tagline-wrap {
     margin-bottom: 24px;
     display: flex;
   }
 
   @media (max-width: 880px) {
+    .hero-typewriter-wrap {
+      justify-content: center;
+      width: 100%;
+      margin-bottom: 12px;
+    }
+
+    .hero-typewriter-box {
+      padding: 6px 14px;
+      gap: 8px;
+      max-width: 100%;
+    }
+
+    .hero-typewriter-text {
+      font-size: clamp(1rem, 4.6vw, 1.25rem);
+    }
+
     .hero-tagline-wrap {
       justify-content: center;
     }
@@ -2477,6 +2549,22 @@ img {
       letter-spacing: -0.03em;
       margin-bottom: 14px;
       word-break: break-word;
+    }
+
+    .hero-typewriter-wrap {
+      justify-content: center;
+      width: 100%;
+      margin-bottom: 12px;
+    }
+
+    .hero-typewriter-box {
+      padding: 6px 14px;
+      gap: 8px;
+      max-width: 100%;
+    }
+
+    .hero-typewriter-text {
+      font-size: clamp(1rem, 4.6vw, 1.25rem);
     }
 
     .hero-tagline-wrap {
