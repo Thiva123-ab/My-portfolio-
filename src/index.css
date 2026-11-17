@@ -698,6 +698,138 @@ img {
     }
   }
 
+  /* ==========================================================================
+     Refined Hero Intro Heading (Linear / Stripe Polish)
+     ========================================================================== */
+  .hero-intro-header {
+    position: relative;
+    margin-bottom: 24px;
+    text-align: left;
+    width: 100%;
+  }
+
+  /* Soft background ambient radial glow (8-12% opacity) */
+  .hero-heading-glow {
+    position: absolute;
+    top: -30%;
+    left: -15%;
+    width: 130%;
+    height: 160%;
+    background: radial-gradient(
+      ellipse 65% 55% at 25% 45%,
+      rgba(139, 124, 255, 0.12) 0%,
+      rgba(45, 226, 200, 0.05) 50%,
+      transparent 75%
+    );
+    pointer-events: none;
+    filter: blur(48px);
+    z-index: 0;
+  }
+
+  /* Eyebrow Greeting (Small Mono) */
+  .hero-eyebrow-mono {
+    font-family: var(--font-mono, "JetBrains Mono", monospace);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .eyebrow-dash {
+    color: #2DE2C8;
+    font-weight: 700;
+  }
+
+  /* Semantic <h1> Name Element */
+  .hero-heading-title {
+    font-family: var(--font-display, "Space Grotesk", sans-serif);
+    font-weight: 600;
+    font-size: clamp(2.5rem, 8vw, 6.25rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+  }
+
+  .variant-bold .hero-heading-title {
+    font-weight: 700;
+  }
+
+  .name-line {
+    display: inline-block;
+    position: relative;
+  }
+
+  .name-line.line-second {
+    display: inline-flex;
+    flex-direction: column;
+    width: fit-content;
+  }
+
+  /* Off-White Text */
+  .text-offwhite {
+    color: #F4F4F8;
+    text-shadow: 0 2px 24px rgba(255, 255, 255, 0.06);
+  }
+
+  /* Refined 2-Stop Gradient (Zero Muddy Grey) */
+  .text-gradient-refined {
+    background: linear-gradient(135deg, #8B7CFF 0%, #4EA8F3 46%, #2DE2C8 100%);
+    background-size: 100% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 24px rgba(139, 124, 255, 0.22));
+  }
+
+  /* Subtle Accent Underline (2.5px, animates in under "Tharuka") */
+  .hero-accent-underline {
+    display: block;
+    height: 2.5px;
+    width: 100%;
+    margin-top: 6px;
+    background: linear-gradient(90deg, #8B7CFF 0%, #2DE2C8 100%);
+    border-radius: 999px;
+    box-shadow: 0 0 12px rgba(45, 226, 200, 0.4);
+  }
+
+  /* Understated Role Subline */
+  .hero-role-subline {
+    margin-top: 18px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .role-subline-text {
+    font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .role-subline-sep {
+    color: #8B7CFF;
+    font-weight: 700;
+    opacity: 0.8;
+  }
+
   .hero-title {
     font-family: var(--font-display);
     font-weight: 800;
@@ -2524,8 +2656,8 @@ img {
     .hero-layout {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
+      align-items: flex-start;
+      text-align: left;
       gap: 28px;
       width: 100%;
     }
@@ -2533,8 +2665,8 @@ img {
     .hero-inner {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
+      align-items: flex-start;
+      text-align: left;
       width: 100%;
     }
 
@@ -2543,32 +2675,31 @@ img {
       font-size: 0.78rem;
     }
 
-    .hero-title {
-      font-size: clamp(2.1rem, 9.5vw, 3.2rem);
-      line-height: 1.08;
-      letter-spacing: -0.03em;
-      margin-bottom: 14px;
-      word-break: break-word;
+    .hero-intro-header {
+      text-align: left;
+      margin-bottom: 18px;
     }
 
-    .hero-typewriter-wrap {
-      justify-content: center;
-      width: 100%;
-      margin-bottom: 12px;
+    .hero-eyebrow-mono {
+      justify-content: flex-start;
     }
 
-    .hero-typewriter-box {
-      padding: 6px 14px;
-      gap: 8px;
-      max-width: 100%;
+    .hero-heading-title {
+      font-size: clamp(2.35rem, 10vw, 3.4rem);
+      text-align: left;
     }
 
-    .hero-typewriter-text {
-      font-size: clamp(1rem, 4.6vw, 1.25rem);
+    .hero-role-subline {
+      margin-top: 14px;
+    }
+
+    .role-subline-text {
+      font-size: 0.98rem;
+      justify-content: flex-start;
     }
 
     .hero-tagline-wrap {
-      justify-content: center;
+      justify-content: flex-start;
       width: 100%;
       margin-bottom: 14px;
     }
@@ -2583,7 +2714,8 @@ img {
       font-size: 0.92rem;
       line-height: 1.5;
       max-width: 44ch;
-      margin: 0 auto 20px;
+      margin: 0 0 20px 0;
+      text-align: left;
     }
 
     .hero-cta {
@@ -2887,7 +3019,139 @@ img {
       grid-template-columns: 1fr;
       gap: 8px;
     }
-    .hero-title {
+    /* ==========================================================================
+     Refined Hero Intro Heading (Linear / Stripe Polish)
+     ========================================================================== */
+  .hero-intro-header {
+    position: relative;
+    margin-bottom: 24px;
+    text-align: left;
+    width: 100%;
+  }
+
+  /* Soft background ambient radial glow (8-12% opacity) */
+  .hero-heading-glow {
+    position: absolute;
+    top: -30%;
+    left: -15%;
+    width: 130%;
+    height: 160%;
+    background: radial-gradient(
+      ellipse 65% 55% at 25% 45%,
+      rgba(139, 124, 255, 0.12) 0%,
+      rgba(45, 226, 200, 0.05) 50%,
+      transparent 75%
+    );
+    pointer-events: none;
+    filter: blur(48px);
+    z-index: 0;
+  }
+
+  /* Eyebrow Greeting (Small Mono) */
+  .hero-eyebrow-mono {
+    font-family: var(--font-mono, "JetBrains Mono", monospace);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .eyebrow-dash {
+    color: #2DE2C8;
+    font-weight: 700;
+  }
+
+  /* Semantic <h1> Name Element */
+  .hero-heading-title {
+    font-family: var(--font-display, "Space Grotesk", sans-serif);
+    font-weight: 600;
+    font-size: clamp(2.5rem, 8vw, 6.25rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+  }
+
+  .variant-bold .hero-heading-title {
+    font-weight: 700;
+  }
+
+  .name-line {
+    display: inline-block;
+    position: relative;
+  }
+
+  .name-line.line-second {
+    display: inline-flex;
+    flex-direction: column;
+    width: fit-content;
+  }
+
+  /* Off-White Text */
+  .text-offwhite {
+    color: #F4F4F8;
+    text-shadow: 0 2px 24px rgba(255, 255, 255, 0.06);
+  }
+
+  /* Refined 2-Stop Gradient (Zero Muddy Grey) */
+  .text-gradient-refined {
+    background: linear-gradient(135deg, #8B7CFF 0%, #4EA8F3 46%, #2DE2C8 100%);
+    background-size: 100% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 24px rgba(139, 124, 255, 0.22));
+  }
+
+  /* Subtle Accent Underline (2.5px, animates in under "Tharuka") */
+  .hero-accent-underline {
+    display: block;
+    height: 2.5px;
+    width: 100%;
+    margin-top: 6px;
+    background: linear-gradient(90deg, #8B7CFF 0%, #2DE2C8 100%);
+    border-radius: 999px;
+    box-shadow: 0 0 12px rgba(45, 226, 200, 0.4);
+  }
+
+  /* Understated Role Subline */
+  .hero-role-subline {
+    margin-top: 18px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .role-subline-text {
+    font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .role-subline-sep {
+    color: #8B7CFF;
+    font-weight: 700;
+    opacity: 0.8;
+  }
+
+  .hero-title {
       font-size: 1.95rem;
     }
     .hero-cta-secondary-row {
