@@ -44,7 +44,6 @@ export default function Hero() {
     };
 
     const updateTilt = () => {
-      // Spring interpolation
       currentX += (targetX - currentX) * 0.12;
       currentY += (targetY - currentY) * 0.12;
       frame.style.transform = `perspective(900px) rotateY(${currentX.toFixed(2)}deg) rotateX(${currentY.toFixed(2)}deg)`;
@@ -69,18 +68,18 @@ export default function Hero() {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: shouldReduceMotion ? 0 : 0.08,
-        delayChildren: shouldReduceMotion ? 0 : 0.05,
+        staggerChildren: shouldReduceMotion ? 0 : 0.07,
+        delayChildren: shouldReduceMotion ? 0 : 0.04,
       },
     },
   };
 
   const itemVariants = {
-    hidden: shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+    hidden: shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.65, ease: easeCurve },
+      transition: { duration: 0.6, ease: easeCurve },
     },
   };
 
@@ -89,7 +88,7 @@ export default function Hero() {
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.8, ease: easeCurve, delay: shouldReduceMotion ? 0 : 0.2 },
+      transition: { duration: 0.75, ease: easeCurve, delay: shouldReduceMotion ? 0 : 0.18 },
     },
   };
 
@@ -108,11 +107,10 @@ export default function Hero() {
         >
           {/* =========================================================
               LEFT COLUMN (7 cols on Desktop)
-              Badge -> Eyebrow -> Name -> Typing Pill -> Bio -> CTAs -> Trust
               ========================================================= */}
           <div className="hero-content-col">
-            {/* 1. Availability Status Badge */}
-            <motion.div variants={itemVariants}>
+            {/* Desktop Only: Availability Status Badge */}
+            <motion.div variants={itemVariants} className="hero-desktop-only">
               <div className="hero-status-pill" role="status" aria-label="Available for Opportunities">
                 <span className="hero-status-pulse" aria-hidden="true">
                   <span className="pulse-ring" />
@@ -122,15 +120,49 @@ export default function Hero() {
               </div>
             </motion.div>
 
-            {/* 2. Mono Eyebrow Greeting */}
-            <motion.div variants={itemVariants}>
+            {/* Desktop Only: Eyebrow Greeting */}
+            <motion.div variants={itemVariants} className="hero-desktop-only">
               <p className="hero-eyebrow-mono">
                 <span className="eyebrow-dash">—</span>
                 <span>HELLO, I’M</span>
               </p>
             </motion.div>
 
-            {/* 3. Primary Name Heading (Single <h1> for Accessibility & SEO) */}
+            {/* Mobile Only: Top Compact Identity Row
+                Left: Badge + Eyebrow | Right: Compact 108px Portrait
+                This keeps the photo visible without pushing the name down */}
+            <motion.div variants={itemVariants} className="hero-mobile-identity-row hero-mobile-only">
+              <div className="hero-mobile-meta">
+                <div className="hero-status-pill" role="status" aria-label="Available for Opportunities">
+                  <span className="hero-status-pulse" aria-hidden="true">
+                    <span className="pulse-ring" />
+                    <span className="pulse-dot" />
+                  </span>
+                  <span className="hero-status-text">Available for Opportunities</span>
+                </div>
+
+                <p className="hero-eyebrow-mono">
+                  <span className="eyebrow-dash">—</span>
+                  <span>HELLO, I’M</span>
+                </p>
+              </div>
+
+              <div className="hero-mobile-portrait-wrap">
+                <div className="hero-mobile-portrait-frame">
+                  <img
+                    src={profile}
+                    alt="Portrait of Thivanka Tharuka"
+                    className="hero-mobile-portrait-img"
+                    width={108}
+                    height={108}
+                    loading="eager"
+                    fetchPriority="high"
+                  />
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Primary Name Heading (Single <h1> for Accessibility & SEO) */}
             <motion.div variants={itemVariants}>
               <h1 className="hero-heading-title" id="hero-title" aria-label="Thivanka Tharuka">
                 <span className="sr-only">Thivanka Tharuka</span>
@@ -144,7 +176,7 @@ export default function Hero() {
               </h1>
             </motion.div>
 
-            {/* 4. Compact Specializing In Typing Pill */}
+            {/* Compact Specializing In Typing Pill */}
             <motion.div variants={itemVariants} className="hero-typing-wrap">
               <TypingBox
                 words={[
@@ -157,7 +189,7 @@ export default function Hero() {
               />
             </motion.div>
 
-            {/* 5. Balanced Bio Paragraph */}
+            {/* Balanced Bio Paragraph (16-18px, 52-54ch, text-wrap: pretty) */}
             <motion.div variants={itemVariants}>
               <p className="hero-bio-lead">
                 Computer Science undergraduate at NSBM Green University (graduating Feb 2028).
@@ -169,10 +201,10 @@ export default function Hero() {
               </p>
             </motion.div>
 
-            {/* 6. CTA Action Row */}
-            <motion.div variants={itemVariants}>
+            {/* Desktop CTA Action Row (>= 1024px) */}
+            <motion.div variants={itemVariants} className="hero-desktop-only w-full">
               <div className="hero-cta-group">
-                {/* Primary Button: View projects */}
+                {/* Primary Button */}
                 <Link
                   ref={primaryRef}
                   to="/projects"
@@ -184,7 +216,7 @@ export default function Hero() {
                   <ArrowRight size={16} className="hero-cta-arrow" />
                 </Link>
 
-                {/* Secondary Button: Download CV */}
+                {/* Secondary Button */}
                 <a
                   ref={secondaryRef}
                   href={CV_HREF}
@@ -197,7 +229,7 @@ export default function Hero() {
                   <span>Download CV</span>
                 </a>
 
-                {/* Ghost Icon Buttons: LinkedIn & GitHub */}
+                {/* Social Icon Buttons */}
                 <div className="hero-cta-socials">
                   <a
                     href={SITE.linkedin}
@@ -226,7 +258,45 @@ export default function Hero() {
               </div>
             </motion.div>
 
-            {/* 7. Trust Row (Real Data Only) */}
+            {/* Mobile CTA Action Group (< 1024px)
+                Primary 'View projects' full-width (52px), then 'Download CV' and 'LinkedIn' in a 2-col row (48px) */}
+            <motion.div variants={itemVariants} className="hero-mobile-only w-full">
+              <div className="hero-mobile-cta-stack">
+                <Link
+                  to="/projects"
+                  className="btn btn-primary hero-mobile-btn-primary"
+                  title="Explore full projects portfolio"
+                >
+                  <span>View projects</span>
+                  <ArrowRight size={16} />
+                </Link>
+
+                <div className="hero-mobile-cta-row">
+                  <a
+                    href={CV_HREF}
+                    download="Thivanka_Tharuka_CV.pdf"
+                    className="btn btn-secondary-glass hero-mobile-btn-secondary"
+                    title="Download CV (PDF)"
+                  >
+                    <Download size={15} />
+                    <span>Download CV</span>
+                  </a>
+
+                  <a
+                    href={SITE.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-secondary-glass hero-mobile-btn-secondary"
+                    title="LinkedIn Profile"
+                  >
+                    <Linkedin size={15} />
+                    <span>LinkedIn</span>
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Trust Row (Small, Real Data Only) */}
             <motion.div variants={itemVariants}>
               <div className="hero-trust-row" aria-label="Academic & Geographic Details">
                 <span className="trust-item">
@@ -248,10 +318,10 @@ export default function Hero() {
           </div>
 
           {/* =========================================================
-              RIGHT COLUMN (5 cols on Desktop)
+              RIGHT COLUMN (5 cols on Desktop, Hidden on Mobile < 1024px)
               3D Framed Portrait + Floating Tech Chips + Location Badge
               ========================================================= */}
-          <div className="hero-portrait-col" ref={cardRef}>
+          <div className="hero-portrait-col hero-desktop-only" ref={cardRef}>
             <motion.div className="hero-portrait-wrap" variants={portraitVariants}>
               {/* Rotating thin gradient halo ring */}
               <div className="hero-halo-ring" aria-hidden="true" />
