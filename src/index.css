@@ -10929,6 +10929,7 @@ img {
     width: 100% !important;
     max-width: 100% !important;
     overflow: hidden !important;
+    contain: paint !important;
     position: relative !important;
     margin-top: 10px !important;
     padding: 10px 0 !important;
@@ -10956,6 +10957,9 @@ img {
   .hero-mobile-portrait-frame {
     width: 76px !important;
     height: 76px !important;
+  }
+  .hero-mobile-cta-row {
+    grid-template-columns: 1fr !important;
   }
 }
 
