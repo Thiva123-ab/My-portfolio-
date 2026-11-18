@@ -6485,14 +6485,14 @@ img {
   }
 }
 
-/* Compact Mobile Identity Row */
+/* Compact Mobile Identity Row (Portrait on Left, Meta on Right) */
 .hero-mobile-identity-row {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 16px;
-  margin-bottom: 2px;
+  margin-bottom: 6px;
 }
 
 .hero-mobile-meta {
@@ -6506,6 +6506,8 @@ img {
 
 .hero-mobile-portrait-wrap {
   flex-shrink: 0;
+  transform: none;
+  transition: none;
 }
 
 .hero-mobile-portrait-frame {
@@ -6521,6 +6523,8 @@ img {
   padding: 3px;
   box-shadow: 0 0 20px rgba(139, 124, 255, 0.25), 0 0 30px rgba(45, 226, 200, 0.15);
   overflow: hidden;
+  transform: none;
+  transition: none;
 }
 
 @media (min-width: 400px) {
@@ -6537,6 +6541,8 @@ img {
   object-fit: cover;
   border-radius: 15px;
   display: block;
+  transform: none;
+  transition: none;
 }
 
 /* Mobile Hero Buttons Stack */
@@ -10787,16 +10793,16 @@ img {
     display: flex !important;
   }
 
-  /* Compact Identity Row Sizing Fix */
+  /* Compact Identity Row Sizing Fix (Portrait on Left, Meta on Right) */
   .hero-mobile-identity-row {
     width: 100% !important;
     max-width: 100% !important;
     min-width: 0 !important;
     display: flex !important;
     align-items: center !important;
-    justify-content: space-between !important;
-    gap: 12px !important;
-    margin-bottom: 4px !important;
+    justify-content: flex-start !important;
+    gap: 16px !important;
+    margin-bottom: 8px !important;
     box-sizing: border-box !important;
   }
 
@@ -10804,6 +10810,7 @@ img {
     display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
+    justify-content: center !important;
     gap: 6px !important;
     min-width: 0 !important;
     flex: 1 1 auto !important;
@@ -10814,13 +10821,15 @@ img {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    transform: none !important;
+    transition: none !important;
   }
 
   .hero-mobile-portrait-frame {
-    width: clamp(76px, 20vw, 96px) !important;
-    height: clamp(76px, 20vw, 96px) !important;
+    width: clamp(96px, 26vw, 116px) !important;
+    height: clamp(96px, 26vw, 116px) !important;
     aspect-ratio: 1 / 1 !important;
-    border-radius: 18px !important;
+    border-radius: 20px !important;
     background: #0d0d16 !important;
     border: 1.5px solid transparent !important;
     background-image: linear-gradient(#0d0d16, #0d0d16), linear-gradient(135deg, #8b7cff, #2de2c8) !important;
@@ -10828,17 +10837,26 @@ img {
     -webkit-background-clip: padding-box, border-box !important;
     background-clip: padding-box, border-box !important;
     padding: 2.5px !important;
-    box-shadow: 0 0 16px rgba(139, 124, 255, 0.25), 0 0 24px rgba(45, 226, 200, 0.15) !important;
+    box-shadow: 0 0 18px rgba(139, 124, 255, 0.28), 0 0 26px rgba(45, 226, 200, 0.16) !important;
     overflow: hidden !important;
     box-sizing: border-box !important;
+    transform: none !important;
+    transition: none !important;
   }
 
   .hero-mobile-portrait-img {
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
-    border-radius: 15px !important;
+    border-radius: 17px !important;
     display: block !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* Hide Specializing In Typing Pill on Mobile */
+  .hero-typing-wrap {
+    display: none !important;
   }
 
   .hero-status-pill {
@@ -10992,15 +11010,15 @@ img {
     gap: 2px !important;
   }
   .hero-mobile-identity-row {
-    gap: 8px !important;
+    gap: 12px !important;
   }
   .hero-status-pill {
     padding: 3px 8px !important;
     font-size: 0.65rem !important;
   }
   .hero-mobile-portrait-frame {
-    width: 76px !important;
-    height: 76px !important;
+    width: 86px !important;
+    height: 86px !important;
   }
   .hero-mobile-cta-row {
     grid-template-columns: 1fr !important;

@@ -131,9 +131,27 @@ export default function Hero({ mobileAlign = "left" }) {
             </motion.div>
 
             {/* Mobile Only: Top Compact Identity Row
-                Left: Badge + Eyebrow | Right: Sized Responsive Portrait
+                Left: Portrait (enlarged & locked in place) | Right: Badge + Eyebrow
                 Stays fully inside the container with zero overflow */}
-            <motion.div variants={itemVariants} className="hero-mobile-identity-row hero-mobile-only">
+            <motion.div
+              initial={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="hero-mobile-identity-row hero-mobile-only"
+            >
+              <div className="hero-mobile-portrait-wrap">
+                <div className="hero-mobile-portrait-frame">
+                  <img
+                    src={profile}
+                    alt="Portrait of Thivanka Tharuka"
+                    className="hero-mobile-portrait-img"
+                    width={108}
+                    height={108}
+                    loading="eager"
+                    fetchPriority="high"
+                  />
+                </div>
+              </div>
+
               <div className="hero-mobile-meta">
                 <div className="hero-status-pill" role="status" aria-label="Available for Opportunities">
                   <span className="hero-status-pulse" aria-hidden="true">
@@ -147,20 +165,6 @@ export default function Hero({ mobileAlign = "left" }) {
                   <span className="eyebrow-dash">—</span>
                   <span>HELLO, I’M</span>
                 </p>
-              </div>
-
-              <div className="hero-mobile-portrait-wrap">
-                <div className="hero-mobile-portrait-frame">
-                  <img
-                    src={profile}
-                    alt="Portrait of Thivanka Tharuka"
-                    className="hero-mobile-portrait-img"
-                    width={96}
-                    height={96}
-                    loading="eager"
-                    fetchPriority="high"
-                  />
-                </div>
               </div>
             </motion.div>
 
@@ -178,8 +182,8 @@ export default function Hero({ mobileAlign = "left" }) {
               </h1>
             </motion.div>
 
-            {/* Compact Specializing In Typing Pill */}
-            <motion.div variants={itemVariants} className="hero-typing-wrap w-full min-w-0">
+            {/* Specializing In Typing Pill (Desktop Only - hidden on mobile) */}
+            <motion.div variants={itemVariants} className="hero-typing-wrap hero-desktop-only w-full min-w-0">
               <TypingBox
                 words={[
                   "Full Stack Developer",
