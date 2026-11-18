@@ -1,9 +1,14 @@
 import { useRef, useEffect } from "react";
-import { MapPin, GraduationCap, FolderGit2, CheckCircle, Clock } from "lucide-react";
+import { MapPin, GraduationCap, Clock } from "lucide-react";
 import Reveal from "./Reveal.jsx";
 import profile from "../assets/profile.png";
 import { SITE } from "../data/site.js";
 import NowBlock from "./NowBlock.jsx";
+import AboutStatsBento from "./about/AboutStatsBento.jsx";
+import AboutGlanceCard from "./about/AboutGlanceCard.jsx";
+import AboutCoreStackCard from "./about/AboutCoreStackCard.jsx";
+import AboutFeaturedCard from "./about/AboutFeaturedCard.jsx";
+import AboutQuickActions from "./about/AboutQuickActions.jsx";
 
 function TiltCard() {
   const wrapRef = useRef(null);
@@ -20,7 +25,7 @@ function TiltCard() {
       const r = wrap.getBoundingClientRect();
       const px = (e.clientX - r.left) / r.width - 0.5;
       const py = (e.clientY - r.top) / r.height - 0.5;
-      tilt.style.transform = `rotateY(${px * 12}deg) rotateX(${-py * 12}deg)`;
+      tilt.style.transform = `rotateY(${px * 10}deg) rotateX(${-py * 10}deg)`;
     };
     const onLeave = () => {
       tilt.style.transform = "rotateY(0) rotateX(0)";
@@ -61,54 +66,87 @@ function TiltCard() {
 
 export default function About() {
   return (
-    <section className="section about" id="about">
+    <section className="section about" id="about" aria-labelledby="about-heading">
+      {/* Subtle floating ambient glow behind the right column for depth */}
+      <div className="about-bg-glow" aria-hidden="true" />
+
       <div className="section-head">
         <span className="section-index">01</span>
-        <Reveal as="h2" className="section-title">
+        <Reveal as="h2" id="about-heading" className="section-title">
           About Me
         </Reveal>
       </div>
+
       <div className="about-grid">
-        <Reveal className="about-text" delay={0.1}>
-          <p className="lead">
-            I’m {SITE.name} — a Full Stack Developer and Computer Science undergraduate at NSBM Green
-            University, dedicated to architecting and building high-performance digital products.
-          </p>
-          <p>
-            I build full-stack systems in <strong>Java</strong>,
-            <strong> Spring Boot</strong>, <strong>React</strong>, and
-            <strong> Kotlin</strong>. Evidence is in the repos: flood-relief
-            coordination (Spring, WebSockets, Leaflet), LectureLens (React,
-            TypeScript, Supabase, AI), and FocusFlow (Compose + Room).
-          </p>
-          <p>
-            Cloud practice is honest and still growing: <strong>Docker</strong>,
-            AWS Educate Cloud 101, KodeKloud AWS labs, and Kubernetes for
-            beginners. I do not claim equal expertise across AWS, GCP, and Azure.
-          </p>
-          <div className="about-facts">
-            <div className="fact">
-              <strong>NSBM</strong>
-              <small>BSc (Hons) CS · 2024–Feb 2028</small>
-            </div>
-            <div className="fact">
-              <strong>12</strong>
-              <small>Featured public projects</small>
-            </div>
-            <div className="fact">
-              <strong>Status</strong>
-              <small>Open to Opportunities</small>
-            </div>
-          </div>
+        {/* =========================================================
+            LEFT COLUMN (approx 7 / 12 on Desktop)
+            Intro statement, paragraphs, bento stats, and Current Focus Now card
+            ========================================================= */}
+        <div className="about-text-col">
+          <Reveal className="about-intro-block" delay={0.05}>
+            <p className="lead">
+              I’m {SITE.name} — a Full Stack Developer and Computer Science undergraduate at NSBM Green
+              University, dedicated to architecting and building high-performance digital products.
+            </p>
+            <p>
+              I build full-stack systems in <strong>Java</strong>,
+              <strong> Spring Boot</strong>, <strong>React</strong>, and
+              <strong> Kotlin</strong>. Evidence is in the repos: flood-relief
+              coordination (Spring, WebSockets, Leaflet), LectureLens (React,
+              TypeScript, Supabase, AI), and FocusFlow (Compose + Room).
+            </p>
+            <p>
+              Cloud practice is honest and still growing: <strong>Docker</strong>,
+              AWS Educate Cloud 101, KodeKloud AWS labs, and Kubernetes for
+              beginners. I do not claim equal expertise across AWS, GCP, and Azure.
+            </p>
+          </Reveal>
 
-          <div style={{ marginTop: "24px" }}>
-            <NowBlock />
-          </div>
-        </Reveal>
+          {/* Bento Stats Row with Animated Count-up */}
+          <Reveal delay={0.1}>
+            <AboutStatsBento />
+          </Reveal>
 
-        <Reveal delay={0.25} className="about-tilt-wrap">
-          <TiltCard />
-        </Reveal>
+          {/* Current Focus · Now Card */}
+          <Reveal delay={0.15} className="about-now-wrap">
+            <div style={{ marginTop: "24px" }}>
+              <NowBlock />
+            </div>
+          </Reveal>
+        </div>
+
+        {/* =========================================================
+            RIGHT COLUMN (approx 5 / 12 on Desktop, Sticky)
+            Profile Card, At A Glance, Core Stack, Featured Spotlight, Quick Actions
+            ========================================================= */}
+        <aside className="about-sticky-col" aria-label="Profile and quick highlights">
+          <div className="about-cards-stack">
+            {/* 1. Profile Tilt Card */}
+            <Reveal delay={0.1} className="about-profile-card-wrap">
+              <TiltCard />
+            </Reveal>
+
+            {/* 2. At A Glance Card */}
+            <Reveal delay={0.18}>
+              <AboutGlanceCard />
+            </Reveal>
+
+            {/* 3. Core Tech Stack Card */}
+            <Reveal delay={0.26}>
+              <AboutCoreStackCard />
+            </Reveal>
+
+            {/* 4. Featured Project Spotlight Card */}
+            <Reveal delay={0.34}>
+              <AboutFeaturedCard />
+            </Reveal>
+
+            {/* 5. Quick Actions Row */}
+            <Reveal delay={0.42}>
+              <AboutQuickActions />
+            </Reveal>
+          </div>
+        </aside>
       </div>
     </section>
   );
