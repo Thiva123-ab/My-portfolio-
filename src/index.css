@@ -2813,8 +2813,13 @@ img {
 
     .filter-row-wrap {
       overflow-x: auto;
-      scrollbar-width: none;
+      -ms-overflow-style: none;
       padding-bottom: 6px;
+    }
+    @supports (scrollbar-width: none) {
+      .filter-row-wrap {
+        scrollbar-width: none;
+      }
     }
     .filter-row-wrap::-webkit-scrollbar {
       display: none;
@@ -5481,8 +5486,13 @@ img {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   padding-bottom: 8px;
-  scrollbar-width: none;
   -ms-overflow-style: none;
+}
+
+@supports (scrollbar-width: none) {
+  .skills-filter-tabs {
+    scrollbar-width: none;
+  }
 }
 
 .skills-filter-tabs::-webkit-scrollbar {
@@ -6055,6 +6065,7 @@ img {
   letter-spacing: -0.02em;
   color: #f4f4f8;
   cursor: pointer;
+  -webkit-user-select: none;
   user-select: none;
   flex-shrink: 0;
   transition: opacity 0.2s ease;
@@ -6239,7 +6250,6 @@ img {
   width: 100%;
   padding: 16px 20px calc(env(safe-area-inset-bottom, 0px) + 20px);
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 .mobile-drawer-top {
@@ -7365,8 +7375,13 @@ img {
   overflow-x: auto;
   padding-bottom: 12px;
   scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(139, 124, 255, 0.3) transparent;
+}
+
+@supports (scrollbar-width: thin) {
+  .gh-heatmap-scroll-area {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(139, 124, 255, 0.3) transparent;
+  }
 }
 
 .gh-heatmap-scroll-area::-webkit-scrollbar {
@@ -7639,8 +7654,22 @@ img {
   max-height: 280px;
   overflow-y: auto;
   padding-right: 4px;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+@supports (scrollbar-width: thin) {
+  .gh-activity-list {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+  }
+}
+
+.gh-activity-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.gh-activity-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
 }
 
 .gh-activity-item {
@@ -9323,9 +9352,14 @@ img {
   align-self: start;
   max-height: calc(100dvh - var(--nav-height, 72px) - 34px);
   overflow-y: auto;
-  scrollbar-width: none;
   -ms-overflow-style: none;
   padding-bottom: 8px;
+}
+
+@supports (scrollbar-width: none) {
+  .about-sticky-col {
+    scrollbar-width: none;
+  }
 }
 
 .about-sticky-col::-webkit-scrollbar {
@@ -10195,9 +10229,14 @@ img {
   font-size: clamp(1.02rem, 1.35vw, 1.15rem);
   line-height: 1.6;
   max-width: 54ch;
-  text-wrap: pretty;
   color: rgba(255, 255, 255, 0.7);
   margin: 4px 0 6px 0;
+}
+
+@supports (text-wrap: pretty) {
+  .hero-bio-lead {
+    text-wrap: pretty;
+  }
 }
 
 .tech-highlight {
@@ -10870,9 +10909,14 @@ img {
     max-width: 100% !important;
     font-size: 0.95rem !important;
     line-height: 1.6 !important;
-    text-wrap: pretty !important;
     overflow-wrap: anywhere !important;
     margin: 2px 0 6px 0 !important;
+  }
+
+  @supports (text-wrap: pretty) {
+    .hero-bio-lead {
+      text-wrap: pretty !important;
+    }
   }
 
   .hero-mobile-cta-stack {
