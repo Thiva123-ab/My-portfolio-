@@ -7,6 +7,7 @@ import Experience from "./pages/Experience.jsx";
 import Certifications from "./pages/Certifications.jsx";
 import ResumePage from "./pages/ResumePage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
+import GitHubPage from "./pages/GitHubPage.jsx";
 import NotFound from "./pages/NotFound.jsx";
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="projects" element={<Projects />} />
         <Route path="projects/:slug" element={<ProjectCase />} />
         <Route path="experience" element={<Experience />} />
+        <Route path="github" element={<GitHubPage />} />
         <Route path="certifications" element={<Certifications />} />
         <Route path="resume" element={<ResumePage />} />
         <Route path="contact" element={<ContactPage />} />

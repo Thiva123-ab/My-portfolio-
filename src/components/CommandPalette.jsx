@@ -27,6 +27,7 @@ export default function CommandPalette({ isOpen, onClose }) {
       { id: "nav-home", label: "Go to Home", category: "Navigation", action: () => navigate("/") },
       { id: "nav-projects", label: "View All Projects", category: "Navigation", action: () => navigate("/projects") },
       { id: "nav-exp", label: "View Experience & Timeline", category: "Navigation", action: () => navigate("/experience") },
+      { id: "nav-github", label: "View GitHub Dashboard & Telemetry", category: "Navigation", action: () => navigate("/github") },
       { id: "nav-certs", label: "View Certifications", category: "Navigation", action: () => navigate("/certifications") },
       { id: "nav-resume", label: "View Full Resume / CV", category: "Navigation", action: () => navigate("/resume") },
       { id: "nav-contact", label: "Contact & Inquiries", category: "Navigation", action: () => navigate("/contact") },

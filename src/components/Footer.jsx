@@ -27,6 +27,7 @@ export default function Footer() {
               <Link to="/" data-cursor="hover">Home</Link>
               <Link to="/projects" data-cursor="hover">Projects Portfolio</Link>
               <Link to="/experience" data-cursor="hover">Experience &amp; Education</Link>
+              <Link to="/github" data-cursor="hover">GitHub Dashboard</Link>
               <Link to="/certifications" data-cursor="hover">Certifications</Link>
               <Link to="/resume" data-cursor="hover">Curriculum Vitae</Link>
               <Link to="/contact" data-cursor="hover">Contact</Link>

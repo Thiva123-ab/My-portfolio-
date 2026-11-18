@@ -10,7 +10,7 @@ import Footer from "./Footer.jsx";
 import CommandPalette from "./CommandPalette.jsx";
 
 export default function Layout() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   const [cmdOpen, setCmdOpen] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(() => {
     try {
@@ -21,8 +21,16 @@ export default function Layout() {
   });
 
   useEffect(() => {
+    if (hash) {
+      const id = hash.replace("#", "");
+      const el = document.getElementById(id);
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 120);
+        return;
+      }
+    }
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [pathname, hash]);
 
   const toggleSound = () => {
     setSoundEnabled((prev) => {

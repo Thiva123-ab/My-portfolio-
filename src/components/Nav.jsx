@@ -10,7 +10,7 @@ const NAV_ITEMS = [
   { path: "/#skills", sectionId: "skills", label: "Skills" },
   { path: "/#experience", sectionId: "experience", label: "Experience" },
   { path: "/projects", sectionId: "work", label: "Projects" },
-  { path: "/#github", sectionId: "github", label: "GitHub" },
+  { path: "/github", label: "GitHub" },
   { path: "/certifications", label: "Certifications" },
   { path: "/resume", label: "Resume" },
   { path: "/contact", label: "Contact" },
@@ -133,7 +133,9 @@ export default function Nav({ onOpenCmd, soundEnabled, onToggleSound }) {
       <nav className="nav-links desktop-only" aria-label="Primary desktop navigation">
         {NAV_ITEMS.map((item) => {
           const isActive = isHome
-            ? (item.sectionId ? activeSection === item.sectionId : false)
+            ? (item.sectionId
+                ? activeSection === item.sectionId
+                : item.path === "/github" && activeSection === "github")
             : location.pathname === item.path;
 
           return (
@@ -245,7 +247,9 @@ export default function Nav({ onOpenCmd, soundEnabled, onToggleSound }) {
             <nav className="mobile-nav-list" aria-label="Mobile Navigation">
               {NAV_ITEMS.map((item, idx) => {
                 const isActive = isHome
-                  ? (item.sectionId ? activeSection === item.sectionId : false)
+                  ? (item.sectionId
+                      ? activeSection === item.sectionId
+                      : item.path === "/github" && activeSection === "github")
                   : location.pathname === item.path;
 
                 return (
