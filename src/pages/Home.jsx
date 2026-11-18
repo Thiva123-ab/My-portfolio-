@@ -11,6 +11,7 @@ import Reveal from "../components/Reveal.jsx";
 import ProjectCard from "../components/ProjectCard.jsx";
 import Lightbox from "../components/Lightbox.jsx";
 import CertStrip from "../components/CertStrip.jsx";
+import GitHubSection from "../components/github/GitHubSection.jsx";
 import Contact from "../components/Contact.jsx";
 import { getFeatured } from "../data/projects.js";
 
@@ -63,6 +64,8 @@ export default function Home() {
           </Link>
         </Reveal>
       </section>
+
+      <GitHubSection />
 
       <CertStrip />
       <Contact />

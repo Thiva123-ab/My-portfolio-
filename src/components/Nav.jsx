@@ -10,6 +10,7 @@ const NAV_ITEMS = [
   { path: "/#skills", sectionId: "skills", label: "Skills" },
   { path: "/#experience", sectionId: "experience", label: "Experience" },
   { path: "/projects", sectionId: "work", label: "Projects" },
+  { path: "/#github", sectionId: "github", label: "GitHub" },
   { path: "/certifications", label: "Certifications" },
   { path: "/resume", label: "Resume" },
   { path: "/contact", label: "Contact" },
@@ -53,7 +54,7 @@ export default function Nav({ onOpenCmd, soundEnabled, onToggleSound }) {
   useEffect(() => {
     if (!isHome) return;
 
-    const sections = ["hero", "about", "skills", "experience", "work", "certstrip", "contact"];
+    const sections = ["hero", "about", "skills", "experience", "work", "github", "certstrip", "contact"];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

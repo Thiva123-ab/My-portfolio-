@@ -8,7 +8,9 @@
     "dev": "vite",
     "build": "node scripts/generate-cv.mjs && vite build",
     "preview": "vite preview",
-    "cv": "node scripts/generate-cv.mjs"
+    "cv": "node scripts/generate-cv.mjs",
+    "test": "node --test src/lib/github/calc.test.js",
+    "update-github": "node scripts/fetch-github-snapshot.mjs"
   },
   "dependencies": {
     "framer-motion": "^14.14.0",

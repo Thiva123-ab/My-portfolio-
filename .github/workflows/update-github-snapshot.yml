@@ -1,0 +1,35 @@
+name: Update GitHub Dashboard Snapshot
+
+on:
+  schedule:
+    # Run every day at 00:00 UTC
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Fetch and generate fresh GitHub snapshot
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          node scripts/fetch-github-snapshot.mjs
+
+      - name: Commit and push if snapshot changed
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/github-snapshot.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore(github): automated daily snapshot sync [skip ci]" && git push)
