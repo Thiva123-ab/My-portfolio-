@@ -88,135 +88,137 @@ export default function Nav({ onOpenCmd, soundEnabled, onToggleSound }) {
 
   return (
     <header className={`nav ${scrolled ? "scrolled" : ""}`}>
-      {/* =========================================================
-          MOBILE HEADER BRAND (< 640px)
-          Left: Square rounded logo badge with glowing purple-to-teal border,
-          then "Thivanka Tharuka" (first name white, last name purple-to-teal gradient).
-          ========================================================= */}
-      <NavLink
-        to="/"
-        className="mobile-header-brand mobile-only"
-        onClick={() => {
-          setOpen(false);
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }}
-        aria-label="Thivanka Tharuka Home"
-      >
-        <span className="mobile-logo-badge" aria-hidden="true">
-          <span className="mobile-logo-glyph">◆</span>
-        </span>
-        <span className="mobile-brand-title">
-          <span className="mobile-first-name">Thivanka </span>
-          <span className="mobile-last-name">Tharuka</span>
-        </span>
-      </NavLink>
-
-      {/* =========================================================
-          DESKTOP & TABLET LOGO (>= 640px)
-          Original desktop wordmark preserved with 0 regressions.
-          ========================================================= */}
-      <NavLink
-        to="/"
-        className="nav-logo desktop-tablet-only"
-        data-cursor="hover"
-        onClick={() => {
-          setOpen(false);
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }}
-      >
-        <span className="logo-mark">◆</span>
-        <span>Thivanka</span>
-        <span className="dot">.</span>
-      </NavLink>
-
-      {/* Desktop Horizontal Navigation (> 1024px) */}
-      <nav className="nav-links desktop-only" aria-label="Primary desktop navigation">
-        {NAV_ITEMS.map((item) => {
-          const isActive = isHome
-            ? (item.sectionId
-                ? activeSection === item.sectionId
-                : item.path === "/github" && activeSection === "github")
-            : location.pathname === item.path;
-
-          return (
-            <button
-              key={item.label}
-              type="button"
-              className={`nav-link-btn ${isActive ? "active" : ""}`}
-              onClick={() => handleNavClick(item)}
-              data-cursor="hover"
-            >
-              {item.label}
-            </button>
-          );
-        })}
-      </nav>
-
-      {/* =========================================================
-          MOBILE HEADER CONTROLS (< 640px)
-          Right: 48px rounded-xl theme/palette button & 48px rounded-xl hamburger button.
-          ========================================================= */}
-      <div className="mobile-header-controls mobile-only">
-        <button
-          type="button"
-          className="mobile-btn-48 mobile-palette-btn"
-          onClick={() => onOpenCmd(true)}
-          title="Theme & Command Palette (Ctrl+K)"
-          aria-label="Open Theme and Command Palette"
+      <div className="nav-container">
+        {/* =========================================================
+            MOBILE HEADER BRAND (< 640px)
+            Left: Square rounded logo badge with glowing purple-to-teal border,
+            then "Thivanka Tharuka" (first name white, last name purple-to-teal gradient).
+            ========================================================= */}
+        <NavLink
+          to="/"
+          className="mobile-header-brand mobile-only"
+          onClick={() => {
+            setOpen(false);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          aria-label="Thivanka Tharuka Home"
         >
-          <Palette size={20} />
-        </button>
+          <span className="mobile-logo-badge" aria-hidden="true">
+            <span className="mobile-logo-glyph">◆</span>
+          </span>
+          <span className="mobile-brand-title">
+            <span className="mobile-first-name">Thivanka </span>
+            <span className="mobile-last-name">Tharuka</span>
+          </span>
+        </NavLink>
 
-        <button
-          type="button"
-          className={`mobile-btn-48 mobile-hamburger-btn ${open ? "open" : ""}`}
-          onClick={() => setOpen((o) => !o)}
-          aria-label={open ? "Close navigation menu" : "Open navigation menu"}
-          aria-expanded={open}
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
-      </div>
-
-      {/* =========================================================
-          DESKTOP & TABLET CONTROLS (>= 640px)
-          Search, Audio toggle, and tablet drawer toggle preserved.
-          ========================================================= */}
-      <div className="nav-actions desktop-tablet-only">
-        {/* Command Palette Trigger */}
-        <button
-          type="button"
-          className="nav-cmd-btn"
-          onClick={() => onOpenCmd(true)}
-          title="Search / Command Palette (Ctrl+K)"
+        {/* =========================================================
+            DESKTOP & TABLET LOGO (>= 640px)
+            Original desktop wordmark preserved with 0 regressions.
+            ========================================================= */}
+        <NavLink
+          to="/"
+          className="nav-logo desktop-tablet-only"
           data-cursor="hover"
-          aria-label="Open Command Palette"
+          onClick={() => {
+            setOpen(false);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
         >
-          <Search size={15} />
-          <span className="cmd-key-hint">⌘K</span>
-        </button>
+          <span className="logo-mark">◆</span>
+          <span>Thivanka</span>
+          <span className="dot">.</span>
+        </NavLink>
 
-        {/* Sound Toggle (Default OFF, Persisted) */}
-        <button
-          type="button"
-          className={`nav-sound-btn ${soundEnabled ? "sound-on" : ""}`}
-          onClick={onToggleSound}
-          title={soundEnabled ? "Sound enabled (Click to mute)" : "Sound muted (Click to enable audio)"}
-          data-cursor="hover"
-          aria-label={soundEnabled ? "Disable audio feedback" : "Enable audio feedback"}
-        >
-          {soundEnabled ? <Volume2 size={16} /> : <VolumeX size={16} />}
-        </button>
+        {/* Desktop Horizontal Navigation (> 1024px) */}
+        <nav className="nav-links desktop-only" aria-label="Primary desktop navigation">
+          {NAV_ITEMS.map((item) => {
+            const isActive = isHome
+              ? (item.sectionId
+                  ? activeSection === item.sectionId
+                  : item.path === "/github" && activeSection === "github")
+              : location.pathname === item.path;
 
-        {/* Tablet menu toggle (Visible between 640px and 1024px) */}
-        <button
-          className={`nav-toggle tablet-nav-toggle ${open ? "open" : ""}`}
-          aria-label={open ? "Close navigation menu" : "Open navigation menu"}
-          aria-expanded={open}
-          onClick={() => setOpen((o) => !o)}
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+            return (
+              <button
+                key={item.label}
+                type="button"
+                className={`nav-link-btn ${isActive ? "active" : ""}`}
+                onClick={() => handleNavClick(item)}
+                data-cursor="hover"
+              >
+                {item.label}
+              </button>
+            );
+          })}
+        </nav>
+
+        {/* =========================================================
+            MOBILE HEADER CONTROLS (< 640px)
+            Right: 48px rounded-xl theme/palette button & 48px rounded-xl hamburger button.
+            ========================================================= */}
+        <div className="mobile-header-controls mobile-only">
+          <button
+            type="button"
+            className="mobile-btn-48 mobile-palette-btn"
+            onClick={() => onOpenCmd(true)}
+            title="Theme & Command Palette (Ctrl+K)"
+            aria-label="Open Theme and Command Palette"
+          >
+            <Palette size={20} />
+          </button>
+
+          <button
+            type="button"
+            className={`mobile-btn-48 mobile-hamburger-btn ${open ? "open" : ""}`}
+            onClick={() => setOpen((o) => !o)}
+            aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={open}
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
+
+        {/* =========================================================
+            DESKTOP & TABLET CONTROLS (>= 640px)
+            Search, Audio toggle, and tablet drawer toggle preserved.
+            ========================================================= */}
+        <div className="nav-actions desktop-tablet-only">
+          {/* Command Palette Trigger */}
+          <button
+            type="button"
+            className="nav-cmd-btn"
+            onClick={() => onOpenCmd(true)}
+            title="Search / Command Palette (Ctrl+K)"
+            data-cursor="hover"
+            aria-label="Open Command Palette"
+          >
+            <Search size={15} />
+            <span className="cmd-key-hint">⌘K</span>
+          </button>
+
+          {/* Sound Toggle (Default OFF, Persisted) */}
+          <button
+            type="button"
+            className={`nav-sound-btn ${soundEnabled ? "sound-on" : ""}`}
+            onClick={onToggleSound}
+            title={soundEnabled ? "Sound enabled (Click to mute)" : "Sound muted (Click to enable audio)"}
+            data-cursor="hover"
+            aria-label={soundEnabled ? "Disable audio feedback" : "Enable audio feedback"}
+          >
+            {soundEnabled ? <Volume2 size={16} /> : <VolumeX size={16} />}
+          </button>
+
+          {/* Tablet menu toggle (Visible between 640px and 1024px) */}
+          <button
+            className={`nav-toggle tablet-nav-toggle ${open ? "open" : ""}`}
+            aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={open}
+            onClick={() => setOpen((o) => !o)}
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile & Tablet Full-Screen Drawer (< 1024px) */}

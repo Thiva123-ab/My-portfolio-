@@ -32,7 +32,6 @@ export default function Home() {
     <>
       <Seo path="/" />
       <Hero />
-      <Marquee />
       <About />
       <TechStackBento />
       <ExperienceMilestones />

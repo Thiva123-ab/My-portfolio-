@@ -1,91 +1,300 @@
+import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Download, MapPin } from "lucide-react";
-import { Linkedin } from "./BrandIcons.jsx";
-import Reveal from "./Reveal.jsx";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight, Download, MapPin, GraduationCap, Server, Layout } from "lucide-react";
+import { Linkedin, Github } from "./BrandIcons.jsx";
 import useMagnetic from "../hooks/useMagnetic.js";
 import profile from "../assets/profile.png";
 import { SITE, CV_HREF } from "../data/site.js";
-import HeroHeading from "./HeroHeading.jsx";
+import TypingBox from "./TypingBox.jsx";
+import HeroTechMarquee from "./HeroTechMarquee.jsx";
 
-export default function Hero({ headingVariant = "gradient" }) {
-  const primaryRef = useMagnetic(0.25);
-  const ghostRef = useMagnetic(0.25);
-  const linkedRef = useMagnetic(0.25);
+export default function Hero() {
+  const shouldReduceMotion = useReducedMotion();
+  const primaryRef = useMagnetic(0.2);
+  const secondaryRef = useMagnetic(0.2);
+  const cardRef = useRef(null);
+  const frameRef = useRef(null);
+
+  // Subtle 3D tilt with spring physics for desktop pointer only
+  useEffect(() => {
+    const card = cardRef.current;
+    const frame = frameRef.current;
+    if (!card || !frame || shouldReduceMotion) return;
+    if (window.matchMedia("(max-width: 1023px)").matches) return;
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let animId;
+
+    const onMouseMove = (e) => {
+      const rect = card.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width - 0.5;
+      const py = (e.clientY - rect.top) / rect.height - 0.5;
+      targetX = px * 6; // Max 6 degrees
+      targetY = -py * 6;
+    };
+
+    const onMouseLeave = () => {
+      targetX = 0;
+      targetY = 0;
+    };
+
+    const updateTilt = () => {
+      // Spring interpolation
+      currentX += (targetX - currentX) * 0.12;
+      currentY += (targetY - currentY) * 0.12;
+      frame.style.transform = `perspective(900px) rotateY(${currentX.toFixed(2)}deg) rotateX(${currentY.toFixed(2)}deg)`;
+      animId = requestAnimationFrame(updateTilt);
+    };
+
+    card.addEventListener("mousemove", onMouseMove);
+    card.addEventListener("mouseleave", onMouseLeave);
+    animId = requestAnimationFrame(updateTilt);
+
+    return () => {
+      card.removeEventListener("mousemove", onMouseMove);
+      card.removeEventListener("mouseleave", onMouseLeave);
+      cancelAnimationFrame(animId);
+    };
+  }, [shouldReduceMotion]);
+
+  // Framer Motion spring and easing curves
+  const easeCurve = [0.22, 1, 0.36, 1];
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: shouldReduceMotion ? 0 : 0.08,
+        delayChildren: shouldReduceMotion ? 0 : 0.05,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.65, ease: easeCurve },
+    },
+  };
+
+  const portraitVariants = {
+    hidden: shouldReduceMotion ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.8, ease: easeCurve, delay: shouldReduceMotion ? 0 : 0.2 },
+    },
+  };
 
   return (
-    <section className="hero" id="hero">
-      <div className="hero-layout">
-        <div className="hero-inner">
-          {/* Status Badge */}
-          <Reveal as="div" className="hero-eyebrow" delay={0}>
-            <span className="ping" />
-            <span>Available for Opportunities</span>
-          </Reveal>
+    <section className="hero-section" id="hero" aria-labelledby="hero-title">
+      {/* Background ambient radial glow */}
+      <div className="hero-ambient-glow" aria-hidden="true" />
 
-          {/* Redesigned Hero Intro Heading with TypingBox */}
-          <HeroHeading variant={headingVariant} />
+      {/* Shared container strictly aligned with navbar container */}
+      <div className="hero-container">
+        <motion.div
+          className="hero-grid"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {/* =========================================================
+              LEFT COLUMN (7 cols on Desktop)
+              Badge -> Eyebrow -> Name -> Typing Pill -> Bio -> CTAs -> Trust
+              ========================================================= */}
+          <div className="hero-content-col">
+            {/* 1. Availability Status Badge */}
+            <motion.div variants={itemVariants}>
+              <div className="hero-status-pill" role="status" aria-label="Available for Opportunities">
+                <span className="hero-status-pulse" aria-hidden="true">
+                  <span className="pulse-ring" />
+                  <span className="pulse-dot" />
+                </span>
+                <span className="hero-status-text">Available for Opportunities</span>
+              </div>
+            </motion.div>
 
-          {/* Honest, calm bio */}
-          <Reveal as="p" className="hero-sub" delay={0.22}>
-            Computer Science undergraduate at NSBM Green University (graduating Feb 2028).
-            Building scalable, high-performance full-stack systems with Java, Spring Boot, React, and Kotlin.
-          </Reveal>
+            {/* 2. Mono Eyebrow Greeting */}
+            <motion.div variants={itemVariants}>
+              <p className="hero-eyebrow-mono">
+                <span className="eyebrow-dash">—</span>
+                <span>HELLO, I’M</span>
+              </p>
+            </motion.div>
 
-          {/* Call to Actions */}
-          <Reveal className="hero-cta" delay={0.35}>
-            <Link ref={primaryRef} to="/projects" className="btn btn-primary btn-hero-primary" data-cursor="hover">
-              <span>View projects</span>
-              <ArrowRight size={17} />
-            </Link>
-            <div className="hero-cta-secondary-row">
-              <a
-                ref={ghostRef}
-                href={CV_HREF}
-                download="Thivanka_Tharuka_CV.pdf"
-                className="btn btn-ghost btn-hero-secondary"
-                data-cursor="hover"
-              >
-                <Download size={16} />
-                <span>Download CV</span>
-              </a>
-              <a
-                ref={linkedRef}
-                href={SITE.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-ghost btn-hero-secondary"
-                data-cursor="hover"
-              >
-                <Linkedin size={16} />
-                <span>LinkedIn</span>
-              </a>
-            </div>
-          </Reveal>
-        </div>
+            {/* 3. Primary Name Heading (Single <h1> for Accessibility & SEO) */}
+            <motion.div variants={itemVariants}>
+              <h1 className="hero-heading-title" id="hero-title" aria-label="Thivanka Tharuka">
+                <span className="sr-only">Thivanka Tharuka</span>
+                <span className="hero-name-line line-first" aria-hidden="true">
+                  <span className="name-word name-word-white">Thivanka</span>
+                </span>
+                <span className="hero-name-line line-second" aria-hidden="true">
+                  <span className="name-word name-word-gradient">Tharuka</span>
+                  <span className="hero-gradient-underline" aria-hidden="true" />
+                </span>
+              </h1>
+            </motion.div>
 
-        {/* Framed Portrait Photo */}
-        <Reveal className="hero-portrait" delay={0.3}>
-          <div className="portrait-frame">
-            <span className="portrait-ring" aria-hidden="true" />
-            <img
-              src={profile}
-              alt={`Portrait of ${SITE.name}`}
-              width={340}
-              height={410}
-              loading="eager"
-            />
-            <span className="portrait-badge">
-              <MapPin size={13} className="portrait-badge-icon" />
-              <span>Sri Lanka · NSBM Undergrad</span>
-            </span>
+            {/* 4. Compact Specializing In Typing Pill */}
+            <motion.div variants={itemVariants} className="hero-typing-wrap">
+              <TypingBox
+                words={[
+                  "Full Stack Developer",
+                  "Java & Spring Boot",
+                  "React & TypeScript",
+                  "Kotlin",
+                ]}
+                prefix="SPECIALIZING IN:"
+              />
+            </motion.div>
+
+            {/* 5. Balanced Bio Paragraph */}
+            <motion.div variants={itemVariants}>
+              <p className="hero-bio-lead">
+                Computer Science undergraduate at NSBM Green University (graduating Feb 2028).
+                Building scalable, high&#8209;performance full&#8209;stack systems with{" "}
+                <strong className="tech-highlight">Java</strong>,{" "}
+                <strong className="tech-highlight">Spring Boot</strong>,{" "}
+                <strong className="tech-highlight">React</strong>, and{" "}
+                <strong className="tech-highlight">Kotlin</strong>.
+              </p>
+            </motion.div>
+
+            {/* 6. CTA Action Row */}
+            <motion.div variants={itemVariants}>
+              <div className="hero-cta-group">
+                {/* Primary Button: View projects */}
+                <Link
+                  ref={primaryRef}
+                  to="/projects"
+                  className="btn btn-primary btn-hero-primary"
+                  data-cursor="hover"
+                  title="Explore full projects portfolio"
+                >
+                  <span>View projects</span>
+                  <ArrowRight size={16} className="hero-cta-arrow" />
+                </Link>
+
+                {/* Secondary Button: Download CV */}
+                <a
+                  ref={secondaryRef}
+                  href={CV_HREF}
+                  download="Thivanka_Tharuka_CV.pdf"
+                  className="btn btn-secondary-glass btn-hero-secondary"
+                  data-cursor="hover"
+                  title="Download verified Curriculum Vitae (PDF)"
+                >
+                  <Download size={15} />
+                  <span>Download CV</span>
+                </a>
+
+                {/* Ghost Icon Buttons: LinkedIn & GitHub */}
+                <div className="hero-cta-socials">
+                  <a
+                    href={SITE.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-ghost-icon btn-hero-social"
+                    data-cursor="hover"
+                    title="Connect on LinkedIn"
+                    aria-label="Connect with Thivanka Tharuka on LinkedIn"
+                  >
+                    <Linkedin size={18} />
+                  </a>
+
+                  <a
+                    href={SITE.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-ghost-icon btn-hero-social"
+                    data-cursor="hover"
+                    title="Explore GitHub Profile"
+                    aria-label="Explore Thivanka Tharuka's GitHub Profile"
+                  >
+                    <Github size={18} />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* 7. Trust Row (Real Data Only) */}
+            <motion.div variants={itemVariants}>
+              <div className="hero-trust-row" aria-label="Academic & Geographic Details">
+                <span className="trust-item">
+                  <MapPin size={13} className="trust-icon text-teal" aria-hidden="true" />
+                  <span>Sri Lanka</span>
+                </span>
+                <span className="trust-dot" aria-hidden="true">•</span>
+                <span className="trust-item">
+                  <GraduationCap size={13} className="trust-icon text-accent-purple" aria-hidden="true" />
+                  <span>NSBM Green University</span>
+                </span>
+                <span className="trust-dot" aria-hidden="true">•</span>
+                <span className="trust-item">
+                  <span className="trust-pulse" aria-hidden="true" />
+                  <span className="trust-status-text">Open to Internships</span>
+                </span>
+              </div>
+            </motion.div>
           </div>
-        </Reveal>
+
+          {/* =========================================================
+              RIGHT COLUMN (5 cols on Desktop)
+              3D Framed Portrait + Floating Tech Chips + Location Badge
+              ========================================================= */}
+          <div className="hero-portrait-col" ref={cardRef}>
+            <motion.div className="hero-portrait-wrap" variants={portraitVariants}>
+              {/* Rotating thin gradient halo ring */}
+              <div className="hero-halo-ring" aria-hidden="true" />
+
+              {/* 3D Tilt Frame */}
+              <div className="hero-portrait-frame" ref={frameRef}>
+                <img
+                  src={profile}
+                  alt="Portrait of Thivanka Tharuka"
+                  className="hero-portrait-img"
+                  width={340}
+                  height={420}
+                  loading="eager"
+                  fetchPriority="high"
+                />
+
+                {/* Portrait Overlay Badge */}
+                <div className="hero-portrait-badge">
+                  <MapPin size={12} className="text-teal shrink-0" aria-hidden="true" />
+                  <span>Sri Lanka · NSBM Undergrad</span>
+                </div>
+              </div>
+
+              {/* Floating Glass Chip 1 (Top Left): Spring Boot */}
+              <div className="hero-floating-chip chip-spring-boot" aria-hidden="true">
+                <Server size={13} className="text-accent-purple shrink-0" />
+                <span>Spring Boot</span>
+              </div>
+
+              {/* Floating Glass Chip 2 (Bottom Right): React */}
+              <div className="hero-floating-chip chip-react" aria-hidden="true">
+                <Layout size={13} className="text-teal shrink-0" />
+                <span>React</span>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
 
-      <Reveal className="hero-scroll" delay={0.5}>
-        <span>Scroll down</span>
-        <span className="hero-scroll-line" />
-      </Reveal>
+      {/* =========================================================
+          BOTTOM OF HERO: Subtly Styled Tech Marquee Strip
+          ========================================================= */}
+      <HeroTechMarquee />
     </section>
   );
 }

@@ -25,9 +25,9 @@ export default function Background() {
       canvas.style.width = window.innerWidth + "px";
       canvas.style.height = window.innerHeight + "px";
       
-      // Significantly optimized particle density
-      const maxCount = isMobile ? 32 : 65;
-      const count = Math.min(maxCount, Math.floor((window.innerWidth * window.innerHeight) / 22000));
+      // Refined particle density: 30% reduction on desktop, 60% on mobile
+      const maxCount = isMobile ? 16 : 45;
+      const count = Math.min(maxCount, Math.floor((window.innerWidth * window.innerHeight) / 32000));
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
