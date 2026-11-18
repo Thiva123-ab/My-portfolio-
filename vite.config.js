@@ -24,6 +24,17 @@ export default defineConfig({
             res.end(JSON.stringify({ error: err.message }));
           }
         });
+
+        server.middlewares.use("/api/contact", (req, res) => {
+          res.setHeader("Content-Type", "application/json");
+          res.end(
+            JSON.stringify({
+              success: true,
+              delivered: true,
+              message: "Local dev mode: Message received! In production on Vercel, this is processed by api/contact.js.",
+            })
+          );
+        });
       },
     },
   ],

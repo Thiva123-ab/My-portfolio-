@@ -13,9 +13,15 @@ export const SITE = {
   email: "thivankatharuka36@gmail.com",
   whatsappDisplay: "+94 71 735 9120",
   whatsappHref: "https://wa.me/94717359120",
+  whatsappPrefillHref:
+    "https://wa.me/94717359120?text=Hi%20Thivanka%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect%21",
   linkedin: "https://www.linkedin.com/in/thivanka-tharuka",
   github: "https://github.com/Thiva123-ab",
   url: "https://www.thivankatharuka.tech",
+  availability: "Open to Opportunities",
+  timezone: "UTC+5:30",
+  timeZoneId: "Asia/Colombo",
+  calLink: null, // [ADD: Calendly / cal.com URL e.g. "https://cal.com/thivanka/15min"]
   description:
     "Computer Science undergraduate at NSBM (2024–2028) & Full Stack Developer. Building scalable, high-performance web and mobile applications with Java, Spring Boot, React, and Kotlin.",
 };

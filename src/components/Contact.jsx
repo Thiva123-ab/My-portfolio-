@@ -1,22 +1,15 @@
 import { useState } from "react";
-import { Mail, MessageSquare, Send, Check, Copy, ExternalLink, ShieldCheck } from "lucide-react";
+import { Mail, Check, Copy, ExternalLink, Calendar, Download, Sparkles, Send } from "lucide-react";
 import Reveal from "./Reveal.jsx";
-import useMagnetic from "../hooks/useMagnetic.js";
+import ContactChannelCards from "./contact/ContactChannelCards.jsx";
+import ContactForm from "./contact/ContactForm.jsx";
+import useSriLankaTime from "./contact/useSriLankaTime.js";
+import { downloadVCard } from "./contact/vcard.js";
 import { SITE } from "../data/site.js";
 
-const SOCIALS = [
-  { key: "email", label: "Email", handle: SITE.email, href: `mailto:${SITE.email}`, icon: "mail" },
-  { key: "whatsapp", label: "WhatsApp", handle: SITE.whatsappDisplay, href: SITE.whatsappHref, icon: "whatsapp" },
-  { key: "linkedin", label: "LinkedIn", handle: "Thivanka Tharuka", href: SITE.linkedin, icon: "linkedin" },
-  { key: "github", label: "GitHub", handle: "@Thiva123-ab", href: SITE.github, icon: "github" },
-];
-
 export default function Contact() {
-  const emailRef = useMagnetic(0.2);
   const [copied, setCopied] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "", honeypot: "" });
-  const [submitting, setSubmitting] = useState(false);
-  const [status, setStatus] = useState(null); // "success" | "error" | null
+  const sriLankaTime = useSriLankaTime();
 
   const handleCopyEmail = () => {
     navigator.clipboard?.writeText(SITE.email);
@@ -24,188 +17,158 @@ export default function Contact() {
     setTimeout(() => setCopied(false), 2400);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (formData.honeypot) {
-      // Spam honeypot triggered silently
-      setStatus("success");
-      return;
-    }
-
-    if (!formData.name || !formData.email || !formData.message) {
-      setStatus("error");
-      return;
-    }
-
-    setSubmitting(true);
-    // Standard mailto link preparation or endpoint fallback
-    try {
-      const mailtoUrl = `mailto:${SITE.email}?subject=${encodeURIComponent(
-        formData.subject || `Message from ${formData.name}`
-      )}&body=${encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      )}`;
-      window.location.href = mailtoUrl;
-      setStatus("success");
-      setFormData({ name: "", email: "", subject: "", message: "", honeypot: "" });
-    } catch {
-      setStatus("error");
-    } finally {
-      setSubmitting(false);
-    }
-  };
-
   return (
-    <section className="section contact" id="contact">
+    <section className="section contact-section" id="contact" aria-labelledby="contact-heading">
+      {/* Background radial glow */}
+      <div className="contact-bg-glow" aria-hidden="true" />
+
+      {/* Consistent Section Header */}
       <div className="section-head">
         <span className="section-index">06</span>
-        <Reveal as="h2" className="section-title">
-          Let’s Connect
-        </Reveal>
+        <div className="contact-heading-wrap">
+          <Reveal as="h2" id="contact-heading" className="section-title">
+            Let’s Connect
+          </Reveal>
+          <span className="contact-eyebrow-tag">Open For Inquiries</span>
+        </div>
       </div>
 
-      <div className="contact-grid-container">
-        <Reveal className="contact-info-col" delay={0.1}>
-          <p className="contact-lead">
-            Have an internship opportunity, technical inquiry, or collaborative project?
-            Reach out directly via email, message on WhatsApp, or connect on LinkedIn. Sri Lanka timezone (UTC+5:30).
-          </p>
+      <div className="contact-main-grid">
+        {/* =========================================================
+            LEFT COLUMN (5 / 12 on Desktop)
+            Intro, Primary Email, Live Sri Lanka Status, 2x2 Channels, vCard
+            ========================================================= */}
+        <div className="contact-left-col">
+          <Reveal delay={0.05}>
+            <p className="contact-lead-text">
+              Have an internship opportunity, full-stack software project, or technical inquiry?
+              Reach out directly through any of the channels below. Replies are sent within 24–48 hours.
+            </p>
+          </Reveal>
 
-          <div className="contact-primary-email-box">
-            <a ref={emailRef} href={`mailto:${SITE.email}`} className="contact-email" data-cursor="hover">
-              {SITE.email}
-            </a>
-            <button
-              type="button"
-              className="btn btn-ghost btn-sm copy-email-btn"
-              onClick={handleCopyEmail}
-              data-cursor="hover"
-              aria-label="Copy email address"
-            >
-              {copied ? (
-                <>
-                  <Check size={14} className="copied-check" />
-                  <span>Copied to Clipboard!</span>
-                </>
-              ) : (
-                <>
-                  <Copy size={14} />
-                  <span>Copy Email</span>
-                </>
-              )}
-            </button>
-          </div>
+          {/* Primary Email Showcase Box */}
+          <Reveal delay={0.1}>
+            <div className="contact-primary-email-card">
+              <span className="contact-card-eyebrow">PRIMARY INBOX</span>
 
-          <div className="contact-socials">
-            {SOCIALS.map((s) => {
-              const external = s.href.startsWith("http");
-              return (
+              <div className="contact-email-row">
                 <a
-                  key={s.key}
-                  href={s.href}
-                  target={external ? "_blank" : undefined}
-                  rel={external ? "noopener noreferrer" : undefined}
-                  className="social-card"
+                  href={`mailto:${SITE.email}`}
+                  className="contact-email-link"
                   data-cursor="hover"
-                  aria-label={s.label}
+                  title="Send email via mailto"
                 >
-                  <span className="social-text">
-                    <span className="social-label">{s.label}</span>
-                    <span className="social-handle">{s.handle}</span>
-                  </span>
-                  <ExternalLink size={15} className="social-arrow" />
+                  <span className="contact-email-text">{SITE.email}</span>
                 </a>
-              );
-            })}
-          </div>
-        </Reveal>
 
-        {/* Contact Form with Spam Honeypot */}
-        <Reveal className="contact-form-col" delay={0.2}>
-          <form className="contact-form" onSubmit={handleSubmit}>
-            <h3>Send a Direct Message</h3>
-            <p className="form-subtext">Replies are typically sent within 24–48 hours.</p>
+                <div className="contact-email-actions">
+                  <button
+                    type="button"
+                    className={`btn btn-ghost btn-sm contact-action-btn ${copied ? "is-copied" : ""}`}
+                    onClick={handleCopyEmail}
+                    data-cursor="hover"
+                    aria-label="Copy email address to clipboard"
+                  >
+                    {copied ? (
+                      <>
+                        <Check size={14} className="text-teal" />
+                        <span>Copied!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy size={14} />
+                        <span>Copy</span>
+                      </>
+                    )}
+                  </button>
 
-            {/* Anti-spam Honeypot field (hidden from real users) */}
-            <div style={{ display: "none" }} aria-hidden="true">
-              <label htmlFor="form-hp">Do not fill this field</label>
-              <input
-                id="form-hp"
-                type="text"
-                value={formData.honeypot}
-                onChange={(e) => setFormData({ ...formData, honeypot: e.target.value })}
-                tabIndex={-1}
-                autoComplete="off"
-              />
-            </div>
-
-            <div className="form-row">
-              <div className="form-field">
-                <label htmlFor="form-name">Your Name *</label>
-                <input
-                  id="form-name"
-                  type="text"
-                  required
-                  placeholder="e.g. Alex Silva"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                />
+                  <a
+                    href={`mailto:${SITE.email}`}
+                    className="btn btn-primary btn-sm contact-action-btn"
+                    data-cursor="hover"
+                    title="Open default email application"
+                  >
+                    <Send size={13} />
+                    <span>Send</span>
+                  </a>
+                </div>
               </div>
 
-              <div className="form-field">
-                <label htmlFor="form-email">Email Address *</label>
-                <input
-                  id="form-email"
-                  type="email"
-                  required
-                  placeholder="alex@company.com"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                />
+              {/* Accessible live region for copy confirmation */}
+              <div className="sr-only" aria-live="polite">
+                {copied ? "Email address copied to clipboard." : ""}
               </div>
             </div>
+          </Reveal>
 
-            <div className="form-field">
-              <label htmlFor="form-subject">Subject</label>
-              <input
-                id="form-subject"
-                type="text"
-                placeholder="Software Engineering Internship / Project Discussion"
-                value={formData.subject}
-                onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-              />
-            </div>
-
-            <div className="form-field">
-              <label htmlFor="form-msg">Message *</label>
-              <textarea
-                id="form-msg"
-                rows={4}
-                required
-                placeholder="Describe your project, team opportunity, or inquiry..."
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              />
-            </div>
-
-            <button type="submit" className="btn btn-primary btn-submit" disabled={submitting} data-cursor="hover">
-              <Send size={15} />
-              <span>{submitting ? "Opening Email Client..." : "Send Message"}</span>
-            </button>
-
-            {status === "success" && (
-              <div className="form-status success">
-                <Check size={16} />
-                <span>Message client launched successfully! Looking forward to talking.</span>
+          {/* Live Status & Timezone Chip */}
+          <Reveal delay={0.15}>
+            <div className="contact-status-chip" role="status" aria-label="Availability and local time">
+              <div className="contact-status-left">
+                <span className="contact-live-pulse" aria-hidden="true">
+                  <span className="contact-pulse-ring" />
+                  <span className="contact-pulse-dot" />
+                </span>
+                <span className="contact-status-text">{SITE.availability || "Open to Opportunities"}</span>
               </div>
-            )}
-            {status === "error" && (
-              <div className="form-status error">
-                <span>Please ensure all required fields are filled out correctly.</span>
+
+              <span className="contact-status-sep" aria-hidden="true">·</span>
+
+              <div className="contact-status-right">
+                <span className="contact-location-flag" aria-hidden="true">🇱🇰</span>
+                <span className="contact-time-text">
+                  Sri Lanka: <strong>{sriLankaTime}</strong>
+                </span>
               </div>
-            )}
-          </form>
-        </Reveal>
+            </div>
+          </Reveal>
+
+          {/* 2x2 Aligned Communication Channels Grid */}
+          <Reveal delay={0.2}>
+            <ContactChannelCards />
+          </Reveal>
+
+          {/* Extra Utilities: Download vCard & Optional Calendly Slot */}
+          <Reveal delay={0.25}>
+            <div className="contact-extras-row">
+              <button
+                type="button"
+                className="contact-extra-link"
+                onClick={downloadVCard}
+                data-cursor="hover"
+                title="Save verified contact information to your address book"
+              >
+                <Download size={14} className="contact-extra-icon" />
+                <span>Save Contact (vCard .vcf)</span>
+              </button>
+
+              {/* [ADD: Calendly / cal.com link] - Renders only when a valid calLink URL is provided in site.js */}
+              {SITE.calLink && (
+                <a
+                  href={SITE.calLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-extra-link"
+                  data-cursor="hover"
+                >
+                  <Calendar size={14} className="contact-extra-icon" />
+                  <span>Book a 15-min chat</span>
+                  <ExternalLink size={12} className="opacity-60" />
+                </a>
+              )}
+            </div>
+          </Reveal>
+        </div>
+
+        {/* =========================================================
+            RIGHT COLUMN (7 / 12 on Desktop)
+            Direct Message Form with rotating gradient glass card
+            ========================================================= */}
+        <div className="contact-right-col">
+          <Reveal delay={0.15}>
+            <ContactForm />
+          </Reveal>
+        </div>
       </div>
     </section>
   );
