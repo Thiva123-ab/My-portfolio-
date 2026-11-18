@@ -9,7 +9,7 @@ import { SITE, CV_HREF } from "../data/site.js";
 import TypingBox from "./TypingBox.jsx";
 import HeroTechMarquee from "./HeroTechMarquee.jsx";
 
-export default function Hero() {
+export default function Hero({ mobileAlign = "left" }) {
   const shouldReduceMotion = useReducedMotion();
   const primaryRef = useMagnetic(0.2);
   const secondaryRef = useMagnetic(0.2);
@@ -75,11 +75,11 @@ export default function Hero() {
   };
 
   const itemVariants = {
-    hidden: shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 },
+    hidden: shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: easeCurve },
+      transition: { duration: 0.55, ease: easeCurve },
     },
   };
 
@@ -94,10 +94,12 @@ export default function Hero() {
 
   return (
     <section className="hero-section" id="hero" aria-labelledby="hero-title">
-      {/* Background ambient radial glow */}
-      <div className="hero-ambient-glow" aria-hidden="true" />
+      {/* Background ambient radial glow in clipped container */}
+      <div className="hero-glow-contain" aria-hidden="true">
+        <div className="hero-ambient-glow" />
+      </div>
 
-      {/* Shared container strictly aligned with navbar container */}
+      {/* Shared container strictly aligned across site */}
       <div className="hero-container">
         <motion.div
           className="hero-grid"
@@ -106,9 +108,9 @@ export default function Hero() {
           animate="visible"
         >
           {/* =========================================================
-              LEFT COLUMN (7 cols on Desktop)
+              LEFT COLUMN (7 cols on Desktop, Full Width on Mobile)
               ========================================================= */}
-          <div className="hero-content-col">
+          <div className={`hero-content-col ${mobileAlign === "center" ? "mobile-align-center" : ""}`}>
             {/* Desktop Only: Availability Status Badge */}
             <motion.div variants={itemVariants} className="hero-desktop-only">
               <div className="hero-status-pill" role="status" aria-label="Available for Opportunities">
@@ -129,8 +131,8 @@ export default function Hero() {
             </motion.div>
 
             {/* Mobile Only: Top Compact Identity Row
-                Left: Badge + Eyebrow | Right: Compact 108px Portrait
-                This keeps the photo visible without pushing the name down */}
+                Left: Badge + Eyebrow | Right: Sized Responsive Portrait
+                Stays fully inside the container with zero overflow */}
             <motion.div variants={itemVariants} className="hero-mobile-identity-row hero-mobile-only">
               <div className="hero-mobile-meta">
                 <div className="hero-status-pill" role="status" aria-label="Available for Opportunities">
@@ -153,8 +155,8 @@ export default function Hero() {
                     src={profile}
                     alt="Portrait of Thivanka Tharuka"
                     className="hero-mobile-portrait-img"
-                    width={108}
-                    height={108}
+                    width={96}
+                    height={96}
                     loading="eager"
                     fetchPriority="high"
                   />
@@ -163,7 +165,7 @@ export default function Hero() {
             </motion.div>
 
             {/* Primary Name Heading (Single <h1> for Accessibility & SEO) */}
-            <motion.div variants={itemVariants}>
+            <motion.div variants={itemVariants} className="w-full min-w-0">
               <h1 className="hero-heading-title" id="hero-title" aria-label="Thivanka Tharuka">
                 <span className="sr-only">Thivanka Tharuka</span>
                 <span className="hero-name-line line-first" aria-hidden="true">
@@ -177,7 +179,7 @@ export default function Hero() {
             </motion.div>
 
             {/* Compact Specializing In Typing Pill */}
-            <motion.div variants={itemVariants} className="hero-typing-wrap">
+            <motion.div variants={itemVariants} className="hero-typing-wrap w-full min-w-0">
               <TypingBox
                 words={[
                   "Full Stack Developer",
@@ -189,8 +191,8 @@ export default function Hero() {
               />
             </motion.div>
 
-            {/* Balanced Bio Paragraph (16-18px, 52-54ch, text-wrap: pretty) */}
-            <motion.div variants={itemVariants}>
+            {/* Balanced Bio Paragraph (16px, max-w-full, text-wrap: pretty) */}
+            <motion.div variants={itemVariants} className="w-full min-w-0">
               <p className="hero-bio-lead">
                 Computer Science undergraduate at NSBM Green University (graduating Feb 2028).
                 Building scalable, high&#8209;performance full&#8209;stack systems with{" "}
@@ -260,7 +262,7 @@ export default function Hero() {
 
             {/* Mobile CTA Action Group (< 1024px)
                 Primary 'View projects' full-width (52px), then 'Download CV' and 'LinkedIn' in a 2-col row (48px) */}
-            <motion.div variants={itemVariants} className="hero-mobile-only w-full">
+            <motion.div variants={itemVariants} className="hero-mobile-only w-full min-w-0">
               <div className="hero-mobile-cta-stack">
                 <Link
                   to="/projects"
@@ -296,8 +298,8 @@ export default function Hero() {
               </div>
             </motion.div>
 
-            {/* Trust Row (Small, Real Data Only) */}
-            <motion.div variants={itemVariants}>
+            {/* Trust Row (Wrapped, Real Data Only) */}
+            <motion.div variants={itemVariants} className="w-full min-w-0">
               <div className="hero-trust-row" aria-label="Academic & Geographic Details">
                 <span className="trust-item">
                   <MapPin size={13} className="trust-icon text-teal" aria-hidden="true" />
