@@ -6475,7 +6475,7 @@ img {
   width: 100%;
   max-width: 440px;
   margin: 0 auto;
-  padding: 92px 20px 24px 20px;
+  padding: 88px 0 24px 0;
   gap: 20px;
   box-sizing: border-box;
   position: relative;

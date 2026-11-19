@@ -125,10 +125,10 @@ export default function Hero({ mobileAlign = "center" }) {
       <div className="hero-container">
         {/* =========================================================
             1. MOBILE HERO VIEW (< 640px)
-            Centered, flex-col, items-center, text-center, px-5
+            Centered, flex-col, items-center, text-center
             ========================================================= */}
         <motion.div
-          className="hero-mobile-view flex flex-col items-center text-center px-5 pt-24 sm:hidden w-full max-w-md mx-auto"
+          className="hero-mobile-view flex flex-col items-center text-center sm:hidden w-full max-w-md mx-auto"
           variants={mobileContainerVariants}
           initial="hidden"
           animate="visible"
