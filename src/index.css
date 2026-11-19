@@ -6705,7 +6705,31 @@ img {
 
 @media (max-width: 639px) {
   .milestones-timeline-wrap {
-    padding-left: 28px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .milestones-rail {
+    display: none !important;
+  }
+
+  .milestone-node {
+    display: none !important;
+  }
+
+  .milestone-item {
+    width: 100% !important;
+    margin-inline: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .milestone-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-inline: 0 !important;
+    box-sizing: border-box !important;
   }
 }
 
