@@ -10701,7 +10701,12 @@ img {
     box-sizing: border-box !important;
   }
 
-  /* 2. About Section Responsive Flow */
+  /* 2. About Section Responsive Flow & Symmetry */
+  .section.about {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
   .about-grid {
     display: flex !important;
     flex-direction: column !important;
