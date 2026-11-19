@@ -13,6 +13,7 @@
     "update-github": "node scripts/fetch-github-snapshot.mjs"
   },
   "dependencies": {
+    "docx": "^9.16.0",
     "framer-motion": "^14.14.0",
     "lucide-react": "^1.73.0",
     "react": "^18.3.1",
