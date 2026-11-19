@@ -531,7 +531,17 @@ async function generatePdf() {
 </body>
 </html>`;
 
-  const browser = await chromium.launch({ channel: "msedge", headless: true });
+  let browser;
+  try {
+    try {
+      browser = await chromium.launch({ channel: "msedge", headless: true });
+    } catch {
+      browser = await chromium.launch({ headless: true });
+    }
+  } catch (err) {
+    console.warn("Playwright browser not available in this environment. Preserving existing PDF assets:", err.message);
+    return;
+  }
   const page = await browser.newPage();
   await page.setContent(htmlContent, { waitUntil: "networkidle" });
 
