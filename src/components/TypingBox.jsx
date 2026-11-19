@@ -11,10 +11,11 @@ const DEFAULT_WORDS = [
 export default function TypingBox({
   words = DEFAULT_WORDS,
   prefix = "SPECIALIZING IN:",
-  typeSpeed = 65,
-  deleteSpeed = 35,
-  pauseTime = 1600,
+  typeSpeed = 70,
+  deleteSpeed = 40,
+  pauseTime = 1400,
   className = "",
+  layout = "inline",
 }) {
   const shouldReduceMotion = useReducedMotion();
   const [wordIndex, setWordIndex] = useState(0);
@@ -53,6 +54,30 @@ export default function TypingBox({
 
     return () => clearTimeout(timeout);
   }, [displayedText, isDeleting, wordIndex, words, shouldReduceMotion, typeSpeed, deleteSpeed, pauseTime]);
+
+  if (layout === "stacked") {
+    return (
+      <div
+        className={`hero-typing-stacked-card ${className}`}
+        role="region"
+        aria-label="Technical Specialization"
+      >
+        <span className="sr-only">
+          {prefix} {words.join(", ")}
+        </span>
+        <div className="hero-typing-stacked-inner" aria-hidden="true" aria-live="off">
+          <div className="hero-typing-stacked-top">
+            <span className="hero-typing-dot" />
+            <span className="hero-typing-prefix-mono">{prefix}</span>
+          </div>
+          <div className="hero-typing-stacked-bottom">
+            <span className="hero-typing-word-gradient">{displayedText}</span>
+            {!shouldReduceMotion && <span className="hero-typing-caret" />}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
