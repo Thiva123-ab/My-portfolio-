@@ -1,5 +1,16 @@
 export const CERTIFICATIONS = [
   {
+    title: "FinOps Certified Practitioner (FOCP)",
+    issuer: "FinOps Foundation · The Linux Foundation",
+    date: "In Progress",
+    status: "in-progress",
+    code: null,
+    href: "https://learn.finops.org/path/finops_certified_practitioner_self-paced",
+    note: "Currently enrolled self-paced certification: Cloud Financial Operations, FinOps framework (Inform, Optimize, Operate), unit economics, rate & usage optimization.",
+    graph: "Cloud",
+    inProgress: true,
+  },
+  {
     title: "Python Programming",
     issuer: "University of Moratuwa · CODL (open.uom.lk)",
     date: "Completed",

@@ -60,6 +60,7 @@ export const SKILL_CATEGORIES = [
     icon: "Cloud",
     description: "Foundational cloud computing, containerization & deployment labs",
     skills: [
+      { name: "FinOps (Cloud Cost)", level: "In Progress", context: "FinOps Certified Practitioner (FOCP) enrolled, FinSmart AI platform" },
       { name: "Docker", level: "Hands-on Labs", context: "KodeKloud beginner labs (containers, run, ps, exec)" },
       { name: "AWS (Foundations)", level: "Certified Labs", context: "AWS Educate Cloud 101 badge & KodeKloud EC2/S3/VPC labs" },
       { name: "Kubernetes", level: "Hands-on Labs", context: "KodeKloud beginner architecture & pod management" },

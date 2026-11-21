@@ -28,7 +28,9 @@ export default function CertStrip() {
                 <div className="cert-award-tile" aria-hidden="true">
                   <Award size={18} />
                 </div>
-                {isCompleted ? (
+                {c.status === "in-progress" || c.date === "In Progress" ? (
+                  <span className="cert-status-pill status-in-progress">In Progress</span>
+                ) : isCompleted ? (
                   <span className="cert-status-pill status-completed">Completed</span>
                 ) : (
                   <span className="cert-status-pill status-date">{c.date}</span>
@@ -65,7 +67,7 @@ export default function CertStrip() {
 
       <div className="section-more">
         <Link to="/certifications" className="btn btn-primary" data-cursor="hover">
-          <span>Explore All 8 Verified Credentials</span>
+          <span>Explore All {CERTIFICATIONS.length} Credentials</span>
           <ArrowRight size={15} />
         </Link>
       </div>

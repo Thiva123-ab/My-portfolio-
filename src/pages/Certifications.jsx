@@ -52,7 +52,11 @@ export default function Certifications() {
                   <div className="cert-award-tile" aria-hidden="true">
                     <Award size={19} />
                   </div>
-                  {isCompleted ? (
+                  {c.status === "in-progress" || c.date === "In Progress" ? (
+                    <span className="cert-status-pill status-in-progress">
+                      In Progress
+                    </span>
+                  ) : isCompleted ? (
                     <span className="cert-status-pill status-completed">
                       Completed
                     </span>

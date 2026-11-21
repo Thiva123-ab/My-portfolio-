@@ -5755,6 +5755,27 @@ img {
   font-weight: 600;
 }
 
+.cert-status-pill.status-in-progress {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: #fbbf24;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cert-status-pill.status-in-progress::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fbbf24;
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.8);
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
 .cert-status-pill.status-date {
   background: rgba(45, 226, 200, 0.08);
   border: 1px solid rgba(45, 226, 200, 0.2);
