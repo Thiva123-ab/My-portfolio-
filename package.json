@@ -9,6 +9,7 @@
     "build": "node scripts/generate-cv.mjs && vite build",
     "preview": "vite preview",
     "cv": "node scripts/generate-cv.mjs",
+    "cv:build": "node scripts/build-ats-cv.mjs",
     "test": "node --test src/lib/github/calc.test.js",
     "update-github": "node scripts/fetch-github-snapshot.mjs"
   },

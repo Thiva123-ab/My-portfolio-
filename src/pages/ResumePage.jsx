@@ -100,7 +100,7 @@ export default function ResumePage() {
               <div className="cv-headline">
                 <h2>{SITE.name}</h2>
                 <p className="cv-role">SOFTWARE ENGINEER INTERN</p>
-                <p className="cv-sub-school">NSBM Green University · BSc (Hons) Computer Science (2024 – 2028)</p>
+                <p className="cv-sub-school">NSBM Green University · BSc (Hons) Computer Science (2024 – 2028) | GPA: 3.70</p>
               </div>
             </header>
 
@@ -112,8 +112,8 @@ export default function ResumePage() {
                   <ul className="cv-info-list">
                     <li>
                       <span className="cv-label">Phone:</span>
-                      <a href="tel:+94717359120">+94 717359120 (WhatsApp)</a>
-                      <a href="tel:+94721470660">+94 721470660</a>
+                      <a href="tel:+94721470660">+94 72 147 0660</a>
+                      <a href="tel:+94717359120">+94 71 735 9120 (WhatsApp)</a>
                     </li>
                     <li>
                       <span className="cv-label">Email:</span>
