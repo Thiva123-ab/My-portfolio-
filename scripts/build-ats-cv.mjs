@@ -1,5 +1,5 @@
-import { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, UnderlineType } from "docx";
-import { writeFileSync, existsSync, mkdirSync, readFileSync } from "fs";
+import { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, Table, TableRow, TableCell, WidthType, BorderStyle } from "docx";
+import { writeFileSync, existsSync, mkdirSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import { chromium } from "playwright";
@@ -11,23 +11,22 @@ const assetsDir = join(rootDir, "src", "assets");
 mkdirSync(pubDir, { recursive: true });
 mkdirSync(assetsDir, { recursive: true });
 
-// --- 1. BUILD ATS DOCX ---
+// --- 1. BUILD EXACT ATS DOCX ---
 async function generateDocx() {
-  const primaryColor = "111827"; // Off-black / charcoal for readability
-  const headingColor = "1E293B"; // Slate 800
-  const accentColor = "0F766E"; // Teal 700 for subtle professional accent in headings if needed, or stick to dark slate
+  const primaryColor = "000000";
+  const mutedColor = "222222";
 
   const doc = new Document({
     styles: {
       default: {
         document: {
           run: {
-            font: "Calibri",
-            size: 20, // 10pt (in half-points)
+            font: "Arial",
+            size: 20, // 10pt
             color: primaryColor,
           },
           paragraph: {
-            spacing: { line: 240, before: 0, after: 60 }, // 1.0 line spacing, tight margins
+            spacing: { line: 240, before: 0, after: 40 },
           },
         },
       },
@@ -37,10 +36,10 @@ async function generateDocx() {
         properties: {
           page: {
             margin: {
-              top: 720, // 0.5 in
-              right: 720,
-              bottom: 720,
-              left: 720,
+              top: 576, // 0.4 in
+              right: 648, // 0.45 in
+              bottom: 576,
+              left: 648,
             },
           },
         },
@@ -48,176 +47,145 @@ async function generateDocx() {
           // Header: Name
           new Paragraph({
             alignment: AlignmentType.CENTER,
-            spacing: { before: 0, after: 40 },
+            spacing: { before: 0, after: 20 },
             children: [
               new TextRun({
                 text: "THIVANKA THARUKA",
                 bold: true,
-                size: 36, // 18pt
-                color: "0F172A",
+                size: 34, // 17pt
+                color: "000000",
               }),
             ],
           }),
 
-          // Contact Row
+          // Role
           new Paragraph({
             alignment: AlignmentType.CENTER,
-            spacing: { before: 0, after: 120 },
-            children: [
-              new TextRun({ text: "Mahagama, Sri Lanka  |  +94 71 735 9120  |  thivankatharuka36@gmail.com", size: 19 }),
-              new TextRun({ text: "\nLinkedIn: linkedin.com/in/thivanka-tharuka  |  GitHub: github.com/Thiva123-ab  |  Portfolio: thivankatharuka.tech", size: 19 }),
-            ],
-          }),
-
-          // Section 1: Summary
-          createSectionHeading("PROFESSIONAL SUMMARY"),
-          new Paragraph({
-            spacing: { before: 40, after: 100 },
+            spacing: { before: 0, after: 40 },
             children: [
               new TextRun({
-                text: "Computer Science undergraduate at NSBM Green University with hands-on project experience in full-stack web and backend engineering using Java, Spring Boot, React, and TypeScript. Experienced in designing RESTful APIs, relational schemas (MySQL, PostgreSQL), and responsive user interfaces. Seeking a Software Engineering Intern role to build scalable, reliable software systems.",
-                size: 20,
+                text: "Software Engineer Intern",
+                bold: true,
+                size: 21,
+                color: "111111",
               }),
             ],
           }),
 
-          // Section 2: Education
-          createSectionHeading("EDUCATION"),
+          // Contact Line 1
           new Paragraph({
-            spacing: { before: 40, after: 20 },
-            children: [
-              new TextRun({ text: "NSBM Green University", bold: true, size: 21 }),
-              new TextRun({ text: " — Colombo, Sri Lanka", size: 20 }),
-              new TextRun({ text: "\tExpected Feb 2028", italics: true, size: 19 }),
-            ],
-          }),
-          new Paragraph({
+            alignment: AlignmentType.CENTER,
             spacing: { before: 0, after: 20 },
             children: [
-              new TextRun({ text: "Bachelor of Science (Honours) in Computer Science", italics: true, size: 20 }),
+              new TextRun({ text: "Mahagama, Sri Lanka | thivankatharuka36@gmail.com | +94 71 735 9120 | thivankatharuka.tech", size: 18 }),
             ],
           }),
+
+          // Contact Line 2
           new Paragraph({
+            alignment: AlignmentType.CENTER,
             spacing: { before: 0, after: 100 },
             children: [
-              new TextRun({ text: "• Relevant Coursework: ", bold: true, size: 19 }),
-              new TextRun({ text: "Object-Oriented Programming (Java), Data Structures & Algorithms, Database Management Systems, Enterprise Application Development, Operating Systems.", size: 19 }),
+              new TextRun({ text: "linkedin.com/in/thivanka-tharuka | github.com/Thiva123-ab", size: 18 }),
             ],
           }),
 
-          // Section 3: Technical Skills
-          createSectionHeading("TECHNICAL SKILLS"),
-          createSkillLine("Languages", "Java, Kotlin, TypeScript, JavaScript, Python, SQL, HTML5, CSS3"),
-          createSkillLine("Backend & APIs", "Spring Boot, Spring Security, RESTful APIs, WebSockets, Node.js, Express"),
-          createSkillLine("Frontend & Mobile", "React, TanStack Start, Tailwind CSS, Android SDK, Jetpack Compose, Material 3"),
-          createSkillLine("Databases & ORM", "MySQL, PostgreSQL, Supabase, Room SQLite, Spring Data JPA, Hibernate"),
-          createSkillLine("Tools & Practices", "Git, GitHub, Postman, Vite, Linux, Clean Architecture, CI/CD Basics"),
-          createSkillLine("Cloud (Familiar / Learning)", "Docker, AWS (Educate Cloud 101), Kubernetes (Beginner Concepts)"),
-
-          // Section 4: Technical Projects
-          createSectionHeading("TECHNICAL PROJECTS"),
-
-          // Project 1: Flood Relief
-          createProjectHeader(
-            "Sri Lanka Flood Relief Live Map — Full-Stack Disaster Platform",
-            "Java, Spring Boot, MySQL, WebSockets, Spring Security, Leaflet.js"
-          ),
-          createBulletPoint("Architected an open-source real-time disaster coordination web platform connecting flood victims with relief responders via an interactive live map."),
-          createBulletPoint("Engineered Spring Boot RESTful APIs and WebSocket endpoints for low-latency incident dispatching and emergency SOS requests."),
-          createBulletPoint("Configured Spring Security role-based access control (RBAC) to enforce distinct privileges across public citizens, emergency responders, and administrators."),
-
-          // Project 2: Crisis Copilot
-          createProjectHeader(
-            "Crisis Copilot — Emergency Response AI Platform (Team Project)",
-            "React 19, Supabase (PostgreSQL), Google Gemini AI, Tailwind CSS"
-          ),
-          createBulletPoint("Collaborated in an agile team to build a disaster-response platform featuring automated emergency triage powered by Google Gemini AI."),
-          createBulletPoint("Implemented incident dispatch feeds and high-priority responder dashboards using React 19 and Tailwind CSS for responsive mobile coordination."),
-          createBulletPoint("Integrated Supabase PostgreSQL with Row Level Security (RLS) to persist sensitive incident reports and manage concurrent responder assignments."),
-
-          // Project 3: LectureLens
-          createProjectHeader(
-            "LectureLens / Smart Sinhala Study — Bilingual AI Assistant",
-            "React, TypeScript, TanStack Start, Supabase, Google Gemini AI"
-          ),
-          createBulletPoint("Developed a bilingual study assistant that extracts course notes from lecture PDFs to generate summaries, flashcards, and recall quizzes."),
-          createBulletPoint("Integrated Google Gemini AI for contextual document Q&A with citation anchors and instantaneous English-to-Sinhala translation."),
-          createBulletPoint("Structured user authentication, file storage, and relational progress tracking with Supabase PostgreSQL and Row Level Security."),
-
-          // Project 4: FocusFlow
-          createProjectHeader(
-            "FocusFlow — Local-First Android Time Management App",
-            "Kotlin, Jetpack Compose, Room SQLite, Material 3, WorkManager"
-          ),
-          createBulletPoint("Built a privacy-focused, local-first Android productivity app utilizing UsageStatsManager and encrypted Room SQLite to track device usage habits."),
-          createBulletPoint("Engineered an offline heuristic coaching engine evaluating a 5-pillar productivity algorithm, daily time blocks, and deep-focus Pomodoro sessions."),
-
-          // Section 5: Extracurricular & Leadership Experience
-          createSectionHeading("EXPERIENCE & LEADERSHIP"),
+          // Section 1: SUMMARY
+          createSectionHeading("SUMMARY"),
           new Paragraph({
-            spacing: { before: 40, after: 20 },
+            spacing: { before: 30, after: 80 },
             children: [
-              new TextRun({ text: "IDEATHON 1.0 (CompuVate) — NSBM Green University", bold: true, size: 20 }),
-              new TextRun({ text: "  |  Volunteer & Event Logistics", italics: true, size: 19 }),
-              new TextRun({ text: "\tSep 2025", size: 19 }),
+              new TextRun({
+                text: "Computer Science undergraduate and full-stack developer experienced in building scalable web applications with Java, Spring Boot, Python, React.js, Next.js and Tailwind CSS. Skilled in designing secure REST APIs, role-based backends, responsive interfaces and AI/ML-driven features, with Git-based collaboration, Docker and CI/CD. Seeking a software engineering internship to build impactful solutions.",
+                size: 19,
+              }),
             ],
           }),
-          createBulletPoint("Coordinated participant logistics, stage setup, and technical support for student ideation teams during a university-wide innovation hackathon."),
 
+          // Section 2: EDUCATION
+          createSectionHeading("EDUCATION"),
           new Paragraph({
-            spacing: { before: 40, after: 20 },
+            spacing: { before: 30, after: 10 },
             children: [
-              new TextRun({ text: "AWS Student Community Day Sri Lanka", bold: true, size: 20 }),
-              new TextRun({ text: "  |  Community Attendee & Workshop Participant", italics: true, size: 19 }),
-              new TextRun({ text: "\t2025", size: 19 }),
-            ],
-          }),
-          createBulletPoint("Participated in technical cloud sessions covering AWS architectural best practices, serverless paradigms, and container orchestration."),
-
-          // Section 6: Certifications
-          createSectionHeading("CERTIFICATIONS & CONTINUOUS LEARNING"),
-          new Paragraph({
-            spacing: { before: 30, after: 20 },
-            children: [
-              new TextRun({ text: "• AWS Educate Cloud 101", bold: true, size: 19 }),
-              new TextRun({ text: " — Amazon Web Services (Foundational Cloud & Core Services)", size: 19 }),
+              new TextRun({ text: "BSc (Hons) in Computer Science", bold: true, size: 19 }),
             ],
           }),
           new Paragraph({
-            spacing: { before: 0, after: 20 },
+            spacing: { before: 0, after: 80 },
             children: [
-              new TextRun({ text: "• Kubernetes for Beginners & AWS Hands-on Labs", bold: true, size: 19 }),
-              new TextRun({ text: " — KodeKloud (Containers, Pods, Deployments)", size: 19 }),
+              new TextRun({ text: "NSBM Green University | 2024 – 2028", size: 19 }),
             ],
           }),
+
+          // Section 3: SOFTWARE DEVELOPMENT SKILLS
+          createSectionHeading("SOFTWARE DEVELOPMENT SKILLS"),
+          createSkillLine("Programming Languages", "Java, Python, Dart, JavaScript, TypeScript, SQL"),
+          createSkillLine("Frontend Development", "React.js, Next.js, Flutter, Vite, Tailwind CSS, Bootstrap, HTML, CSS"),
+          createSkillLine("Backend Development", "Spring Boot, Spring Security (JWT, RBAC), FastAPI, RESTful APIs"),
+          createSkillLine("Databases", "MySQL, PostgreSQL, SQLite, Supabase"),
+          createSkillLine("Dev Tools", "Git, GitHub Actions, Postman, Docker, AWS SDK, Vercel"),
+          createSkillLine("Core Concepts", "Data Structures, Algorithms, scikit-learn"),
+
+          // Section 4: PROJECTS
+          createSectionHeading("PROJECTS"),
+
+          // Project 1: FinSmart AI
+          createProjectTitle("FinSmart AI – Cloud & AI Cost Management (FinOps) Platform (Full Stack | Solo)"),
+          createBulletPoint("Developed a FinOps platform that tracks AWS cloud bills and AI tool usage (Cursor, Gemini) in one dashboard, forecasts spend, detects cost spikes and recommends savings.."),
+          createBulletPoint("Identified $633.50/month in savings on demo data across rightsizing, idle resources and storage lifecycle; secured the API with Spring Security (JWT, RBAC) for Admin, Analyst and Viewer roles over 5,430+ cost records."),
+          createMetaLine("Tech Stack", "Java 21, Spring Boot 3.3, Python, FastAPI, scikit-learn, React 19, TypeScript, Vite, Tailwind CSS, Supabase PostgreSQL, Docker, GitHub Actions, AWS SDK"),
+          createMetaLine("GitHub Repo", "https://github.com/Thiva123-ab/FinSmart-AI"),
+          createMetaLine("Live Demo", "https://finsmart-ai-omega.vercel.app/"),
+
+          // Project 2: LectureLens
+          createProjectTitle("LectureLens – AI-Powered Bilingual Study Assistant (Full Stack)"),
+          createBulletPoint("Developed an AI study assistant that turns uploaded lecture PDFs into structured summaries, flashcards and adaptive quizzes, with a chat-with-your-PDF tutor and one-tap Sinhala translation."),
+          createBulletPoint("Secured the backend with Supabase PostgreSQL Row-Level Security and Google OAuth protected routes; added weak-topic detection, a skills analytics dashboard and a Pomodoro focus timer."),
+          createMetaLine("Tech Stack", "React 19, TypeScript, Tailwind CSS, TanStack Start, Supabase, PostgreSQL"),
+          createMetaLine("GitHub Repo", "https://github.com/Thiva123-ab/study_buddy"),
+
+          // Project 3: FocusFlow
+          createProjectTitle("FocusFlow – Local-First Time Management App (Mobile | Solo)"),
+          createBulletPoint("Developed a local-first Flutter Android app that tracks on-device app usage, scores daily productivity (0–100) and supports focus sessions, Pomodoro, goals, time budgets, streaks and badges."),
+          createBulletPoint("Built offline-first storage with SQLite, PDF/CSV/JSON export and a home-screen widget; added an optional AI coach using on-device heuristics, with Gemini used only if the user opts in."),
+          createMetaLine("Tech Stack", "Dart, Flutter, Provider, sqflite (SQLite), SharedPreferences, HTTP, Android usage stats and notifications (minSdk 26)"),
+          createMetaLine("GitHub Repo", "https://github.com/Thiva123-ab/Smart-Time-Management-MobileApp"),
+
+          // Project 4: Pharmacy Stock
+          createProjectTitle("Pharmacy Stock and Delivery System (Full Stack | Team)"),
+          createBulletPoint("Developed a pharmacy management web application covering medicine inventory, online prescription uploads, real-time delivery tracking and automated order processing."),
+          createBulletPoint("Collaborated in a team of three using Git and GitHub for branching and version control."),
+          createMetaLine("Tech Stack", "HTML, CSS, JavaScript, Bootstrap, Java Spring Boot, MySQL, REST API, Git & GitHub"),
+          createMetaLine("GitHub Repo", "https://github.com/Thiva123-ab/Pharmacy-stock-system"),
         ],
       },
     ],
   });
 
   const buffer = await Packer.toBuffer(doc);
-  const docxPath = join(pubDir, "Thivanka_Tharuka_CV.docx");
-  writeFileSync(docxPath, buffer);
-  writeFileSync(join(rootDir, "Thivanka_Tharuka_CV.docx"), buffer);
-  console.log("Generated ATS DOCX:", docxPath);
+  const docxPub = join(pubDir, "Thivanka_Tharuka_CV.docx");
+  const docxRoot = join(rootDir, "Thivanka_Tharuka_CV.docx");
+  writeFileSync(docxPub, buffer);
+  writeFileSync(docxRoot, buffer);
+  console.log("Generated updated ATS DOCX:", docxPub);
 }
 
 function createSectionHeading(title) {
   return new Paragraph({
-    spacing: { before: 100, after: 40 },
+    spacing: { before: 80, after: 20 },
     children: [
       new TextRun({
         text: title,
         bold: true,
-        size: 22, // 11pt
-        color: "0F172A",
+        size: 20, // 10pt
+        color: "000000",
       }),
     ],
     border: {
       bottom: {
-        color: "94A3B8", // slate-400 clean divider line
+        color: "000000",
         space: 2,
-        value: "single",
+        value: BorderStyle.SINGLE,
         size: 6,
       },
     },
@@ -226,44 +194,53 @@ function createSectionHeading(title) {
 
 function createSkillLine(category, skills) {
   return new Paragraph({
-    spacing: { before: 0, after: 20 },
+    spacing: { before: 0, after: 15 },
     children: [
-      new TextRun({ text: `• ${category}: `, bold: true, size: 19 }),
-      new TextRun({ text: skills, size: 19 }),
+      new TextRun({ text: `${category}: `, bold: true, size: 18 }),
+      new TextRun({ text: skills, size: 18 }),
     ],
   });
 }
 
-function createProjectHeader(title, tech) {
+function createProjectTitle(title) {
   return new Paragraph({
-    spacing: { before: 60, after: 20 },
+    spacing: { before: 40, after: 15 },
     children: [
-      new TextRun({ text: title, bold: true, size: 20 }),
-      new TextRun({ text: `  [${tech}]`, italics: true, size: 18, color: "334155" }),
+      new TextRun({ text: title, bold: true, size: 19 }),
     ],
   });
 }
 
 function createBulletPoint(text) {
   return new Paragraph({
-    spacing: { before: 0, after: 20 },
+    spacing: { before: 0, after: 15 },
     children: [
-      new TextRun({ text: `  • ${text}`, size: 19 }),
+      new TextRun({ text: `•  ${text}`, size: 18 }),
     ],
   });
 }
 
-// --- 2. BUILD ATS PDF (Single-page guaranteed via HTML + Playwright) ---
+function createMetaLine(label, value) {
+  return new Paragraph({
+    spacing: { before: 0, after: 15 },
+    children: [
+      new TextRun({ text: `${label}: `, bold: true, size: 17.5 }),
+      new TextRun({ text: value, size: 17.5 }),
+    ],
+  });
+}
+
+// --- 2. BUILD EXACT ATS PDF (1 Page Guaranteed) ---
 async function generatePdf() {
   const htmlContent = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Thivanka Tharuka - CV</title>
+<title>Thivanka Tharuka - Resume</title>
 <style>
   @page {
     size: A4 portrait;
-    margin: 10mm 12mm 10mm 12mm;
+    margin: 10mm 13mm 10mm 13mm;
   }
   * {
     box-sizing: border-box;
@@ -273,11 +250,11 @@ async function generatePdf() {
     print-color-adjust: exact;
   }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    color: #111827;
+    font-family: Arial, Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #000000;
     background: #ffffff;
-    font-size: 9.2pt;
-    line-height: 1.28;
+    font-size: 8.8pt;
+    line-height: 1.25;
     max-width: 100%;
   }
   header {
@@ -285,20 +262,26 @@ async function generatePdf() {
     margin-bottom: 7px;
   }
   h1 {
-    font-size: 17pt;
+    font-size: 19pt;
     font-weight: 800;
-    letter-spacing: -0.3px;
-    color: #0f172a;
+    letter-spacing: 0.4px;
+    color: #000000;
     text-transform: uppercase;
     margin-bottom: 2px;
   }
+  .role-subtitle {
+    font-size: 10.5pt;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 3px;
+  }
   .contact-bar {
     font-size: 8.4pt;
-    color: #334155;
-    line-height: 1.35;
+    color: #111111;
+    line-height: 1.34;
   }
   .contact-bar a {
-    color: #0f766e;
+    color: #000000;
     text-decoration: none;
   }
   .contact-bar a:hover {
@@ -306,116 +289,82 @@ async function generatePdf() {
   }
   .section-title {
     font-size: 9.8pt;
-    font-weight: 700;
-    color: #0f172a;
+    font-weight: 800;
+    color: #000000;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    border-bottom: 1px solid #cbd5e1;
-    padding-bottom: 1.5px;
-    margin-top: 6px;
+    letter-spacing: 0.4px;
+    border-bottom: 1.2px solid #000000;
+    padding-bottom: 1px;
+    margin-top: 7px;
     margin-bottom: 3.5px;
   }
   p.summary {
-    font-size: 8.8pt;
-    color: #1f2937;
-    text-align: justify;
-    line-height: 1.32;
-    margin-bottom: 4px;
+    font-size: 8.5pt;
+    color: #000000;
+    line-height: 1.28;
+    margin-bottom: 2px;
   }
-  .edu-row {
+  .edu-block {
+    margin-bottom: 2px;
+  }
+  .edu-degree {
+    font-weight: 700;
+    font-size: 8.8pt;
+  }
+  .edu-school {
+    font-size: 8.6pt;
+    color: #111111;
+  }
+  .skills-grid {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    font-size: 9pt;
+    gap: 16px;
+    margin-bottom: 2px;
   }
-  .edu-row .inst {
-    font-weight: 700;
-    color: #0f172a;
+  .skills-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 8.35pt;
+    line-height: 1.23;
   }
-  .edu-row .date {
-    font-style: italic;
-    color: #475569;
-    font-size: 8.5pt;
-  }
-  .degree {
-    font-style: italic;
-    color: #1e293b;
-    font-size: 8.8pt;
-    margin-bottom: 1.5px;
-  }
-  .coursework {
-    font-size: 8.3pt;
-    color: #334155;
-    margin-bottom: 3px;
-  }
-  .skills-list {
-    list-style: none;
-    font-size: 8.5pt;
-    margin-bottom: 3px;
-  }
-  .skills-list li {
-    margin-bottom: 1.5px;
-    line-height: 1.25;
-  }
-  .skills-list strong {
-    color: #0f172a;
+  .skills-col div strong {
+    color: #000000;
   }
   .project-item {
-    margin-bottom: 4px;
-  }
-  .project-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    font-size: 8.9pt;
-    margin-bottom: 1px;
+    margin-bottom: 4.5px;
   }
   .project-title {
     font-weight: 700;
-    color: #0f172a;
-  }
-  .project-tech {
-    font-size: 8pt;
-    color: #475569;
-    font-style: italic;
+    font-size: 8.85pt;
+    color: #000000;
+    margin-bottom: 1.5px;
   }
   ul.bullets {
-    list-style-type: square;
-    padding-left: 14px;
-    font-size: 8.4pt;
-    color: #1f2937;
+    list-style-type: disc;
+    padding-left: 15px;
+    font-size: 8.35pt;
+    color: #000000;
+    margin-bottom: 1.5px;
   }
   ul.bullets li {
-    margin-bottom: 1px;
-    line-height: 1.26;
-  }
-  .exp-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    font-size: 8.8pt;
-    margin-top: 2px;
-  }
-  .exp-title {
-    font-weight: 700;
-    color: #0f172a;
-  }
-  .exp-role {
-    font-style: italic;
-    color: #334155;
-  }
-  .exp-date {
-    font-size: 8.3pt;
-    color: #64748b;
-  }
-  .certs-list {
-    list-style: none;
-    font-size: 8.4pt;
-    color: #1e293b;
-  }
-  .certs-list li {
     margin-bottom: 1.5px;
+    line-height: 1.24;
+  }
+  .meta-line {
+    font-size: 8.2pt;
     line-height: 1.25;
+    color: #000000;
+    margin-top: 1px;
+  }
+  .meta-line strong {
+    color: #000000;
+  }
+  .meta-line a {
+    color: #0000ee;
+    text-decoration: underline;
+    word-break: break-all;
   }
 </style>
 </head>
@@ -423,110 +372,84 @@ async function generatePdf() {
 
 <header>
   <h1>THIVANKA THARUKA</h1>
+  <div class="role-subtitle">Software Engineer Intern</div>
   <div class="contact-bar">
-    Mahagama, Sri Lanka &nbsp;•&nbsp; +94 71 735 9120 &nbsp;•&nbsp; <a href="mailto:thivankatharuka36@gmail.com">thivankatharuka36@gmail.com</a><br>
-    <a href="https://linkedin.com/in/thivanka-tharuka" target="_blank">linkedin.com/in/thivanka-tharuka</a> &nbsp;•&nbsp;
-    <a href="https://github.com/Thiva123-ab" target="_blank">github.com/Thiva123-ab</a> &nbsp;•&nbsp;
-    <a href="https://www.thivankatharuka.tech/" target="_blank">thivankatharuka.tech</a>
+    Mahagama, Sri Lanka | <a href="mailto:thivankatharuka36@gmail.com">thivankatharuka36@gmail.com</a> | +94 71 735 9120 | <a href="https://www.thivankatharuka.tech/" target="_blank">thivankatharuka.tech</a><br>
+    <a href="https://linkedin.com/in/thivanka-tharuka" target="_blank">linkedin.com/in/thivanka-tharuka</a> | <a href="https://github.com/Thiva123-ab" target="_blank">github.com/Thiva123-ab</a>
   </div>
 </header>
 
-<div class="section-title">Professional Summary</div>
+<div class="section-title">SUMMARY</div>
 <p class="summary">
-  Computer Science undergraduate at NSBM Green University with hands-on project experience in full-stack web and backend engineering using Java, Spring Boot, React, and TypeScript. Experienced in designing RESTful APIs, relational schemas (MySQL, PostgreSQL), and responsive user interfaces. Seeking a Software Engineering Intern role to build scalable, reliable software systems.
+  Computer Science undergraduate and full-stack developer experienced in building scalable web applications with Java, Spring Boot, Python, React.js, Next.js and Tailwind CSS. Skilled in designing secure REST APIs, role-based backends, responsive interfaces and AI/ML-driven features, with Git-based collaboration, Docker and CI/CD. Seeking a software engineering internship to build impactful solutions.
 </p>
 
-<div class="section-title">Education</div>
-<div class="edu-row">
-  <span class="inst">NSBM Green University — Colombo, Sri Lanka</span>
-  <span class="date">Expected Feb 2028</span>
-</div>
-<div class="degree">Bachelor of Science (Honours) in Computer Science</div>
-<div class="coursework">
-  <strong>Relevant Coursework:</strong> Object-Oriented Programming (Java), Data Structures & Algorithms, Database Management Systems, Enterprise Application Development, Operating Systems.
+<div class="section-title">EDUCATION</div>
+<div class="edu-block">
+  <div class="edu-degree">BSc (Hons) in Computer Science</div>
+  <div class="edu-school">NSBM Green University | 2024 – 2028</div>
 </div>
 
-<div class="section-title">Technical Skills</div>
-<ul class="skills-list">
-  <li><strong>Languages:</strong> Java, Kotlin, TypeScript, JavaScript, Python, SQL, HTML5, CSS3</li>
-  <li><strong>Backend & APIs:</strong> Spring Boot, Spring Security, RESTful APIs, WebSockets, Node.js, Express</li>
-  <li><strong>Frontend & Mobile:</strong> React, TanStack Start, Tailwind CSS, Android SDK, Jetpack Compose, Material 3</li>
-  <li><strong>Databases & ORM:</strong> MySQL, PostgreSQL, Supabase, Room SQLite, Spring Data JPA, Hibernate</li>
-  <li><strong>Tools & Practices:</strong> Git, GitHub, Postman, Vite, Linux Shell, Clean Architecture</li>
-  <li><strong>Cloud (Familiar / Learning):</strong> Docker, AWS (Educate Cloud 101), Kubernetes (Beginner concepts)</li>
-</ul>
-
-<div class="section-title">Technical Projects</div>
-
-<div class="project-item">
-  <div class="project-header">
-    <span class="project-title">Sri Lanka Flood Relief Live Map — Full-Stack Disaster Platform</span>
-    <span class="project-tech">Java, Spring Boot, MySQL, WebSockets, Spring Security, Leaflet.js</span>
+<div class="section-title">SOFTWARE DEVELOPMENT SKILLS</div>
+<div class="skills-grid">
+  <div class="skills-col">
+    <div><strong>Programming Languages:</strong> Java, Python, Dart, JavaScript, TypeScript, SQL</div>
+    <div><strong>Backend Development:</strong> Spring Boot, Spring Security (JWT, RBAC), FastAPI, RESTful APIs</div>
+    <div><strong>Dev Tools:</strong> Git, GitHub Actions, Postman, Docker, AWS SDK, Vercel</div>
   </div>
-  <ul class="bullets">
-    <li>Architected an open-source real-time disaster coordination web platform connecting flood victims with relief responders via an interactive live map.</li>
-    <li>Engineered Spring Boot RESTful APIs and WebSocket endpoints for low-latency incident dispatching and emergency SOS requests.</li>
-    <li>Configured Spring Security role-based access control (RBAC) to enforce distinct privileges across public citizens, emergency responders, and administrators.</li>
-  </ul>
-</div>
-
-<div class="project-item">
-  <div class="project-header">
-    <span class="project-title">Crisis Copilot — Emergency Response AI Platform (Team Project)</span>
-    <span class="project-tech">React 19, Supabase (PostgreSQL), Google Gemini AI, Tailwind CSS</span>
+  <div class="skills-col">
+    <div><strong>Frontend Development:</strong> React.js, Next.js, Flutter, Vite, Tailwind CSS, Bootstrap, HTML, CSS</div>
+    <div><strong>Databases:</strong> MySQL, PostgreSQL, SQLite, Supabase</div>
+    <div><strong>Core Concepts:</strong> Data Structures, Algorithms, scikit-learn</div>
   </div>
-  <ul class="bullets">
-    <li>Collaborated in an agile team to build a disaster-response platform featuring automated emergency triage powered by Google Gemini AI.</li>
-    <li>Implemented incident dispatch feeds and high-priority responder dashboards using React 19 and Tailwind CSS for responsive mobile coordination.</li>
-    <li>Integrated Supabase PostgreSQL with Row Level Security (RLS) to persist sensitive incident reports and manage concurrent responder assignments.</li>
-  </ul>
 </div>
 
+<div class="section-title">PROJECTS</div>
+
+<!-- Project 1: FinSmart AI -->
 <div class="project-item">
-  <div class="project-header">
-    <span class="project-title">LectureLens / Smart Sinhala Study — Bilingual AI Assistant</span>
-    <span class="project-tech">React, TypeScript, TanStack Start, Supabase, Google Gemini AI</span>
-  </div>
+  <div class="project-title">FinSmart AI – Cloud & AI Cost Management (FinOps) Platform (Full Stack | Solo)</div>
   <ul class="bullets">
-    <li>Developed a bilingual study assistant that extracts course notes from lecture PDFs to generate summaries, flashcards, and recall quizzes.</li>
-    <li>Integrated Google Gemini AI for contextual document Q&A with citation anchors and instantaneous English-to-Sinhala translation.</li>
-    <li>Structured user authentication, file storage, and relational progress tracking with Supabase PostgreSQL and Row Level Security.</li>
+    <li>Developed a FinOps platform that tracks AWS cloud bills and AI tool usage (Cursor, Gemini) in one dashboard, forecasts spend, detects cost spikes and recommends savings..</li>
+    <li>Identified $633.50/month in savings on demo data across rightsizing, idle resources and storage lifecycle; secured the API with Spring Security (JWT, RBAC) for Admin, Analyst and Viewer roles over 5,430+ cost records.</li>
   </ul>
+  <div class="meta-line"><strong>Tech Stack:</strong> Java 21, Spring Boot 3.3, Python, FastAPI, scikit-learn, React 19, TypeScript, Vite, Tailwind CSS, Supabase PostgreSQL, Docker, GitHub Actions, AWS SDK</div>
+  <div class="meta-line"><strong>GitHub Repo:</strong> <a href="https://github.com/Thiva123-ab/FinSmart-AI" target="_blank">https://github.com/Thiva123-ab/FinSmart-AI</a></div>
+  <div class="meta-line"><strong>Live Demo:</strong> <a href="https://finsmart-ai-omega.vercel.app/" target="_blank">https://finsmart-ai-omega.vercel.app/</a></div>
 </div>
 
+<!-- Project 2: LectureLens -->
 <div class="project-item">
-  <div class="project-header">
-    <span class="project-title">FocusFlow — Local-First Android Time Management App</span>
-    <span class="project-tech">Kotlin, Jetpack Compose, Room SQLite, Material 3, WorkManager</span>
-  </div>
+  <div class="project-title">LectureLens – AI-Powered Bilingual Study Assistant (Full Stack)</div>
   <ul class="bullets">
-    <li>Built a privacy-focused, local-first Android productivity app utilizing UsageStatsManager and encrypted Room SQLite to track device usage habits.</li>
-    <li>Engineered an offline heuristic coaching engine evaluating a 5-pillar productivity algorithm, daily time blocks, and deep-focus Pomodoro sessions.</li>
+    <li>Developed an AI study assistant that turns uploaded lecture PDFs into structured summaries, flashcards and adaptive quizzes, with a chat-with-your-PDF tutor and one-tap Sinhala translation.</li>
+    <li>Secured the backend with Supabase PostgreSQL Row-Level Security and Google OAuth protected routes; added weak-topic detection, a skills analytics dashboard and a Pomodoro focus timer.</li>
   </ul>
+  <div class="meta-line"><strong>Tech Stack:</strong> React 19, TypeScript, Tailwind CSS, TanStack Start, Supabase, PostgreSQL</div>
+  <div class="meta-line"><strong>GitHub Repo:</strong> <a href="https://github.com/Thiva123-ab/study_buddy" target="_blank">https://github.com/Thiva123-ab/study_buddy</a></div>
 </div>
 
-<div class="section-title">Leadership & Community Experience</div>
-<div class="exp-row">
-  <div><span class="exp-title">IDEATHON 1.0 (CompuVate) — NSBM Green University</span> <span class="exp-role">| Volunteer & Event Logistics</span></div>
-  <span class="exp-date">Sep 2025</span>
+<!-- Project 3: FocusFlow -->
+<div class="project-item">
+  <div class="project-title">FocusFlow – Local-First Time Management App (Mobile | Solo)</div>
+  <ul class="bullets">
+    <li>Developed a local-first Flutter Android app that tracks on-device app usage, scores daily productivity (0–100) and supports focus sessions, Pomodoro, goals, time budgets, streaks and badges.</li>
+    <li>Built offline-first storage with SQLite, PDF/CSV/JSON export and a home-screen widget; added an optional AI coach using on-device heuristics, with Gemini used only if the user opts in.</li>
+  </ul>
+  <div class="meta-line"><strong>Tech Stack:</strong> Dart, Flutter, Provider, sqflite (SQLite), SharedPreferences, HTTP, Android usage stats and notifications (minSdk 26)</div>
+  <div class="meta-line"><strong>GitHub Repo:</strong> <a href="https://github.com/Thiva123-ab/Smart-Time-Management-MobileApp" target="_blank">https://github.com/Thiva123-ab/Smart-Time-Management-MobileApp</a></div>
 </div>
-<ul class="bullets">
-  <li>Coordinated participant logistics, stage setup, and technical support for student ideation teams during a campus hackathon.</li>
-</ul>
 
-<div class="exp-row">
-  <div><span class="exp-title">AWS Student Community Day Sri Lanka</span> <span class="exp-role">| Community Attendee & Workshop Participant</span></div>
-  <span class="exp-date">2025</span>
+<!-- Project 4: Pharmacy Stock -->
+<div class="project-item">
+  <div class="project-title">Pharmacy Stock and Delivery System (Full Stack | Team)</div>
+  <ul class="bullets">
+    <li>Developed a pharmacy management web application covering medicine inventory, online prescription uploads, real-time delivery tracking and automated order processing.</li>
+    <li>Collaborated in a team of three using Git and GitHub for branching and version control.</li>
+  </ul>
+  <div class="meta-line"><strong>Tech Stack:</strong> HTML, CSS, JavaScript, Bootstrap, Java Spring Boot, MySQL, REST API, Git & GitHub</div>
+  <div class="meta-line"><strong>GitHub Repo:</strong> <a href="https://github.com/Thiva123-ab/Pharmacy-stock-system" target="_blank">https://github.com/Thiva123-ab/Pharmacy-stock-system</a></div>
 </div>
-<ul class="bullets">
-  <li>Participated in technical cloud sessions covering AWS architectural best practices, serverless paradigms, and container orchestration.</li>
-</ul>
-
-<div class="section-title">Certifications & Continuous Learning</div>
-<ul class="certs-list">
-  <li>• <strong>AWS Educate Cloud 101</strong> — Amazon Web Services (Foundational Cloud & Core Architecture)</li>
-  <li>• <strong>Kubernetes for Beginners & AWS Hands-on Labs</strong> — KodeKloud (Containers, Pods, Deployments)</li>
-</ul>
 
 </body>
 </html>`;
@@ -539,9 +462,10 @@ async function generatePdf() {
       browser = await chromium.launch({ headless: true });
     }
   } catch (err) {
-    console.warn("Playwright browser not available in this environment. Preserving existing PDF assets:", err.message);
+    console.warn("Playwright browser not available. Preserving existing PDF assets:", err.message);
     return;
   }
+
   const page = await browser.newPage();
   await page.setContent(htmlContent, { waitUntil: "networkidle" });
 
@@ -549,10 +473,10 @@ async function generatePdf() {
     format: "A4",
     printBackground: true,
     margin: {
-      top: "8mm",
-      bottom: "8mm",
-      left: "12mm",
-      right: "12mm",
+      top: "10mm",
+      bottom: "10mm",
+      left: "13mm",
+      right: "13mm",
     },
   });
 
@@ -560,10 +484,12 @@ async function generatePdf() {
 
   const pdfPub = join(pubDir, "Thivanka_Tharuka_CV.pdf");
   const pdfAsset = join(assetsDir, "Thivanka_Tharuka_CV.pdf");
+  const pdfRoot = join(rootDir, "Thivanka_Tharuka_CV.pdf");
+
   writeFileSync(pdfPub, pdfBuffer);
   writeFileSync(pdfAsset, pdfBuffer);
-  writeFileSync(join(rootDir, "Thivanka_Tharuka_CV.pdf"), pdfBuffer);
-  console.log("Generated ATS PDF:", pdfPub);
+  writeFileSync(pdfRoot, pdfBuffer);
+  console.log("Generated updated ATS PDF:", pdfPub);
 }
 
 async function run() {

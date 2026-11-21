@@ -99,7 +99,7 @@ export default function ResumePage() {
             </div>
             <div className="cv-headline">
               <h2>{SITE.name}</h2>
-              <p className="cv-role">FULL STACK DEVELOPER · COMPUTER SCIENCE STUDENT</p>
+              <p className="cv-role">SOFTWARE ENGINEER INTERN</p>
               <p className="cv-sub-school">NSBM Green University · BSc (Hons) Computer Science (2024 – 2028)</p>
             </div>
           </header>
@@ -133,7 +133,13 @@ export default function ResumePage() {
               <div className="cv-side-block">
                 <h3>Tech Skills</h3>
                 <div className="cv-tag-cloud">
-                  {["Python", "Java", "Data Structures", "Algorithms", "SQL", "MySQL", "JavaScript", "HTML / CSS", "Spring Boot", "REST API", "Postman", "React", "TypeScript", "Next.js", "Git & GitHub"].map((s) => (
+                  {[
+                    "Java", "Python", "Dart", "JavaScript", "TypeScript", "SQL",
+                    "React.js", "Next.js", "Flutter", "Vite", "Tailwind CSS", "Bootstrap",
+                    "Spring Boot", "Spring Security", "FastAPI", "REST APIs",
+                    "MySQL", "PostgreSQL", "SQLite", "Supabase",
+                    "Git", "GitHub Actions", "Docker", "AWS SDK", "Vercel"
+                  ].map((s) => (
                     <span key={s} className="cv-skill-pill">{s}</span>
                   ))}
                 </div>
