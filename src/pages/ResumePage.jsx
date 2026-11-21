@@ -195,14 +195,59 @@ export default function ResumePage() {
               <section className="cv-block">
                 <h3>Profile</h3>
                 <p className="cv-profile-lead">
-                  Motivated and dedicated software development student with hands-on
-                  experience in building applications using Java, Spring Boot, and Git-based team
-                  collaboration. Skilled in web design using HTML/CSS and creating responsive UI
-                  components. Strong understanding of Java, JavaScript, Python, and version
-                  control workflows. Eager to apply technical skills and gain practical industry
-                  experience through full-stack software development roles.
+                  Computer Science undergraduate and full-stack developer experienced in building scalable web applications with
+                  Java, Spring Boot, Python, React.js, Next.js and Tailwind CSS. Skilled in designing secure REST APIs, role-based
+                  backends, responsive interfaces and AI/ML-driven features, with Git-based collaboration, Docker and CI/CD.
+                  Seeking a software engineering internship to build impactful solutions.
                 </p>
               </section>
+
+              {/* Featured Project: FinSmart AI */}
+              <section className="cv-block">
+                <h3>⭐ Featured Projects</h3>
+
+                {/* FinSmart AI */}
+                <article className="cv-project-card group-card">
+                  <div className="cv-row">
+                    <div className="cv-title-group">
+                      <strong>FinSmart AI – Cloud &amp; AI Cost Management (FinOps) Platform</strong>
+                      <span className="cv-type-badge solo">Solo / Lead</span>
+                    </div>
+                    <span className="cv-date-badge">2026</span>
+                  </div>
+                  <p>
+                    Developed a FinOps platform that tracks AWS cloud bills and AI tool usage (Cursor, Gemini) in one
+                    dashboard, forecasts spend, detects cost spikes and recommends savings. Identified $633.50/month in
+                    savings on demo data across rightsizing, idle resources and storage lifecycle; secured the API with
+                    Spring Security (JWT, RBAC) for Admin, Analyst and Viewer roles over 5,430+ cost records.
+                  </p>
+                  <div className="cv-project-footer">
+                    <div className="cv-tech-row">
+                      <span className="cv-tech-label">Technologies Used:</span>
+                      <span>Java 21, Spring Boot 3.3, Python, FastAPI, scikit-learn, React 19, TypeScript, Vite, Tailwind CSS, Supabase PostgreSQL, Docker, GitHub Actions, AWS SDK</span>
+                    </div>
+                    <div style={{ display: "flex", gap: "8px" }}>
+                      <a
+                        href="https://finsmart-ai-omega.vercel.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="cv-repo-btn"
+                        data-cursor="hover"
+                      >
+                        Live Demo ↗
+                      </a>
+                      <a
+                        href="https://github.com/Thiva123-ab/FinSmart-AI"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="cv-repo-btn"
+                        data-cursor="hover"
+                      >
+                        GitHub Repo ↗
+                      </a>
+                    </div>
+                  </div>
+                </article>
 
               {/* Group Projects Section */}
               <section className="cv-block">
