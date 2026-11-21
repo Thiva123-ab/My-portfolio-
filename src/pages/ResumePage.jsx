@@ -336,17 +336,28 @@ export default function ResumePage() {
                     <div className="cv-project-footer">
                       <div className="cv-tech-row">
                         <span className="cv-tech-label">Technologies Used:</span>
-                        <span>TypeScript, React, NASA Open Data, Tailwind CSS, Web APIs</span>
+                        <span>React 19, TypeScript, Vite, Tailwind CSS v4, React Router, Vitest, React Testing Library, ESLint, Prettier</span>
                       </div>
-                      <a
-                        href="https://github.com/mchithna/NASASpaceApps"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="cv-repo-btn"
-                        data-cursor="hover"
-                      >
-                        GitHub Repo ↗
-                      </a>
+                      <div style={{ display: "flex", gap: "8px" }}>
+                        <a
+                          href="https://novaexplorer.vercel.app"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="cv-repo-btn"
+                          data-cursor="hover"
+                        >
+                          Live Demo ↗
+                        </a>
+                        <a
+                          href="https://github.com/mchithna/NASASpaceApps"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="cv-repo-btn"
+                          data-cursor="hover"
+                        >
+                          GitHub Repo ↗
+                        </a>
+                      </div>
                     </div>
                   </article>
 
