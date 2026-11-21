@@ -202,37 +202,37 @@ function createSkillLine(category, skills) {
   });
 }
 
-function createProjectTitle(title) {
-  return new Paragraph({
-    spacing: { before: 40, after: 15 },
-    children: [
-      new TextRun({ text: title, bold: true, size: 19 }),
-    ],
-  });
-}
+  function createProjectTitle(title) {
+    return new Paragraph({
+      spacing: { before: 40, after: 15 },
+      children: [
+        new TextRun({ text: title, bold: true, size: 19 }),
+      ],
+    });
+  }
 
-function createBulletPoint(text) {
-  return new Paragraph({
-    spacing: { before: 0, after: 15 },
-    children: [
-      new TextRun({ text: `•  ${text}`, size: 18 }),
-    ],
-  });
-}
+  function createBulletPoint(text) {
+    return new Paragraph({
+      spacing: { before: 0, after: 15 },
+      children: [
+        new TextRun({ text: `•  ${text}`, size: 18 }),
+      ],
+    });
+  }
 
-function createMetaLine(label, value) {
-  return new Paragraph({
-    spacing: { before: 0, after: 15 },
-    children: [
-      new TextRun({ text: `${label}: `, bold: true, size: 17.5 }),
-      new TextRun({ text: value, size: 17.5 }),
-    ],
-  });
-}
+  function createMetaLine(label, value) {
+    return new Paragraph({
+      spacing: { before: 0, after: 15 },
+      children: [
+        new TextRun({ text: `${label}: `, bold: true, size: 17.5 }),
+        new TextRun({ text: value, size: 17.5 }),
+      ],
+    });
+  }
 
-// --- 2. BUILD EXACT ATS PDF (1 Page Guaranteed) ---
-async function generatePdf() {
-  const htmlContent = `<!DOCTYPE html>
+  // --- 2. BUILD EXACT ATS PDF (1 Page Guaranteed) ---
+  async function generatePdf() {
+    const htmlContent = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -454,51 +454,51 @@ async function generatePdf() {
 </body>
 </html>`;
 
-  let browser;
-  try {
+    let browser;
     try {
-      browser = await chromium.launch({ channel: "msedge", headless: true });
-    } catch {
-      browser = await chromium.launch({ headless: true });
+      try {
+        browser = await chromium.launch({ channel: "msedge", headless: true });
+      } catch {
+        browser = await chromium.launch({ headless: true });
+      }
+    } catch (err) {
+      console.warn("Playwright browser not available. Preserving existing PDF assets:", err.message);
+      return;
     }
-  } catch (err) {
-    console.warn("Playwright browser not available. Preserving existing PDF assets:", err.message);
-    return;
+
+    const page = await browser.newPage();
+    await page.setContent(htmlContent, { waitUntil: "networkidle" });
+
+    const pdfBuffer = await page.pdf({
+      format: "A4",
+      printBackground: true,
+      margin: {
+        top: "10mm",
+        bottom: "10mm",
+        left: "13mm",
+        right: "13mm",
+      },
+    });
+
+    await browser.close();
+
+    const pdfPub = join(pubDir, "Thivanka_Tharuka_CV.pdf");
+    const pdfAsset = join(assetsDir, "Thivanka_Tharuka_CV.pdf");
+    const pdfRoot = join(rootDir, "Thivanka_Tharuka_CV.pdf");
+
+    writeFileSync(pdfPub, pdfBuffer);
+    writeFileSync(pdfAsset, pdfBuffer);
+    writeFileSync(pdfRoot, pdfBuffer);
+    console.log("Generated updated ATS PDF:", pdfPub);
   }
 
-  const page = await browser.newPage();
-  await page.setContent(htmlContent, { waitUntil: "networkidle" });
+  async function run() {
+    await generateDocx();
+    await generatePdf();
+    console.log("CV generation completed successfully!");
+  }
 
-  const pdfBuffer = await page.pdf({
-    format: "A4",
-    printBackground: true,
-    margin: {
-      top: "10mm",
-      bottom: "10mm",
-      left: "13mm",
-      right: "13mm",
-    },
+  run().catch((err) => {
+    console.error(err);
+    process.exit(1);
   });
-
-  await browser.close();
-
-  const pdfPub = join(pubDir, "Thivanka_Tharuka_CV.pdf");
-  const pdfAsset = join(assetsDir, "Thivanka_Tharuka_CV.pdf");
-  const pdfRoot = join(rootDir, "Thivanka_Tharuka_CV.pdf");
-
-  writeFileSync(pdfPub, pdfBuffer);
-  writeFileSync(pdfAsset, pdfBuffer);
-  writeFileSync(pdfRoot, pdfBuffer);
-  console.log("Generated updated ATS PDF:", pdfPub);
-}
-
-async function run() {
-  await generateDocx();
-  await generatePdf();
-  console.log("CV generation completed successfully!");
-}
-
-run().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
