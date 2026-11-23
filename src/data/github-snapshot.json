@@ -10,13 +10,13 @@
     "followers": 5,
     "following": 7,
     "htmlUrl": "https://github.com/Thiva123-ab",
-    "lastActive": "2026-11-20T06:59:43Z"
+    "lastActive": "2026-11-20T18:56:31Z"
   },
   "stats": {
     "publicRepos": 21,
     "totalStars": 0,
     "totalContributions": 488,
-    "currentStreak": 10,
+    "currentStreak": 0,
     "longestStreak": 10,
     "pullRequests": 29,
     "issues": 9,
@@ -5645,6 +5645,78 @@
   ],
   "events": [
     {
+      "id": "28004235107",
+      "type": "PushEvent",
+      "repoName": "devops-practical",
+      "repoFullName": "Thiva123-ab/devops-practical",
+      "repoUrl": "https://github.com/Thiva123-ab/devops-practical",
+      "createdAt": "2026-11-20T18:56:31Z",
+      "summary": "Pushed 1 commit: \"Code updates\""
+    },
+    {
+      "id": "27993235353",
+      "type": "PushEvent",
+      "repoName": "devops-practical",
+      "repoFullName": "Thiva123-ab/devops-practical",
+      "repoUrl": "https://github.com/Thiva123-ab/devops-practical",
+      "createdAt": "2026-11-20T17:15:44Z",
+      "summary": "Pushed 1 commit: \"Code updates\""
+    },
+    {
+      "id": "27989319058",
+      "type": "PushEvent",
+      "repoName": "devops-practical",
+      "repoFullName": "Thiva123-ab/devops-practical",
+      "repoUrl": "https://github.com/Thiva123-ab/devops-practical",
+      "createdAt": "2026-11-20T18:57:18Z",
+      "summary": "Pushed 1 commit: \"Code updates\""
+    },
+    {
+      "id": "27989082712",
+      "type": "PushEvent",
+      "repoName": "devops-practical",
+      "repoFullName": "Thiva123-ab/devops-practical",
+      "repoUrl": "https://github.com/Thiva123-ab/devops-practical",
+      "createdAt": "2026-11-20T18:55:42Z",
+      "summary": "Pushed 1 commit: \"Code updates\""
+    },
+    {
+      "id": "27955298868",
+      "type": "PushEvent",
+      "repoName": "devops-practical",
+      "repoFullName": "Thiva123-ab/devops-practical",
+      "repoUrl": "https://github.com/Thiva123-ab/devops-practical",
+      "createdAt": "2026-11-20T18:54:46Z",
+      "summary": "Pushed 1 commit: \"Code updates\""
+    },
+    {
+      "id": "27921910692",
+      "type": "PushEvent",
+      "repoName": "devops-practical",
+      "repoFullName": "Thiva123-ab/devops-practical",
+      "repoUrl": "https://github.com/Thiva123-ab/devops-practical",
+      "createdAt": "2026-11-20T07:04:36Z",
+      "summary": "Pushed 1 commit: \"Code updates\""
+    },
+    {
+      "id": "27920545234",
+      "type": "PushEvent",
+      "repoName": "My-portfolio-",
+      "repoFullName": "Thiva123-ab/My-portfolio-",
+      "repoUrl": "https://github.com/Thiva123-ab/My-portfolio-",
+      "createdAt": "2026-11-21T06:51:25Z",
+      "summary": "Pushed 1 commit: \"Code updates\""
+    },
+    {
+      "id": "27903977869",
+      "type": "PushEvent",
+      "repoName": "devops-practical",
+      "repoFullName": "Thiva123-ab/devops-practical",
+      "repoUrl": "https://github.com/Thiva123-ab/devops-practical",
+      "createdAt": "2026-11-20T04:50:42Z",
+      "summary": "Pushed 1 commit: \"Code updates\""
+    },
+    {
       "id": "27874414822",
       "type": "PushEvent",
       "repoName": "devops-practical",
@@ -5660,78 +5732,6 @@
       "repoFullName": "Thiva123-ab/devops-practical",
       "repoUrl": "https://github.com/Thiva123-ab/devops-practical",
       "createdAt": "2026-11-20T19:03:00Z",
-      "summary": "Pushed 1 commit: \"Code updates\""
-    },
-    {
-      "id": "27857351686",
-      "type": "PushEvent",
-      "repoName": "devops-practical",
-      "repoFullName": "Thiva123-ab/devops-practical",
-      "repoUrl": "https://github.com/Thiva123-ab/devops-practical",
-      "createdAt": "2026-11-20T18:34:16Z",
-      "summary": "Pushed 1 commit: \"Code updates\""
-    },
-    {
-      "id": "27852922550",
-      "type": "PushEvent",
-      "repoName": "My-portfolio-",
-      "repoFullName": "Thiva123-ab/My-portfolio-",
-      "repoUrl": "https://github.com/Thiva123-ab/My-portfolio-",
-      "createdAt": "2026-11-21T05:09:34Z",
-      "summary": "Pushed 1 commit: \"Code updates\""
-    },
-    {
-      "id": "27847601238",
-      "type": "PushEvent",
-      "repoName": "My-portfolio-",
-      "repoFullName": "Thiva123-ab/My-portfolio-",
-      "repoUrl": "https://github.com/Thiva123-ab/My-portfolio-",
-      "createdAt": "2026-11-19T17:34:51Z",
-      "summary": "Pushed 1 commit: \"Code updates\""
-    },
-    {
-      "id": "27766201327",
-      "type": "PushEvent",
-      "repoName": "My-portfolio-",
-      "repoFullName": "Thiva123-ab/My-portfolio-",
-      "repoUrl": "https://github.com/Thiva123-ab/My-portfolio-",
-      "createdAt": "2026-11-19T03:42:44Z",
-      "summary": "Pushed 1 commit: \"Code updates\""
-    },
-    {
-      "id": "27761894716",
-      "type": "PushEvent",
-      "repoName": "devops-practical",
-      "repoFullName": "Thiva123-ab/devops-practical",
-      "repoUrl": "https://github.com/Thiva123-ab/devops-practical",
-      "createdAt": "2026-11-20T04:47:52Z",
-      "summary": "Pushed 1 commit: \"Code updates\""
-    },
-    {
-      "id": "27751276814",
-      "type": "PushEvent",
-      "repoName": "My-portfolio-",
-      "repoFullName": "Thiva123-ab/My-portfolio-",
-      "repoUrl": "https://github.com/Thiva123-ab/My-portfolio-",
-      "createdAt": "2026-11-19T03:44:35Z",
-      "summary": "Pushed 1 commit: \"Code updates\""
-    },
-    {
-      "id": "27723733364",
-      "type": "PushEvent",
-      "repoName": "My-portfolio-",
-      "repoFullName": "Thiva123-ab/My-portfolio-",
-      "repoUrl": "https://github.com/Thiva123-ab/My-portfolio-",
-      "createdAt": "2026-11-19T00:11:05Z",
-      "summary": "Pushed 1 commit: \"Code updates\""
-    },
-    {
-      "id": "27705997891",
-      "type": "PushEvent",
-      "repoName": "My-portfolio-",
-      "repoFullName": "Thiva123-ab/My-portfolio-",
-      "repoUrl": "https://github.com/Thiva123-ab/My-portfolio-",
-      "createdAt": "2026-11-18T18:00:54Z",
       "summary": "Pushed 1 commit: \"Code updates\""
     }
   ],
@@ -5950,7 +5950,7 @@
     }
   ],
   "meta": {
-    "fetchedAt": "2026-11-22T05:37:41.796Z",
+    "fetchedAt": "2026-11-23T06:19:26.624Z",
     "isFallback": false,
     "source": "github-api"
   }
