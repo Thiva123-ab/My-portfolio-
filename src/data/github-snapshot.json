@@ -8,24 +8,24 @@
     "location": "Polegoda , Mahagama",
     "joinedYear": 2025,
     "followers": 5,
-    "following": 7,
+    "following": 6,
     "htmlUrl": "https://github.com/Thiva123-ab",
-    "lastActive": "2026-11-20T18:56:31Z"
+    "lastActive": "2026-11-21T12:59:24Z"
   },
   "stats": {
     "publicRepos": 21,
     "totalStars": 0,
-    "totalContributions": 488,
-    "currentStreak": 0,
-    "longestStreak": 10,
+    "totalContributions": 507,
+    "currentStreak": 1,
+    "longestStreak": 15,
     "pullRequests": 29,
     "issues": 9,
-    "commitsThisYear": 488
+    "commitsThisYear": 507
   },
   "contributions": {
     "total": {
       "2025": 103,
-      "2026": 488
+      "2026": 507
     },
     "days": [
       {
@@ -3390,8 +3390,8 @@
       },
       {
         "date": "2026-11-04",
-        "count": 0,
-        "level": 0
+        "count": 7,
+        "level": 2
       },
       {
         "date": "2026-11-05",
@@ -3420,18 +3420,18 @@
       },
       {
         "date": "2026-11-10",
-        "count": 0,
-        "level": 0
+        "count": 2,
+        "level": 1
       },
       {
         "date": "2026-11-11",
-        "count": 0,
-        "level": 0
+        "count": 1,
+        "level": 1
       },
       {
         "date": "2026-11-12",
-        "count": 4,
-        "level": 1
+        "count": 10,
+        "level": 3
       },
       {
         "date": "2026-11-13",
@@ -3440,7 +3440,7 @@
       },
       {
         "date": "2026-11-14",
-        "count": 9,
+        "count": 11,
         "level": 3
       },
       {
@@ -3485,8 +3485,8 @@
       },
       {
         "date": "2026-11-23",
-        "count": 0,
-        "level": 0
+        "count": 1,
+        "level": 1
       },
       {
         "date": "2026-11-24",
@@ -5217,8 +5217,8 @@
       },
       {
         "date": "2026-11-04",
-        "count": 0,
-        "level": 0
+        "count": 7,
+        "level": 2
       },
       {
         "date": "2026-11-05",
@@ -5247,18 +5247,18 @@
       },
       {
         "date": "2026-11-10",
-        "count": 0,
-        "level": 0
+        "count": 2,
+        "level": 1
       },
       {
         "date": "2026-11-11",
-        "count": 0,
-        "level": 0
+        "count": 1,
+        "level": 1
       },
       {
         "date": "2026-11-12",
-        "count": 4,
-        "level": 1
+        "count": 10,
+        "level": 3
       },
       {
         "date": "2026-11-13",
@@ -5267,7 +5267,7 @@
       },
       {
         "date": "2026-11-14",
-        "count": 9,
+        "count": 11,
         "level": 3
       },
       {
@@ -5312,8 +5312,8 @@
       },
       {
         "date": "2026-11-23",
-        "count": 0,
-        "level": 0
+        "count": 1,
+        "level": 1
       },
       {
         "date": "2026-11-24",
@@ -5645,6 +5645,24 @@
   ],
   "events": [
     {
+      "id": "28070261816",
+      "type": "PushEvent",
+      "repoName": "My-portfolio-",
+      "repoFullName": "Thiva123-ab/My-portfolio-",
+      "repoUrl": "https://github.com/Thiva123-ab/My-portfolio-",
+      "createdAt": "2026-11-21T12:59:24Z",
+      "summary": "Pushed 1 commit: \"Code updates\""
+    },
+    {
+      "id": "28014184618",
+      "type": "PushEvent",
+      "repoName": "My-portfolio-",
+      "repoFullName": "Thiva123-ab/My-portfolio-",
+      "repoUrl": "https://github.com/Thiva123-ab/My-portfolio-",
+      "createdAt": "2026-11-21T07:02:44Z",
+      "summary": "Pushed 1 commit: \"Code updates\""
+    },
+    {
       "id": "28004235107",
       "type": "PushEvent",
       "repoName": "devops-practical",
@@ -5714,24 +5732,6 @@
       "repoFullName": "Thiva123-ab/devops-practical",
       "repoUrl": "https://github.com/Thiva123-ab/devops-practical",
       "createdAt": "2026-11-20T04:50:42Z",
-      "summary": "Pushed 1 commit: \"Code updates\""
-    },
-    {
-      "id": "27874414822",
-      "type": "PushEvent",
-      "repoName": "devops-practical",
-      "repoFullName": "Thiva123-ab/devops-practical",
-      "repoUrl": "https://github.com/Thiva123-ab/devops-practical",
-      "createdAt": "2026-11-20T06:59:43Z",
-      "summary": "Pushed 1 commit: \"Code updates\""
-    },
-    {
-      "id": "27860485437",
-      "type": "PushEvent",
-      "repoName": "devops-practical",
-      "repoFullName": "Thiva123-ab/devops-practical",
-      "repoUrl": "https://github.com/Thiva123-ab/devops-practical",
-      "createdAt": "2026-11-20T19:03:00Z",
       "summary": "Pushed 1 commit: \"Code updates\""
     }
   ],
@@ -5910,19 +5910,19 @@
     },
     {
       "weekStart": "2026-10-29",
-      "count": 13
+      "count": 20
     },
     {
       "weekStart": "2026-11-05",
-      "count": 24
+      "count": 27
     },
     {
       "weekStart": "2026-11-12",
-      "count": 55
+      "count": 63
     },
     {
       "weekStart": "2026-11-19",
-      "count": 49
+      "count": 50
     },
     {
       "weekStart": "2026-11-26",
@@ -5950,7 +5950,7 @@
     }
   ],
   "meta": {
-    "fetchedAt": "2026-11-23T06:19:26.624Z",
+    "fetchedAt": "2026-11-24T08:53:21.703Z",
     "isFallback": false,
     "source": "github-api"
   }
